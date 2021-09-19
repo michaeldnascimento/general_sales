@@ -1,3 +1,4 @@
+# General Sales
 # Docker | PHP 7.4 | Mysql 5.7 | Phpmyadmin
 
 
@@ -15,16 +16,6 @@ Rebuild Server
 
 - <b>docker-compose up -d --build</b>
 
----
-
-phpmyadmin user / password: password / password
 
 ---
 
-References
-
-- https://github.com/cesarlopes/docker-apache-php-mysql-phpmyadmin-ssl
-
-- https://github.com/raj039/Docker-Apache-PHP7.4-MySQL8-phpmyadmin
-
----
