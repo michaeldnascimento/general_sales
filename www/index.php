@@ -1,0 +1,1193 @@
+<?php
+session_start();
+
+
+//login_verifica pra verificar o login
+include_once "./login/verifica.php";
+include_once "./login/visualizarlista.php";
+
+  $graficos = 'none';
+
+if ($empresa == '001') {
+  $img1 = 'css/imagens/comunicadonet.jpg';
+  $img2 = 'css/imagens/comunicadonet.jpg';
+}
+
+if ($empresa == '003') {
+  if ($nivel == '1' OR $nivel == '2' OR $nivel == '3') {
+  $img1 = 'css/imagens/comunicadonet.jpg';
+  $img2 = 'css/imagens/comunicadonet.jpg';
+  }
+  if ($nivel == '4' OR $nivel == '5') {
+  $img1 = 'css/imagens/comunicadonet.jpg';
+  $img2 = 'css/imagens/comunicadonet.jpg';
+  }
+}
+
+ if($empresa == '005'){
+  $img1 = 'css/imagens/Background_AmericanGroup.jpg';
+  $img2 = 'css/imagens/Background_AmericanGroup_Blue.jpg';
+ }
+
+
+ if($empresa == '10'){
+  $img1 = 'css/imagens/Background.jpg';
+  $img2 = 'css/imagens/Background.jpg';
+ }
+
+
+?>
+
+<!--***************INICIO DO CODIGO HTML- INICIO DA PAGINA**************************** -->
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+    <meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./css/imagens/16x16.png">
+    <title>General Sales</title>
+
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="./css/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/bootstrap/css/css-geral.css">
+
+
+<style>
+body {
+width: 100%;
+height: 100%;
+background-attachment: fixed;
+
+background-position: center;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+background-size: cover;
+-o-background-size: cover;
+}
+
+.imghome {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #1a1a1a;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 1px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -220px;
+}
+
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative; 
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    background-color: #1c1c1c;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+.sidebar-nav li:first-child a {
+    color: #fff;
+    background-color: #1a1a1a;
+}
+.sidebar-nav li:nth-child(2):before {
+    background-color: #279636;   
+}
+.sidebar-nav li:nth-child(3):before {
+    background-color: #0A14DE;   
+}
+.sidebar-nav li:nth-child(4):before {  
+    background-color: #F00911;   
+}
+.sidebar-nav li:nth-child(5):before {
+    background-color: #14AE9C;   
+}
+.sidebar-nav li:nth-child(6):before {
+    background-color: #153151;   
+}
+.sidebar-nav li:nth-child(7):before {
+    background-color: #ead24c;   
+}
+.sidebar-nav li:nth-child(8):before {
+    background-color: #2d2366;   
+}
+.sidebar-nav li:nth-child(9):before {
+    background-color: #F28C07;   
+}
+.sidebar-nav li:nth-child(10):before {
+    background-color: #0E463F;   
+}
+.sidebar-nav li:nth-child(11):before {
+    background-color: #AFCDF2;   
+}
+.sidebar-nav li:nth-child(12):before {
+    background-color: #B393F2;   
+}
+.sidebar-nav li:nth-child(13):before {
+    background-color: #B7EB92;   
+}
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;    
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 20px;
+    line-height: 44px;
+}
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #404040;
+    box-shadow: none;
+}
+
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+
+.hamburger {
+  position: fixed;
+  top: 20px;  
+  z-index: 999;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: transparent;
+  border: none;
+}
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+  outline: none;
+}
+.hamburger.is-closed:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 100%;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-closed .hamb-top { 
+  top: 5px; 
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed .hamb-middle {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-closed .hamb-bottom {
+  bottom: 5px;  
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+  top: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+  bottom: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+  top: 50%;
+  margin-top: -2px;  
+}
+.hamburger.is-open .hamb-top { 
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open .hamb-middle { display: none; }
+.hamburger.is-open .hamb-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+/*-------------------------------*/
+/*            Overlay            */
+/*-------------------------------*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(250,250,250,.8);
+    z-index: 1;
+}a/*NAVBAR 2*/
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+body,
+html { height: 100%;}
+.nav .open > a, 
+.nav .open > a:hover, 
+.nav .open > a:focus {background-color: transparent;}
+
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 220px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    left: 220px;
+    width: 0;
+    height: 100%;
+    margin-left: -220px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 220px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-top: 1px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -220px;
+}
+
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    position: relative; 
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar-nav li:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+    width: 3px;
+    background-color: #1c1c1c;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+.sidebar-nav li:first-child a {
+    color: #fff;
+    background-color: #000;
+}
+.sidebar-nav li:nth-child(2):before {
+    background-color: #279636;   
+}
+.sidebar-nav li:nth-child(3):before {
+    background-color: #0A14DE;   
+}
+.sidebar-nav li:nth-child(4):before {  
+    background-color: #F00911;   
+}
+.sidebar-nav li:nth-child(5):before {
+    background-color: #14AE9C;   
+}
+.sidebar-nav li:nth-child(6):before {
+    background-color: #153151;   
+}
+.sidebar-nav li:nth-child(7):before {
+    background-color: #ead24c;   
+}
+.sidebar-nav li:nth-child(8):before {
+    background-color: #2d2366;   
+}
+.sidebar-nav li:nth-child(9):before {
+    background-color: #F28C07;   
+}
+.sidebar-nav li:nth-child(10):before {
+    background-color: #0E463F;   
+}
+.sidebar-nav li:nth-child(11):before {
+    background-color: #AFCDF2;   
+}
+.sidebar-nav li:nth-child(12):before {
+    background-color: #EE6363;   
+}
+.sidebar-nav li:nth-child(13):before {
+    background-color: #CD853F;   
+}
+.sidebar-nav li:hover:before,
+.sidebar-nav li.open:hover:before {
+    width: 100%;
+    -webkit-transition: width .2s ease-in;
+      -moz-transition:  width .2s ease-in;
+       -ms-transition:  width .2s ease-in;
+            transition: width .2s ease-in;
+
+}
+
+.sidebar-nav li a {
+    display: block;
+    color: #ddd;
+    text-decoration: none;
+    padding: 10px 15px 10px 30px;    
+}
+
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 20px;
+    line-height: 44px;
+}
+.sidebar-nav .dropdown-menu {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #404040;
+    box-shadow: none;
+}
+
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+
+.hamburger {
+  position: fixed;
+  top: 20px;  
+  z-index: 999;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-left: 15px;
+  background: #5055ff;
+  border: none;
+}
+.hamburger:hover,
+.hamburger:focus,
+.hamburger:active {
+  outline: none;
+}
+.hamburger.is-closed:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom,
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  position: absolute;
+  left: 0;
+  height: 4px;
+  width: 100%;
+}
+.hamburger.is-closed .hamb-top,
+.hamburger.is-closed .hamb-middle,
+.hamburger.is-closed .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-closed .hamb-top { 
+  top: 5px; 
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed .hamb-middle {
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger.is-closed .hamb-bottom {
+  bottom: 5px;  
+  -webkit-transition: all .35s ease-in-out;
+}
+
+.hamburger.is-closed:hover .hamb-top {
+  top: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-closed:hover .hamb-bottom {
+  bottom: 0;
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-middle,
+.hamburger.is-open .hamb-bottom {
+  background-color: #1a1a1a;
+}
+.hamburger.is-open .hamb-top,
+.hamburger.is-open .hamb-bottom {
+  top: 50%;
+  margin-top: -2px;  
+}
+.hamburger.is-open .hamb-top { 
+  -webkit-transform: rotate(45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open .hamb-middle { display: none; }
+.hamburger.is-open .hamb-bottom {
+  -webkit-transform: rotate(-45deg);
+  -webkit-transition: -webkit-transform .2s cubic-bezier(.73,1,.28,.08);
+}
+.hamburger.is-open:before {
+  content: '';
+  display: block;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  opacity: 0;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+.hamburger.is-open:hover:before {
+  opacity: 1;
+  display: block;
+  -webkit-transform: translate3d(-100px,0,0);
+  -webkit-transition: all .35s ease-in-out;
+}
+
+/*-------------------------------*/
+/*            Overlay            */
+/*-------------------------------*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(250,250,250,.8);
+    z-index: 1;
+}
+
+  body{
+    margin-top: -20px;
+
+
+}
+
+
+</style>
+ 
+
+    </head>
+    <body>
+
+<!--**********************NAVBAR - BARRA DE NAVEGAÇÃO DO SITE******************************** -->
+<?php
+if($empresa == '001'){
+?>
+
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+    
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       GENERAL SALES
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php">Home</a>
+                </li>
+                <li class="dropdown">
+                  <a  style="display: <?php echo $menunet ?>"  href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 1<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Mailing Net</li>
+                      <li><a style="display: <?php echo $dropsp ?>" href="./mailing/leadNET-SP.php">LEAD SP</a></li>
+                      <li><a style="display: <?php echo $dropbr ?>" href="./mailing/leadNET-BR.php">LEAD BR</a></li>
+                      <li><a style="display: <?php echo $dropmt ?>" href="./mailing/leadNET-Multi.php">LEAD MULTI</a></li>
+                      <li><a style="display: <?php echo $dropmt ?>" href="./mailing/leadNET-CO.php">LEAD MULTI FACIL</a></li>
+                      <li><a style="display: <?php echo $dropoportunidadesite ?>" href="./mailing/oportunidades-site.php">LEAD SITE</a></li>
+                      <li><a style="display: <?php echo $droprx ?>" href="./mailing/leadNET-Reconex.php">LEAD RECONEX</a></li>
+                      <li><a style="display: <?php echo $droputi ?>" href="./mailing/leadNET-UTI.php">LEAD UTI</a></li>
+                      <li><a style="display: <?php echo $dropmultibase ?>" href="./mailing/multibase.php">BASE MULTI</a></li>
+                      <li><a style="display: <?php echo $dropproposta ?>" href="./mailing/tvbase.php">BASE TV</a></li>
+                      <li><a style="display: <?php echo $dropleadsite ?>" href="./mailing/leadExclusivo.php">EXCLUSIVO</a></li>
+                      <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/prospect.php">PROSPECTS</a></li>
+
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a style="display: <?php echo $menuclaro ?>" href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 2<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Mailing</li>
+                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/oportunidades-tag.php">OPORTUNIDADES TAG</a></li>
+                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/lead-corporativo.php">LEAD CORPORATIVO</a></li>
+                      <li><a style="display: <?php echo $dropgeral ?>" href="./mailing/lead-GERAL.php">LEAD GERAL</a></li>
+                      <li><a style="display: <?php echo $dropnet ?>" href="./mailing/lead-NET.php">LEAD NET</a></li>
+                      <li><a style="display: <?php echo $dropcl ?>" href="./mailing/leadNET-Claro.php">LEAD CLARO</a></li>
+                      <li><a style="display: <?php echo $dropoportunidadesac ?>" href="./mailing/oportunidades-sac.php">LEAD SKY</a></li>
+                      <li><a style="display: <?php echo $dropvivo ?>" href="./mailing/lead-VIVO.php">LEAD VIVO</a></li>
+                      <li><a style="display: <?php echo $droptim ?>" href="./mailing/lead-TIM.php">LEAD TIM</a></li>
+                      <li><a style="display: <?php echo $drophughes ?>" href="./mailing/lead-HUGHES.php">LEAD HUGHES</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropvend ?>" data-toggle="dropdown">Vendedor <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown-header"></li>
+                  <li><a href="./vendedor/nova_venda.php">Nova Venda</a></li>
+                  <li><a href="./vendedor/minhas-vendasLista.php">Status Propostas</a></li>
+                  <li><a href="./vendedor/minha-agendaRetornos.php">Agenda Retornos</a></li>
+                  <li><a href="./vendedor/lista_chamadosVED.php">Chamados Backoffice</a></li>
+                  <li><a href="./vendedor/usuario.php">Usuario</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" style="display: <?php echo $dropparc ?>" data-toggle="dropdown">Parceiros<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                <li class="dropdown-header"></li>
+                <li><a href="./parceiros/add-cliente.php">Novo Cliente Resumido</a></li>
+                <li><a href="./parceiros/add-cliente_completo.php">Novo Cliente Completo</a></li>
+                <li><a href="./parceiros/minhas-vendas.php">Minhas Vendas</a></li>
+                <li><a href="./parceiros/listavendas-bko.php">Backoffice - Vendas</a></li>
+                </ul>
+                </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropback ?>" data-toggle="dropdown">Backoffice<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                 <li class="dropdown-header">Listas Vendas</li>
+                    <li><a href="./backoffice/listavenda-backoffice-tratar.php">NOVAS VENDAS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-credito.php">CREDITOS APROVADOS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-conexao.php">CONEXÃO</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-pendente.php">PENDENTES BACKOFFICE</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-pendente-vendedor.php">PENDENTES VENDEDORES</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-agendado.php">AGENDADOS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-quebra.php">QUEBRAS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-instalado.php">INSTALADOS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-cancelado.php">CANCELADOS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice.php">GERAIS</a></li>
+                    <li><a href="./backoffice/lista_chamadosBACK.php">CHAMADOS</a></li>
+                  </ul>
+              </li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropsup ?>" data-toggle="dropdown">Supervisor<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      <li class="dropdown-header"></li>
+                      <li><a href="./supervisor/con-usuario-lista.php">Usuarios</a></li>
+                      <li><a href="./supervisor/useronline.php">Onlines General</a></li>
+                      <li><a href="./supervisor/importcvs.php">Importar CSV</a></li>
+                      <li><a href="./supervisor/tabulacao-geral.php">Tabulacao Geral</a></li>
+                      <li><a href="./supervisor/gerenciador-mailing.php">Gerenciador Mailing</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Gerente<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      <li class="dropdown-header"></li>
+                      <li><a href="./gerente/basemailing.php">Base Mailing</a></li>
+                      <li><a href="./gerente/importcsvbase.php">Importar Base (CSV)</a></li>
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropadm ?>" data-toggle="dropdown">Administrador<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      <li class="dropdown-header"></li>
+                    </ul>
+                  </li>
+
+                <li>
+                <li class="active ">
+                <a style="color: red" href="./login/sair.php">Sair</a>
+                </li>
+                </li>
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <li>
+                <li>
+                <li><a><?php echo $empresa?> / <?php echo $nomeUsuario?></a></li>
+                <li>
+                <li><a><?php echo $funcao?></a></li>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+          <span class="hamb-middle"></span>
+        <span class="hamb-bottom"></span>
+            </button>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+<?php
+}
+if($empresa == '003'){
+?>
+
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+    
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       GENERAL SALES
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php">Home</a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Vendedor <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown-header"></li>
+                  <li><a href="./vendedor/nova-venda_simplificada.php">Nova Venda</a></li>
+                  <li><a href="./vendedor/minhas-vendasLista.php">Status Propostas</a></li>
+                  </ul>
+                </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropback ?>" data-toggle="dropdown">Backoffice<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                 <li class="dropdown-header">Listas Vendas</li>
+                    <li><a href="./backoffice/listavenda-backoffice.php">Vendas GERAIS</a></li>
+                  </ul>
+               </li>
+              <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropsup ?>" data-toggle="dropdown">Supervisor<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      <li class="dropdown-header"></li>
+                      <li><a href="./supervisor/con-usuario-lista.php">Usuarios</a></li>
+                      <li><a href="./supervisor/useronline.php">Onlines General</a></li>
+                      </ul>
+                </li>
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" style="display: <?php echo $droprela ?>" data-toggle="dropdown">Relatorios<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      <li class="dropdown-header"></li>
+                      <li><a href="./relatorio/relatorio-geral.php">Relatorio Geral</a></li>
+                      </ul>
+                </li>
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropadm ?>" data-toggle="dropdown">ADM<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      <li class="dropdown-header"></li>
+                      <li><a href="./administrador/listacitrix.php">Lista Logins</a></li>
+                      </ul>
+                </li>
+
+
+                <li>
+                <li class="active ">
+                <a style="color: red" href="./login/sair.php">Sair</a>
+                </li>
+                </li>
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <li>
+                <li>
+                <li><a><?php echo $empresa?> / <?php echo $nomeUsuario?></a></li>
+                <li>
+                <li><a><?php echo $funcao?></a></li>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+          <span class="hamb-middle"></span>
+        <span class="hamb-bottom"></span>
+            </button>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+<?php
+}
+if($empresa == '10'){
+?>
+
+  <div id="wrapper">
+        <div class="overlay"></div>
+    
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       GENERAL SALES
+                    </a>
+                </li>
+                <li>
+                    <a href="./index.php">Home</a>
+                </li>
+                <li class="dropdown">
+                  <a style="display: <?php echo $menunet ?>"  href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 1<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Mailing</li>
+                      <li><a style="display: <?php echo $dropleadsite ?>" href="./mailing/leadExclusivo.php">EXCLUSIVO</a></li>
+                      <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/prospect.php">PROSPECTS</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropvend ?>" data-toggle="dropdown">Vendedor <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown-header"></li>
+                  <li><a href="./vendedor/nova_venda.php">Nova Venda</a></li>
+                  <li><a href="./vendedor/minhas-vendasLista.php">Status Propostas</a></li>
+                  <li><a href="./vendedor/minha-agendaRetornos.php">Agenda Retornos</a></li>
+                  </ul>
+                </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropback ?>" data-toggle="dropdown">Backoffice<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                  <li class="dropdown-header">Listas Vendas</li>
+                    <li><a href="./backoffice/listavenda-backoffice-tratar.php">Vendas CONCLUIDAS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-multi.php">Vendas Base MULTI</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-tv.php">Vendas Base TV</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-prospect.php">Vendas Prospects</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice.php">Vendas GERAIS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-agendado.php">Vendas AGENDADAS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-instalado.php">Vendas INSTALADAS</a></li>
+                  </ul>
+              </li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropsup ?>" data-toggle="dropdown">Supervisor<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      <li class="dropdown-header"></li>
+                      <li><a href="./supervisor/tabulacao-geral.php">Tabulacao Geral</a></li>
+                      <li><a href="./supervisor/useronline.php">Onlines</a></li>
+                      <li><a href="./supervisor/importcvs.php">Importar CSV</a></li>
+                      <li><a href="./supervisor/gerenciador-mailing.php">Gerenciador Mailing</a></li>
+                      </ul>
+                  </li>
+                <li>
+                <li class="active ">
+                <a style="color: red" href="./login/sair.php">Sair</a>
+                </li>
+                </li>
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <li>
+                <li>
+                <li><a><?php echo $empresa?> / <?php echo $nomeUsuario?></a></li>
+                <li>
+                <li><a><?php echo $funcao?></a></li>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+          <span class="hamb-middle"></span>
+        <span class="hamb-bottom"></span>
+            </button>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+<?php
+}
+if($empresa == '005'){
+?>
+
+
+  <div id="wrapper">
+        <div class="overlay"></div>
+    
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       GENERAL SALES
+                    </a>
+                </li>
+                <li>
+                    <a href="./index.php">Home</a>
+                </li>
+                <li class="dropdown">
+                  <a style="display: <?php echo $menunet ?>"  href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 1<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Mailing</li>
+                      <li><a style="display: <?php echo $dropleadsite ?>" href="./mailing/leadExclusivo.php">EXCLUSIVO</a></li>
+                      <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/prospect.php">PROSPECTS</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropvend ?>" data-toggle="dropdown">Vendedor <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown-header"></li>
+                  <li><a href="./vendedor/nova_venda.php">Nova Venda</a></li>
+                  <li><a href="./vendedor/minhas-vendasLista.php">Status Propostas</a></li>
+                  <li><a href="./vendedor/minha-agendaRetornos.php">Agenda Retornos</a></li>
+                  </ul>
+                </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropback ?>" data-toggle="dropdown">Backoffice<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                  <li class="dropdown-header">Listas Vendas</li>
+                    <li><a href="./backoffice/listavenda-backoffice-tratar.php">Vendas CONCLUIDAS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-multi.php">Vendas Base MULTI</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-tv.php">Vendas Base TV</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-prospect.php">Vendas Prospects</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice.php">Vendas GERAIS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-agendado.php">Vendas AGENDADAS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-instalado.php">Vendas INSTALADAS</a></li>
+                  </ul>
+              </li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropsup ?>" data-toggle="dropdown">Supervisor<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                      <li class="dropdown-header"></li>
+                      <li><a href="./supervisor/tabulacao-geral.php">Tabulacao Geral</a></li>
+                      <li><a href="./supervisor/useronline.php">Onlines</a></li>
+                      <li><a href="./supervisor/importcvs.php">Importar CSV</a></li>
+                      <li><a href="./supervisor/gerenciador-mailing.php">Gerenciador Mailing</a></li>
+                      </ul>
+                  </li>
+                <li>
+                <li class="active ">
+                <a style="color: red" href="./login/sair.php">Sair</a>
+                </li>
+                </li>
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <li>
+                <li>
+                <li><a><?php echo $empresa?> / <?php echo $nomeUsuario?></a></li>
+                <li>
+                <li><a><?php echo $funcao?></a></li>
+                </li>
+            </ul>
+
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+          <span class="hamb-middle"></span>
+        <span class="hamb-bottom"></span>
+            </button>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+<?php
+}
+?>
+
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="display: <?php echo $slide;?>">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+      
+      <div class="carousel-inner" role="listbox">
+        
+        <div class="item active">
+        <img class="first" src="<?php echo $img1 ?>" alt="first slide">
+        </div>
+        
+        <div class="item">
+          <img class="second" src="<?php echo $img2 ?>" alt="Second slide">
+        </div>
+        
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 0 //changes the speed
+    })
+    </script>
+
+
+
+
+
+</body>
+
+
+        <!-- jQuery -->
+        <script src="./js/jquery-2.2.3.min.js"></script>
+        <script src="./js/scripts-geral.js"></script>
+        <script src="./css/bootstrap/js/bootstrap.min.js"></script>
+        <script src="./css/bootstrap/js/meunavbar2.js"></script>
+
+
+
+</html>

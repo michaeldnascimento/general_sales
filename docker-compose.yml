@@ -1,0 +1,62 @@
+version: '3.9'
+
+networks:
+    general:
+
+services:
+
+    db_server:
+        build: ./.docker/db/mysql
+        container_name: '${APP_NAME}-db'
+        restart: always
+        ports:
+            - '${DB_PORT}:3306'
+        volumes:
+            - ${MYSQL_DATA_DIR-./.docker/db/mysql/data/mysql}:/var/lib/mysql
+            - ${MYSQL_LOG_DIR-./.docker/db/mysql/logs/mysql}:/var/log/mysql
+            - ./.docker/db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+        environment:
+            MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASS}'
+            MYSQL_USER: '${MYSQL_USER}'
+            MYSQL_PASSWORD: '${MYSQL_PASS}'
+            MYSQL_DATABASE: '${MYSQL_DB}'
+        networks:
+            - general
+
+    db_admin:
+        build: .docker/db/phpmyadmin
+        container_name: '${APP_NAME}-db-admin'
+        ports:
+            - '${APP_DB_ADMIN_PORT}:80'
+        environment:
+            PMA_HOST: db_server
+            PMA_PORT: 3306
+        volumes:
+            - db_admin_data:/var/www/html
+        networks:
+            - general
+
+
+    webserver:
+        build: ./.docker/webserver
+        container_name: "${APP_NAME}-webserver"
+        restart: always
+        ports:
+            - '${APP_PORT}:80'
+        working_dir: /var/www/html
+        volumes:
+            - ./www:/var/www/html/
+            - ./.docker/webserver/apache/sites-enabled:/etc/apache2/sites-enabled
+            - ./.docker/webserver/php/php.ini:/usr/local/etc/php/conf.d/extra-php-config.ini
+        networks:
+            - general
+
+
+
+volumes:
+    db_data:
+    db_admin_data:
+
+
+
+
