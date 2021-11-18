@@ -47,7 +47,7 @@ if ($_POST['data1'] !="" OR $_POST['data2'] !="") {
 
 $stringSql = "SELECT id_chamado, codigoNET, tabulacao_chamado, propostaNET, nome_back, nome_vendedor, situacao_chamado, chamado, date_format(data_chamado,'%d/%m/%Y')as data_chamado, flag_chamado FROM chamados WHERE {$status} {$vendedor} (data_chamado BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY data_chamado desc";
 
-echo $stringSql;
+//echo $stringSql;
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
 $qtdClientes = mysqli_num_rows($resultado);
@@ -129,7 +129,7 @@ mysqli_close($linkComMysql);
 	<head>
 		<meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" />
 		<link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sales</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.min.css">

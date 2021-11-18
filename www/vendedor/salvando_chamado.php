@@ -17,15 +17,15 @@ if (isset($_POST)) {
 		include "../funcoes/funcoes_geraisPortari.php";
 
 		//Cliente
-		$tabulacao_chamado     	 = utf8_decode(mb_strtoupper($_POST['tabulacao_chamado']));
-		$codigoNET    			 = utf8_decode(mb_strtoupper($_POST['codigoNET']));
-		$propostaNET 	 		 = utf8_decode(mb_strtoupper($_POST['propostaNET']));
-		$cidade_chamado 	 	 = utf8_decode(mb_strtoupper($_POST['cidade_chamado']));
-		$descricao_chamado  	 = utf8_decode(mb_strtoupper($_POST['descricao_chamado']));
-		$nome_vendedor 			 = utf8_decode(mb_strtoupper($_POST['nome_vendedor']));
-		$data_chamado 		     = utf8_decode(mb_strtoupper($_POST['data_chamado']));
-		$hora_chamado     		 = utf8_decode(mb_strtoupper($_POST['hora_chamado']));
-		$situacao_chamado     	 = utf8_decode(mb_strtoupper($_POST['situacao_chamado']));
+		$tabulacao_chamado     	 = mb_strtoupper($_POST['tabulacao_chamado']);
+		$codigoNET    			 = mb_strtoupper($_POST['codigoNET']);
+		$propostaNET 	 		 = mb_strtoupper($_POST['propostaNET']);
+		$cidade_chamado 	 	 = mb_strtoupper($_POST['cidade_chamado']);
+		$descricao_chamado  	 = mb_strtoupper($_POST['descricao_chamado']);
+		$nome_vendedor 			 = mb_strtoupper($_POST['nome_vendedor']);
+		$data_chamado 		     = mb_strtoupper($_POST['data_chamado']);
+		$hora_chamado     		 = mb_strtoupper($_POST['hora_chamado']);
+		$situacao_chamado     	 = mb_strtoupper($_POST['situacao_chamado']);
 
 /*****************************************EDITAR clientes ***************************************/
 
@@ -59,6 +59,9 @@ if (isset($_POST)) {
 
 
 				$queryCliente = gera_insert($campos, $valores, 'chamados');
+
+                //echo $queryCliente;
+                //exit;
 
 				$resCliente  = mysqli_query($linkComMysql, $queryCliente);
 
