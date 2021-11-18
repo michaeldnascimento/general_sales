@@ -108,7 +108,7 @@ mysqli_close($linkComMysql);
 	<head>
 		<meta http-equiv="content-Type" content="text/html; charset=iso-8859-1" />
 		<link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sales</title>
 
 
 		<!-- Bootstrap CSS -->

@@ -35,7 +35,7 @@ unset($_SESSION['mensagem']);
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sales</title>
 
 
     <!-- Bootstrap CSS -->
@@ -74,22 +74,10 @@ include_once "../css/navbar/meunavbar.php";
           
      <select required name="lista_sistema" class="form-control">
 
-          
+
       <option value=""></option>
-      <option style="display: <?php echo $droplista ?>" value="TVBASE">TVBASE</option>
-      <option style="display: <?php echo $droplista ?>" value="MULTIBASE">MULTIBASE</option>
-      <option value="EXCLUSIVO">EXCLUSIVO</option>
       <option value="PROSPECT">PROSPECT</option>
-      <option style="display: <?php echo $droplista ?>" value="SITE">SITE (LEAD SITE)</option>
-      <option style="display: <?php echo $droplista ?>" value="GERAL">GERAL (LEAD GERAL)</option>
-      <option style="display: <?php echo $droplista ?>" value="CLARO">CLARO (LEAD CLARO)</option>
-      <option style="display: <?php echo $droplista ?>" value="SKY">SKY (LEAD SKY)</option>
-      <option style="display: <?php echo $droplista ?>" value="NET">NET (LEAD NET)</option>
-      <option style="display: <?php echo $droplista ?>" value="VIVO">VIVO (LEAD VIVO)</option>
-      <option style="display: <?php echo $droplista ?>" value="TIM">TIM (LEAD TIM)</option>
-      <option style="display: <?php echo $droplista ?>" value="HUGHES">HUGHES (LEAD HUGHES)</option>
-      <option style="display: <?php echo $droplista ?>" value="TAG">TAG (OPORTUNIDADES TAG)</option>
-      <option style="display: <?php echo $droplista ?>" value="CORPORATIVO">CORPORATIVO (LEAD CORPORATIVO)</option>
+      <option style="display: <?php echo $droplista ?>" value="OPORTUNIDADES">OPORTUNIDADES</option>
       </select>
       </div>
 
@@ -102,8 +90,8 @@ include_once "../css/navbar/meunavbar.php";
           </div>
           </div>
 </div>
-<label  class="col-sm-1" for="textinput">Padrão CSV General:</label>
-<a href="http://generalsales.net.br/download/PADRAOCSVGeneral.csv" download="PadraoGeneral.csv">Click Aqui</a>
+<label  class="col-sm-1" for="textinput">Padrão CSV Home Sales:</label>
+<a href="http://homesales.com.br/download/PADRAO_CSV_GENERAL.csv" download="PADRAO_HOMESALES.csv">Click Aqui</a>
 
 <br/>
 <br/>

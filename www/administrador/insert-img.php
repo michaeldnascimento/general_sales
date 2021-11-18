@@ -27,7 +27,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./css/imagens/16x16.ico">
-    <title>General Sales 2.0</title>
+    <title>Home Sale 2.0</title>
 
 
       <!-- Bootstrap CSS -->

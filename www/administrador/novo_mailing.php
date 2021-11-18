@@ -27,7 +27,7 @@ unset($_SESSION['mensagem']);
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sale</title>
 
 
 		<!-- Bootstrap CSS -->
@@ -49,7 +49,7 @@ unset($_SESSION['mensagem']);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="novo_mailing.php" class="navbar-brand">General Sales</a>
+      <a href="novo_mailing.php" class="navbar-brand">Home Sale</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">

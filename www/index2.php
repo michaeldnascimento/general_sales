@@ -6,7 +6,7 @@ use \App\Common\Environment;
 //CARREGA AS VARIAVEIS DE AMBIENTE DO PROJETO
 Environment::load(__DIR__. '/');
 
-$link = mysqli_connect(getenv('RDS_MYSQL_HOST'), getenv('RDS_MYSQL_USER'), getenv('RDS_MYSQL_PASS'), getenv('RDS_MYSQL_DB'));
+$link = mysqli_connect(getenv('MYSQL_HOST'), getenv('MYSQL_USER'), getenv('MYSQL_PASS'), getenv('MYSQL_DB'));
 
 if (!$link) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;

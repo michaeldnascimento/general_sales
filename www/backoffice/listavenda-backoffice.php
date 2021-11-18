@@ -103,7 +103,7 @@ if ($_POST['data1'] !="" OR $_POST['data2'] !="") {
 
 $stringSql = "
 	SELECT id_cliente, nome_cliente, cpf_cnpj_cliente, rg_ie_cliente, data_nasc_cliente, email_cliente, sexo_cliente, tipo_pessoa_cliente, nome_mae_cliente, codigo_cliente, fone_cliente, celular_cliente,  fone3_cliente, fone4_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, login_net, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusChecklist, conexao, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, date_format(data_ativacao,'%d/%m/%Y')as data_ativacao, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, date_format(data_agendamento_venda_cliente,'%d/%m/%Y')as data_agendamento_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, plano_multi_cliente, qtdchip_multi_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema, tipo_servico, observacaoBack_venda_cliente, flag FROM clientes WHERE ({$status}) {$sqlequipe} {$sqlempresa} {$equipe} {$empresa} {$conexao} AND ({$vendedor}  {$data} BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY data_venda desc";
-echo $stringSql;
+//echo $stringSql;
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
 $qtdClientes = mysqli_num_rows($resultado);
@@ -173,7 +173,7 @@ mysqli_close($linkComMysql);
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sale</title>
 
 		<!-- Bootstrap CSS -->
     <!-- Bootstrap CSS -->

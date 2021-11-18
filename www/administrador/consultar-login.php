@@ -75,7 +75,7 @@ $horaDia = date('H:i:s'); // Resultado: 03:39:57
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../css/imagens/16x16.png">
-    <title>General Sales</title>
+    <title>Home Sale</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.min.css">

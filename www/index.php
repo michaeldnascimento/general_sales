@@ -9,8 +9,8 @@ include_once "./login/visualizarlista.php";
   $graficos = 'none';
 
 if ($empresa == '001') {
-  $img1 = 'css/imagens/comunicadonet.jpg';
-  $img2 = 'css/imagens/comunicadonet.jpg';
+  $img1 = 'css/imagens/BANNER_COMUNICADO_ALGA.jpg';
+  $img2 = 'css/imagens/BANNER_COMUNICADO_ALGA.jpg';
 }
 
 if ($empresa == '003') {
@@ -46,7 +46,7 @@ if ($empresa == '003') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./css/imagens/16x16.png">
-    <title>General Sales</title>
+        <title>Home Sale</title>
 
 
         <!-- Bootstrap CSS -->
@@ -709,43 +709,25 @@ if($empresa == '001'){
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                       GENERAL SALES
+                        Home Sales
                     </a>
                 </li>
                 <li>
                     <a href="index.php">Home</a>
                 </li>
                 <li class="dropdown">
-                  <a  style="display: <?php echo $menunet ?>"  href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 1<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 1<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Mailing Net</li>
-                      <li><a style="display: <?php echo $dropsp ?>" href="./mailing/leadNET-SP.php">LEAD SP</a></li>
-                      <li><a style="display: <?php echo $dropbr ?>" href="./mailing/leadNET-BR.php">LEAD BR</a></li>
-                      <li><a style="display: <?php echo $dropmt ?>" href="./mailing/leadNET-Multi.php">LEAD MULTI</a></li>
-                      <li><a style="display: <?php echo $dropmt ?>" href="./mailing/leadNET-CO.php">LEAD MULTI FACIL</a></li>
-                      <li><a style="display: <?php echo $dropoportunidadesite ?>" href="./mailing/oportunidades-site.php">LEAD SITE</a></li>
-                      <li><a style="display: <?php echo $droprx ?>" href="./mailing/leadNET-Reconex.php">LEAD RECONEX</a></li>
-                      <li><a style="display: <?php echo $droputi ?>" href="./mailing/leadNET-UTI.php">LEAD UTI</a></li>
-                      <li><a style="display: <?php echo $dropmultibase ?>" href="./mailing/multibase.php">BASE MULTI</a></li>
-                      <li><a style="display: <?php echo $dropproposta ?>" href="./mailing/tvbase.php">BASE TV</a></li>
-                      <li><a style="display: <?php echo $dropleadsite ?>" href="./mailing/leadExclusivo.php">EXCLUSIVO</a></li>
+                    <li class="dropdown-header">Mailing</li>
                       <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/prospect.php">PROSPECTS</a></li>
 
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a style="display: <?php echo $menuclaro ?>" href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 2<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 2<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="dropdown-header">Mailing</li>
-                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/oportunidades-tag.php">OPORTUNIDADES TAG</a></li>
-                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/lead-corporativo.php">LEAD CORPORATIVO</a></li>
-                      <li><a style="display: <?php echo $dropgeral ?>" href="./mailing/lead-GERAL.php">LEAD GERAL</a></li>
-                      <li><a style="display: <?php echo $dropnet ?>" href="./mailing/lead-NET.php">LEAD NET</a></li>
-                      <li><a style="display: <?php echo $dropcl ?>" href="./mailing/leadNET-Claro.php">LEAD CLARO</a></li>
-                      <li><a style="display: <?php echo $dropoportunidadesac ?>" href="./mailing/oportunidades-sac.php">LEAD SKY</a></li>
-                      <li><a style="display: <?php echo $dropvivo ?>" href="./mailing/lead-VIVO.php">LEAD VIVO</a></li>
-                      <li><a style="display: <?php echo $droptim ?>" href="./mailing/lead-TIM.php">LEAD TIM</a></li>
-                      <li><a style="display: <?php echo $drophughes ?>" href="./mailing/lead-HUGHES.php">LEAD HUGHES</a></li>
+                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/oportunidades.php">OPORTUNIDADES</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">
@@ -758,16 +740,6 @@ if($empresa == '001'){
                   <li><a href="./vendedor/lista_chamadosVED.php">Chamados Backoffice</a></li>
                   <li><a href="./vendedor/usuario.php">Usuario</a></li>
                   </ul>
-                </li>
-                <li class="dropdown">
-                <a href="#" class="dropdown-toggle" style="display: <?php echo $dropparc ?>" data-toggle="dropdown">Parceiros<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                <li class="dropdown-header"></li>
-                <li><a href="./parceiros/add-cliente.php">Novo Cliente Resumido</a></li>
-                <li><a href="./parceiros/add-cliente_completo.php">Novo Cliente Completo</a></li>
-                <li><a href="./parceiros/minhas-vendas.php">Minhas Vendas</a></li>
-                <li><a href="./parceiros/listavendas-bko.php">Backoffice - Vendas</a></li>
-                </ul>
                 </li>
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" style="display: <?php echo $dropback ?>" data-toggle="dropdown">Backoffice<b class="caret"></b></a>
@@ -861,7 +833,7 @@ if($empresa == '003'){
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                       GENERAL SALES
+                        Home Sale
                     </a>
                 </li>
                 <li>
@@ -953,7 +925,7 @@ if($empresa == '10'){
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                       GENERAL SALES
+                        Home Sale
                     </a>
                 </li>
                 <li>
@@ -1050,7 +1022,7 @@ if($empresa == '005'){
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                       GENERAL SALES
+                        Home Sale
                     </a>
                 </li>
                 <li>

@@ -46,10 +46,12 @@ $lista = strval($_GET['lista']);
           'fone3_cliente',
           'ddd_fone4_cliente',
           'fone4_cliente',
+          'origemCSV',
           'cep_cliente', 
           'endereco_cliente',
           'enderecoNumero_cliente',
           'enderecoComplemento_cliente',
+          'observacao_cliente',
           'bairro_cliente',
           'cidade_cliente',
           'estado_cliente',
@@ -152,7 +154,7 @@ $audio   = $cliente['audio_multisales'];
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../css/imagens/16x16.png">
-    <title>General Sales</title>
+    <title>Home Sales</title>
 
 
           <!-- Bootstrap CSS -->
@@ -463,429 +465,361 @@ include_once "../css/navbar/meunavbar.php";
 <br />
           <h4><center><strong>Dados Cliente</strong></center></h4>
 <br />
-          <!-- Text input-->
-          <div class="form-group">
-
-          <label class="col-sm-1 control-label" for="textinput">ID</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" name="id_cliente" class="form-control input-md" id="id_cliente" value="<?=$cliente['id_cliente']?>" disabled >
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
-          </div>
-          </div>
-
-          <label class="col-sm-1 control-label" for="textinput">Solicitante</label>
-          <div class="col-sm-3">
-          <div class="input-group">
-          <input type="text" name="nome_contato_cliente" class="form-control input-md" id="nome_contato_cliente" value="<?=$cliente['nome_contato_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
-          </div>
-          </div> 
-
-          <label class="col-sm-1 control-label" for="textinput">Titular</label>
-          <div class="col-sm-4">
-          <div class="input-group">
-          <input type="text" name="nome_cliente" class="form-control input-md" id="nome_cliente" value="<?=$cliente['nome_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
-          </div>
-          </div>
-          </div>
-
-
-          <!-- Text input-->
-          <div class="form-group">
-          <label class="col-sm-1 control-label" for="textinput">CPF/CNPJ</label>
-          <div class="col-sm-3">
-          <div class="input-group">
-          <input type="text" class="form-control" size="12" name="cpf_cnpj_cliente" id="cpf_cnpj_cliente" value="<?=$cliente['cpf_cnpj_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
-          </div>
-          </div>
-
-          <label class="col-sm-1 control-label" for="textinput">RG/IE</label>
-          <div class="col-sm-3">
-          <div class="input-group">
-          <input type="text" class="form-control" name="rg_ie_cliente" id="rg_ie_cliente" value="<?=$cliente['rg_ie_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
-          </div>
-          </div>
-
-          <label class="col-sm-1 control-label" for="textinput">D.Nasc</label>
-          <div class="col-sm-3">
-          <div class="input-group">
-          <input type="date" class="form-control" name="data_nasc_cliente" id="data_nasc_cliente" value="<?=$cliente['data_nasc_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-calendar"></i></span>
-          </div>
-          </div>
-
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-
-          <label class="col-sm-1 control-label" for="textinput">Pessoa</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" class="form-control" name="tipo_pessoa_cliente" id="tipo_pessoa_cliente" value="<?=$cliente['tipo_pessoa_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
-          </div>
-          </div>
-
-          <label class="col-sm-1 control-label" for="textinput">Sexo</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" class="form-control" name="sexo_cliente" id="sexo_cliente" value="<?=$cliente['sexo_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
-          </div>
-          </div>
-          
-
-          <label class="col-sm-1 control-label" for="textinput">Mãe</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" class="form-control" name="nome_mae_cliente" id="nome_mae_cliente" value="<?=$cliente['nome_mae_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
-          </div>
-          </div>
-
-          </div>
-
+              <div class="form-group">
+
+                  <label class="col-sm-1 control-label" for="textinput">ID</label>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" name="id_cliente" class="form-control input-md" id="id_cliente" value="<?=$cliente['id_cliente']?>" disabled >
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
+
+                  <label class="col-sm-1 control-label" for="textinput">Solicitante</label>
+                  <div class="col-sm-3">
+                      <div class="input-group">
+                          <input type="text" name="nome_contato_cliente" class="form-control input-md" id="nome_contato_cliente" value="<?=$cliente['nome_contato_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
+
+                  <label class="col-sm-1 control-label" for="textinput">Titular</label>
+                  <div class="col-sm-4">
+                      <div class="input-group">
+                          <input type="text" name="nome_cliente" class="form-control input-md" id="nome_cliente" value="<?=$cliente['nome_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
+              </div>
+
+
+              <!-- Text input-->
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput">CPF/CNPJ</label>
+                  <div class="col-sm-3">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="cpf_cnpj_cliente" id="cpf_cnpj_cliente" value="<?=$cliente['cpf_cnpj_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
+
+                  <label class="col-sm-1 control-label" for="textinput">RG/IE</label>
+                  <div class="col-sm-3">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="rg_ie_cliente" id="rg_ie_cliente" value="<?=$cliente['rg_ie_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
+
+                  <label class="col-sm-1 control-label" for="textinput">D.Nasc</label>
+                  <div class="col-sm-3">
+                      <div class="input-group">
+                          <input type="date" class="form-control" name="data_nasc_cliente" id="data_nasc_cliente" value="<?=$cliente['data_nasc_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-calendar"></i></span>
+                      </div>
+                  </div>
+
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+
+                  <label class="col-sm-1 control-label" for="textinput">Pessoa</label>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="tipo_pessoa_cliente" id="tipo_pessoa_cliente" value="<?=$cliente['tipo_pessoa_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
+
+                  <label class="col-sm-1 control-label" for="textinput">Sexo</label>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="sexo_cliente" id="sexo_cliente" value="<?=$cliente['sexo_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
+
+
+                  <label class="col-sm-1 control-label" for="textinput">Mae</label>
+                  <div class="col-sm-5">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="nome_mae_cliente" id="nome_mae_cliente" value="<?=$cliente['nome_mae_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
+
+              </div>
+
+
+
+              <!-- Text input-->
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput">Email</label>
+                  <div class="col-sm-5">
+                      <div class="input-group">
+                          <input type="email" class="form-control" name="email_cliente" id="email_cliente" value="<?=$cliente['email_cliente']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-envelope"></i></span>
+                      </div>
+                  </div>
 
+                  <label class="col-sm-4 control-label" for="textinput">Origem</label>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="email" class="form-control" name="origemCSV" id="origemCSV" value="<?=$cliente['origemCSV']?>" readonly>
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                      </div>
+                  </div>
 
-          <!-- Text input-->
-          <div class="form-group">
-          <label class="col-sm-1 control-label" for="textinput">Email</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="email" class="form-control" name="email_cliente" id="email_cliente" value="<?=$cliente['email_cliente']?>" readonly>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-envelope"></i></span>
-          </div>
-          </div>
-
-          </div>
+              </div>
 
 
 
-          <!-- Text input-->
-          <div class="form-group">
-          <label class="col-sm-1 control-label" for="textinput">Telefone</label>
+              <!-- Text input-->
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput">Telefone</label>
 
 
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" class="form-control" name="fone_cliente" id="fone_cliente" value="<?=$cliente['fone_cliente']?>" readonly>
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
-          </div>
-          </div>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="fone_cliente" id="fone_cliente" value="<?=$cliente['fone_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                      </div>
+                  </div>
 
 
-          <label class="col-sm-1 control-label" for="textinput">Celular</label>
+                  <label class="col-sm-1 control-label" for="textinput">Celular</label>
 
 
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" class="form-control" name="celular_cliente" id="celular_cliente" value="<?=$cliente['celular_cliente']?>" readonly>
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
-          </div>
-          </div>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="celular_cliente" id="celular_cliente" value="<?=$cliente['celular_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
+                      </div>
+                  </div>
 
-         <label class="col-sm-1 control-label" for="textinput">Telefone 2</label>
+                  <label class="col-sm-1 control-label" for="textinput">Telefone 2</label>
 
 
 
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text"  class="form-control" name="fone3_cliente" id="fone3_cliente" value="<?=$cliente['fone3_cliente']?>" readonly>
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
-          </div>
-          </div>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text"  class="form-control" name="fone3_cliente" id="fone3_cliente" value="<?=$cliente['fone3_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                      </div>
+                  </div>
 
 
-          <label class="col-sm-1 control-label" for="textinput">Telefone 3</label>
+                  <label class="col-sm-1 control-label" for="textinput">Telefone 3</label>
 
 
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" class="form-control" name="fone4_cliente" id="fone4_cliente" value="<?=$cliente['fone4_cliente']?>" readonly>
-           <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
-          </div>
-          </div>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="fone4_cliente" id="fone4_cliente" value="<?=$cliente['fone4_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                      </div>
+                  </div>
 
-          </div>
+              </div>
 
 
 
-          <!-- Text input-->
-          <div class="form-group">
-          <label class="col-sm-1 control-label" for="textinput">CEP</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" class="form-control" name="cep_cliente" id="cep_cliente" value="<?=$cliente['cep_cliente']?>" readonly>
-          </div>
-          </div>
+              <!-- Text input-->
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput">CEP</label>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="cep_cliente" id="cep_cliente" value="<?=$cliente['cep_cliente']?>" readonly>
+                      </div>
+                  </div>
 
-          <label class="col-sm-1 control-label" for="textinput">Endereco</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" class="form-control" name="endereco_cliente" id="endereco_cliente" value="<?=$cliente['endereco_cliente']?>" readonly>
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
-          </div>
-          </div>
+                  <label class="col-sm-1 control-label" for="textinput">Endereco</label>
+                  <div class="col-sm-5">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="endereco_cliente" id="endereco_cliente" value="<?=$cliente['endereco_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
+                      </div>
+                  </div>
 
 
-          <div class="col-sm-1">
-          <div class="input-group">
-          <input type="text" class="form-control" name="enderecoNumero_cliente" id="enderecoNumero_cliente" value="<?=$cliente['enderecoNumero_cliente']?>" readonly>
+                  <div class="col-sm-1">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="enderecoNumero_cliente" id="enderecoNumero_cliente" value="<?=$cliente['enderecoNumero_cliente']?>" readonly>
 
-          </div>
-          </div>
+                      </div>
+                  </div>
 
 
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" class="form-control" name="enderecoComplemento_cliente" id="enderecoComplemento_cliente" value="<?=$cliente['enderecoComplemento_cliente']?>" readonly>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="enderecoComplemento_cliente" id="enderecoComplemento_cliente" value="<?=$cliente['enderecoComplemento_cliente']?>" readonly>
 
-          </div>
-          </div>
+                      </div>
+                  </div>
 
-          </div>
+              </div>
 
 
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput">Observação</label>
+                  <div class="col-sm-11">
+                      <div class="input-group">
+                          <input type="text" style="text-transform: uppercase" maxlength="500" placeholder="Observação sobre o endereço" class="form-control" name="observacao_cliente" id="observacao_cliente" value="<?=$cliente['observacao_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
+                      </div>
+                  </div>
+              </div>
 
-          <!-- Text input-->
-          <div class="form-group">
-          <label class="col-sm-1 control-label" for="textinput">Bairro</label>
-          <div class="col-sm-4">
-          <div class="input-group">
-          <input type="text" class="form-control" name="bairro_cliente" id="bairro_cliente" value="<?=$cliente['bairro_cliente']?>" readonly>
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
-          </div>
-          </div>
 
-          <label class="col-sm-1 control-label" for="textinput">Cidade</label>
-          <div class="col-sm-3">
-          <div class="input-group">
-          <input type="text" class="form-control" name="cidade_cliente" id="cidade_cliente" value="<?=$cliente['cidade_cliente']?>" readonly>
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
-          </div>
-          </div>
 
-          <label class="col-sm-1 control-label" for="textinput">Estado</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" class="form-control" name="estado_cliente" id="estado_cliente" value="<?=$cliente['estado_cliente']?>" readonly>
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
-          </div>
-          </div>
+              <!-- Text input-->
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput">Bairro</label>
+                  <div class="col-sm-4">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="bairro_cliente" id="bairro_cliente" value="<?=$cliente['bairro_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
+                      </div>
+                  </div>
 
-          </div>
+                  <label class="col-sm-1 control-label" for="textinput">Cidade</label>
+                  <div class="col-sm-3">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="cidade_cliente" id="cidade_cliente" value="<?=$cliente['cidade_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
+                      </div>
+                  </div>
 
+                  <label class="col-sm-1 control-label" for="textinput">Estado</label>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="estado_cliente" id="estado_cliente" value="<?=$cliente['estado_cliente']?>" readonly>
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
+                      </div>
+                  </div>
 
-          <hr />
+              </div>
 
-<br />
 
-          <h4><center>Dados Servicos</center> </h4>
+              <hr />
 
+              <br />
+              <h4><center><strong>Dados Servicos</strong></center></h4>
+              <br />
 
-          <div class="form-group">
 
-          <label class="col-sm-1 control-label" for="textinput">TV</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" class="form-control" name="tv_venda_cliente" id="tv_venda_cliente" value="<?=$cliente['tv_venda_cliente']?>" readonly >
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-blackboard"></i></span>
-          </div>
-          </div>
+              <div class="form-group">
 
-          <label class="col-sm-1 control-label" for="textinput">Internet</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" class="form-control" name="internet_venda_cliente" id="internet_venda_cliente" value="<?=$cliente['internet_venda_cliente']?>" readonly >
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-globe"></i></span>
-          </div>
-          </div>
+                  <label class="col-sm-1 control-label" for="textinput">Internet</label>
+                  <div class="col-sm-5">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="internet_venda_cliente" id="internet_venda_cliente" value="<?=$cliente['internet_venda_cliente']?>" readonly >
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-globe"></i></span>
+                      </div>
+                  </div>
 
+                  <label class="col-sm-1 control-label" for="textinput">Telefonia</label>
+                  <div class="col-sm-5">
+                      <div class="input-group">
+                          <input type="text" class="form-control" name="netfone_venda_cliente" id="netfone_venda_cliente" value="<?=$cliente['netfone_venda_cliente']?>" readonly >
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                      </div>
+                  </div>
 
-          </div>
 
+              </div>
 
-          <!-- Select Basic -->
-          <div class="form-group">
 
-          <label class="col-sm-1 control-label" for="textinput">Net fone</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" class="form-control" name="netfone_venda_cliente" id="netfone_venda_cliente" value="<?=$cliente['netfone_venda_cliente']?>" readonly >
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>     
-          </div>
-          </div>
+              <!-- Select Basic -->
+              <div class="form-group">
 
-          <label class="col-sm-1 control-label" for="textinput">Port.Fixo</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="portfone_venda_cliente" id="portfone_venda_cliente" value="<?=$cliente['portfone_venda_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
-          </div>
-          </div>
-          </div>
+                  <label class="col-sm-1 control-label" for="textinput">Operadora</label>
+                  <div class="col-sm-5">
+                      <div class="input-group">
+                          <input type="text" readonly class="form-control" name="portcelular_venda_cliente" id="portcelular_venda_cliente" value="<?=$cliente['portcelular_venda_cliente']?>">
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                      </div>
+                  </div>
 
 
+                  <label class="col-sm-1 control-label" for="textinput">Port.Fixo</label>
+                  <div class="col-sm-5">
+                      <div class="input-group">
+                          <input type="text" readonly class="form-control" name="portfone_venda_cliente" id="portfone_venda_cliente" value="<?=$cliente['portfone_venda_cliente']?>">
+                          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                      </div>
+                  </div>
+              </div>
 
 
-          <div class="form-group">
+              <!-- Text input-->
+              <div class="form-group">
 
-          <label class="col-md-1 control-label" for="selectbasic">Celular</label>
-          <div class="col-md-5">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="netcelular_venda_cliente" id="netcelular_venda_cliente" value="<?=$cliente['netcelular_venda_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
+                  <label class="col-md-1 control-label" for="selectbasic">Valor</label>
+                  <div class="col-sm-2">
+                      <div class="input-group">
+                          <input type="text"  class="form-control" readonly name="valor_venda_cliente" id="valor_venda_cliente" value="<?=$cliente['valor_venda_cliente']?>">
+                      </div>
+                  </div>
+              </div>
 
-          </div>
-          </div>
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput">Pag.*</label>
+                  <div class="col-sm-2">
+                      <input type="text"  class="form-control" readonly name="formaPagemento_cliente" id="formaPagemento_cliente" value="<?=$cliente['formaPagemento_cliente']?>">
+                  </div>
 
-          <label class="col-sm-1 control-label" for="textinput">Port. Cel</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="portcelular_venda_cliente" id="portcelular_venda_cliente" value="<?=$cliente['portcelular_venda_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
+                  <label class="col-sm-1 control-label" for="textinput">Venc.</label>
+                  <div class="col-sm-1">
+                      <input type="text"  class="form-control" readonly name="vencimentoPagamento_cliente" id="vencimentoPagamento_cliente" value="<?=$cliente['vencimentoPagamento_cliente']?>">
+                  </div>
 
-          </div>
-          </div>
+                  <label class="col-md-1 control-label" for="selectbasic">Banco</label>
+                  <div class="col-sm-2">
+                      <input type="text"  class="form-control" readonly name="pagamentoBanco_cliente" id="pagamentoBanco_cliente" value="<?=$cliente['pagamentoBanco_cliente']?>">
+                  </div>
 
-          <label class="col-sm-1 control-label" for="textinput">Chip.Ativo</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <label class="radio-inline">
-          
-          <input type="radio" 
-          name="chipAtivo_cliente" 
-          id="chipAtivo_cliente"
-          disabled
-          value="SIM" 
-          <?php echo ($cliente['chipAtivo_cliente'] == "SIM") ? "checked" : null; ?>/> SIM
+                  <label class="col-md-1 control-label" for="selectbasic">Agen./Conta</label>
+                  <div class="col-sm-1">
+                      <input type="text"  class="form-control" readonly name="pagamentoAgencia_cliente" id="pagamentoAgencia_cliente" value="<?=$cliente['pagamentoAgencia_cliente']?>">
+                  </div>
 
-          </label>
-          <label class="radio-inline">
+                  <div class="col-sm-2">
+                      <input type="text"  class="form-control" readonly name="pagamentoConta_cliente" id="pagamentoConta_cliente" value="<?=$cliente['pagamentoConta_cliente']?>">
+                  </div>
+              </div>
 
-          <input type="radio" 
-          name="chipAtivo_cliente" 
-          id="chipAtivo_cliente" 
-          disabled
-          value="NAO"
-          <?php echo ($cliente['chipAtivo_cliente'] == "NAO") ? "checked" : null; ?>/>
-          NAO
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput"></label>
+                  <div class="col-sm-11">
+                      <label for="textinput">Agregado</label>
+                      <div class="input-group">
+                          <input type="text" readonly class="form-control" name="agregado_venda_cliente" id="agregado_venda_cliente" value="<?=$cliente['agregado_venda_cliente']?>">
+                          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-briefcase"></i></span>
+                      </div>
+                  </div>
+              </div>
 
-          </label>
-          </div>
-          </div>
-          </div>
 
-      <div class="form-group">
 
-          <label class="col-md-1 control-label" for="selectbasic">Multi</label>
-          <div class="col-md-5">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="plano_multi_cliente" id="plano_multi_cliente" value="<?=$cliente['plano_multi_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
 
-          </div>
-          </div>
 
-          <label class="col-sm-1 control-label" for="textinput">Chip</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="qtdchip_multi_cliente" id="qtdchip_multi_cliente" value="<?=$cliente['qtdchip_multi_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
 
-          </div>
-          </div>
-      </div>
+              <!-- Text input-->
+              <div class="form-group">
+                  <label class="col-sm-1 control-label" for="textinput"></label>
+                  <div class="col-sm-11">
+                      <label for="textinput"> Descricao Promocao / Observacao Venda</label>
+                      <div class="input-group">
+                          <?php
+                          echo '<textarea rows="4" readonly class="form-control" name="observacao_venda_cliente" id="observacao_venda_cliente">' . $cliente['observacao_venda_cliente'] . '</textarea>'
+                          ?>
+                          <span class="input-group-addon bg-white"><i class="glyphicon glyphicon-pencil"></i></span>
+                      </div>
+                  </div>
+              </div>
 
-
-
-          <!-- Text input-->
-          <div class="form-group">
-
-          <label class="col-md-1 control-label" for="selectbasic">N.Combo</label>
-          <div class="col-md-2">
-          <input type="text"  class="form-control" readonly name="numPacote_venda_cliente" id="NumPacote_venda_cliente" value="<?=$cliente['numPacote_venda_cliente']?>">
-          </div>
-
-          <label class="col-md-1 control-label" for="selectbasic">Valor</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text"  class="form-control" readonly name="valor_venda_cliente" id="valor_venda_cliente" value="<?=$cliente['valor_venda_cliente']?>">
-          </div>
-          </div>
-
-          <label class="col-md-1 control-label" for="selectbasic">Servicos</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text"  class="form-control" readonly name="tipo_servico" id="tipo_servico" value="<?=$cliente['tipo_servico']?>">
-          </div>
-          </div>
-          </div>
-
-
-          <div class="form-group">
-          <label class="col-sm-1 control-label" for="textinput">Pag.*</label>
-          <div class="col-sm-2">
-          <input type="text"  class="form-control" readonly name="formaPagemento_cliente" id="formaPagemento_cliente" value="<?=$cliente['formaPagemento_cliente']?>">
-          </div>
-
-          <label class="col-sm-1 control-label" for="textinput">Venc.</label>
-          <div class="col-sm-1">
-          <input type="text"  class="form-control" readonly name="vencimentoPagamento_cliente" id="vencimentoPagamento_cliente" value="<?=$cliente['vencimentoPagamento_cliente']?>">
-          </div>
-
-          <label class="col-md-1 control-label" for="selectbasic">Banco</label>
-          <div class="col-sm-2">
-          <input type="text"  class="form-control" readonly name="pagamentoBanco_cliente" id="pagamentoBanco_cliente" value="<?=$cliente['pagamentoBanco_cliente']?>">
-          </div>
-
-          <label class="col-md-1 control-label" for="selectbasic">Agen./Conta</label>
-          <div class="col-sm-1">
-          <input type="text"  class="form-control" readonly name="pagamentoAgencia_cliente" id="pagamentoAgencia_cliente" value="<?=$cliente['pagamentoAgencia_cliente']?>">
-          </div>
-          
-          <div class="col-sm-2">
-          <input type="text"  class="form-control" readonly name="pagamentoConta_cliente" id="pagamentoConta_cliente" value="<?=$cliente['pagamentoConta_cliente']?>">
-          </div>
-          </div>
-
-
-          <div class="form-group">
-          <label class="col-sm-1 control-label" for="textinput"></label>
-          <div class="col-sm-11">
-          <label for="textinput">Agregado + P.O</label>
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="agregado_venda_cliente" id="agregado_venda_cliente" value="<?=$cliente['agregado_venda_cliente']?>">
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-briefcase"></i></span>
-          </div>
-          </div>
-          </div>
-
-
-
-
-
-          <!-- Text input-->
-          <div class="form-group">
-          <label class="col-sm-1 control-label" for="textinput"></label>
-          <div class="col-sm-11">
-          <label for="textinput"> Descricao Promocao / Observacao Venda</label>
-          <div class="input-group">
-          <?php 
-          echo '<textarea rows="4" readonly class="form-control" name="observacao_venda_cliente" id="observacao_venda_cliente">' . $cliente['observacao_venda_cliente'] . '</textarea>'
-          ?>      
-          <span class="input-group-addon bg-white"><i class="glyphicon glyphicon-pencil"></i></span>
-          </div>
-          </div>
-          </div>
-
-
-          <hr />
+              <hr />
           <h4><center>Status Pedido</center> </h4>
 
           <div class="form-group">

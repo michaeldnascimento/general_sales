@@ -36,7 +36,7 @@ if ($_POST['data1'] !="" OR $_POST['data2'] !="") {
 
 
 
-$stringSql = " SELECT id_cliente, motivo_cliente, cidade_cliente, lista_sistema, nome_contato_cliente, cpf_cnpj_cliente, fone_cliente, celular_cliente, fone3_cliente, fone4_cliente, fone5_cliente, numHP_cliente, endereco_cliente , origemCSV, observacao_cliente, flag FROM clientes WHERE lista_sistema = 'PROSPECT' AND (nomeUsuario = '$nomeUsuario') AND ({$status}) AND (status_mailing IS NULL OR status_mailing = 'ATIVO') AND (data_venda BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY id_cliente desc";
+$stringSql = " SELECT id_cliente, motivo_cliente, bairro_cliente, cidade_cliente, estado_cliente, lista_sistema, nome_contato_cliente, cpf_cnpj_cliente, fone_cliente, celular_cliente, fone3_cliente, fone4_cliente, fone5_cliente, numHP_cliente, endereco_cliente , origemCSV, observacao_cliente, flag FROM clientes WHERE lista_sistema = 'PROSPECT' AND (nomeUsuario = '$nomeUsuario') AND ({$status}) AND (status_mailing IS NULL OR status_mailing = 'ATIVO') AND (data_venda BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY id_cliente desc";
 //echo $stringSql;
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
@@ -48,7 +48,9 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
 	'origem'               => $cliente ['origemCSV'],
 	'nome_contato'         => $cliente ['nome_contato_cliente'],
 	'cpf'                  => $cliente ['cpf_cnpj_cliente'],
-	'localizacao_assinante'=> $cliente ['cidade_cliente'],
+    'bairro_cliente'       => $cliente ['bairro_cliente'],
+    'cidade_cliente'       => $cliente ['cidade_cliente'],
+    'estado_cliente'       => $cliente ['estado_cliente'],
 	'hp'                   => $cliente ['numHP_cliente'],
 	'endereco'             => $cliente ['endereco_cliente'],
 	'telefone'  => "Fone: ". $cliente ['fone_cliente']. "/ ". $cliente ['fone3_cliente']. "/ ". $cliente ['fone4_cliente']. "/ ". $cliente ['fone5_cliente']. "/ ". " Cel: ". $cliente ['celular_cliente'],
@@ -60,7 +62,7 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
 
 }else{
 
-$stringSql = " SELECT id_cliente, motivo_cliente, cidade_cliente, lista_sistema, nome_contato_cliente, cpf_cnpj_cliente, fone_cliente, celular_cliente, fone3_cliente, fone4_cliente, fone5_cliente, numHP_cliente, endereco_cliente , origemCSV, observacao_cliente, flag FROM clientes WHERE lista_sistema = 'PROSPECT' AND (nomeUsuario = '$nomeUsuario') AND (motivo_cliente IS NULL OR motivo_cliente = 'FOLLOW-UP' OR motivo_cliente = 'OPORTUNIDADE - CLIENTE NAO LOCALIZADO' OR motivo_cliente = 'OPORTUNIDADE - TRATANDO' OR motivo_cliente = '') AND (status_mailing IS NULL OR status_mailing = 'ATIVO') ORDER BY id_cliente desc";
+$stringSql = " SELECT id_cliente, motivo_cliente, bairro_cliente, cidade_cliente, estado_cliente, lista_sistema, nome_contato_cliente, cpf_cnpj_cliente, fone_cliente, celular_cliente, fone3_cliente, fone4_cliente, fone5_cliente, numHP_cliente, endereco_cliente , origemCSV, observacao_cliente, flag FROM clientes WHERE lista_sistema = 'PROSPECT' AND (nomeUsuario = '$nomeUsuario') AND (motivo_cliente IS NULL OR motivo_cliente = 'FOLLOW-UP' OR motivo_cliente = 'OPORTUNIDADE - CLIENTE NAO LOCALIZADO' OR motivo_cliente = 'OPORTUNIDADE - TRATANDO' OR motivo_cliente = '') AND (status_mailing IS NULL OR status_mailing = 'ATIVO') ORDER BY id_cliente desc";
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
 $qtdClientes = mysqli_num_rows($resultado);
@@ -71,7 +73,9 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
 	'origem'               => $cliente ['origemCSV'],
 	'nome_contato'         => $cliente ['nome_contato_cliente'],
 	'cpf'                  => $cliente ['cpf_cnpj_cliente'],
-	'localizacao_assinante'=> $cliente ['cidade_cliente'],
+    'bairro_cliente'       => $cliente ['bairro_cliente'],
+    'cidade_cliente'       => $cliente ['cidade_cliente'],
+    'estado_cliente'       => $cliente ['estado_cliente'],
 	'hp'                   => $cliente ['numHP_cliente'],
 	'endereco'             => $cliente ['endereco_cliente'],
 'telefone'  => "Fone: ". $cliente ['fone_cliente']. "/ ". $cliente ['fone3_cliente']. "/ ". $cliente ['fone4_cliente']. "/ ". $cliente ['fone5_cliente']. "/ ". " Cel: ". $cliente ['celular_cliente'],
@@ -120,8 +124,8 @@ mysqli_close($linkComMysql);
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<link rel="icon" href="../css/imagens/16x16.jpg">
+		<title>Home Sales</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.min.css">
@@ -406,14 +410,15 @@ if ( isset($_GET['id_contato']) && intval($_GET['id_contato']) > 0 ) {
 		                <tr>
 		                 <th>ID</th>
 		                 <th>ORIGEM</th>
-		                 <th>CONTATO</th>
-		                 <th>CPF</th>
-		                 <th>HP</th>
-                         <th>ENDERECO</th>
+		                 <th>NOME</th>
+                         <th>LOGRADOURO</th>
+                         <th>CEP</th>
+                         <th>BAIRRO</th>
                          <th>CIDADE</th>
+                         <th>UF</th>
 		                 <th>TELEFONE</th>
 		                 <th>OBS</th>
-		                 <th>TABULACO</th>
+		                 <th>TABULAÇÃO</th>
 		                 <th class="actions"><em class="glyphicon glyphicon-cog"></em></th>
 		                </tr>
 		            </thead>
@@ -435,10 +440,11 @@ if ( isset($_GET['id_contato']) && intval($_GET['id_contato']) > 0 ) {
             <td style="<?=$style?>"> <?=$cliente['id'];?></td>
             <td style="<?=$style?>"> <?=$cliente['origem'];?></td>
             <td style="<?=$style?>"> <?=$cliente['nome_contato'];?></td>
-            <td style="<?=$style?>"> <?=$cliente['cpf'];?></td>
-            <td style="<?=$style?>"> <?=$cliente['hp']?></td>
             <td style="<?=$style?>"> <?=$cliente['endereco']?></td>
-            <td style="<?=$style?>"> <?=$cliente['localizacao_assinante'];?></td>
+            <td style="<?=$style?>"> <?=$cliente['cep_cliente']?></td>
+            <td style="<?=$style?>"> <?=$cliente['bairro_cliente'];?></td>
+            <td style="<?=$style?>"> <?=$cliente['cidade_cliente'];?></td>
+            <td style="<?=$style?>"> <?=$cliente['estado_cliente'];?></td>
             <td style="<?=$style?>"> <?=$cliente['telefone'];?></td>
             <td style="<?=$style?>"> <?=$cliente['obs'];?></td>
             <td style="<?=$style?>"> <?=$cliente['tabulacao'];?></td>

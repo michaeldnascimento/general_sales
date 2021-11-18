@@ -26,6 +26,7 @@ if (isset($_POST) && isset($_GET['id']) && intval($_GET['id']) > 0) {
 
 				$cidade_cliente      	     = $_POST['cidade_cliente'];
 				$estado_cliente      	     = $_POST['estado_cliente'];
+                $observacao_cliente          = $_POST['observacao_cliente'];
 				$observacao_venda_cliente    = $_POST['observacao_venda_cliente'];
 				$tv_venda_cliente            = $_POST['tv_venda_cliente'];
 				$internet_venda_cliente      = $_POST['internet_venda_cliente'];
@@ -95,6 +96,7 @@ if (isset($_POST) && isset($_GET['id']) && intval($_GET['id']) > 0) {
 	   			'celular_cliente',
 	  			'cidade_cliente',
 	   			'estado_cliente',
+                'observacao_cliente',
 	   			'observacao_venda_cliente',
 	   		    'tv_venda_cliente',
 	   			'internet_venda_cliente',
@@ -152,6 +154,7 @@ if (isset($_POST) && isset($_GET['id']) && intval($_GET['id']) > 0) {
 	   			$celular_cliente,
 	   			$cidade_cliente,
 	   			$estado_cliente,
+                $observacao_cliente,
 	   			$observacao_venda_cliente,
 	   		    $tv_venda_cliente,
 	   			$internet_venda_cliente,

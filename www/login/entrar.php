@@ -22,7 +22,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sale</title>
 
 
 		<!-- Bootstrap CSS -->
@@ -40,7 +40,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
  <h5 class="titulo-mensagem"><?=$mensagem?></h5>
 
 <div id="login" class="form bradius">
- <div class="logo"> <img src="../css/imagens/200x226.png" width="200" height="180"/></div>
+ <div class="logo"> <img src="../css/imagens/LOGO_HOMESALE.png" width="200" height="180"/></div>
         <div class="acomodar">
         	<form action="validacao.php" method="POST">
         	<label type="number">Empresa: </label>

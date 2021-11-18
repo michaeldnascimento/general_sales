@@ -33,10 +33,12 @@ $ddd_fone3_cliente 	 	     = $_POST['ddd_fone3_cliente'];
 $fone3_cliente 	     	     = $_POST['fone3_cliente'];
 $ddd_fone4_cliente 	 	     = $_POST['ddd_fone4_cliente'];
 $fone4_cliente 	     	     = $_POST['fone4_cliente'];
+$origemCSV 	     	         = $_POST['origemCSV'];
 $cep_cliente 	     	     = $_POST['cep_cliente'];
 $endereco_cliente 	         = $_POST['endereco_cliente'];
 $enderecoNumero_cliente 	 = $_POST['enderecoNumero_cliente'];
 $enderecoComplemento_cliente = $_POST['enderecoComplemento_cliente'];
+$observacao_cliente          = $_POST['observacao_cliente'];
 $bairro_cliente 	         = $_POST['bairro_cliente'];
 $cidade_cliente      	     = $_POST['cidade_cliente'];
 $estado_cliente      	     = $_POST['estado_cliente'];
@@ -91,10 +93,12 @@ $hora_venda         	     = $_POST['hora_venda'];
 	   			'fone3_cliente',
 	   			'ddd_fone4_cliente',
 	   			'fone4_cliente',
+                'origemCSV',
 				'cep_cliente',
 				'endereco_cliente',
 				'enderecoNumero_cliente',
 				'enderecoComplemento_cliente',
+                'observacao_cliente',
 				'bairro_cliente',
 	  			'cidade_cliente',
 	   			'estado_cliente',
@@ -148,10 +152,12 @@ $hora_venda         	     = $_POST['hora_venda'];
 	   			$fone3_cliente,
 	   			$ddd_fone4_cliente,
 	   			$fone4_cliente,
+                $origemCSV,
 				$cep_cliente,
 				$endereco_cliente,
 				$enderecoNumero_cliente,
 				$enderecoComplemento_cliente,
+                $observacao_cliente,
 				$bairro_cliente,
 	  			$cidade_cliente,
 	   			$estado_cliente,

@@ -380,130 +380,12 @@ include_once "../css/navbar/meunavbar.php";
 		<br/>
 	     <h4><center><strong>Acessos</strong></center></h4>
 		<br>
-		         
 
-	  <div class="form-group">
-	  
-
-	  <label class="col-sm-3 control-label" for="textinput">LEAD SP</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-     <label class="radio-inline">
-      <input type="radio" name="acessoSP_login" id="acessoSP_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoSP_login" id="acessoSP_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-
-
-
-      <label class="col-sm-1 control-label" for="textinput">LEAD BR</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-     <label class="radio-inline">
-      <input type="radio" name="acessoBR_login" id="acessoBR_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoBR_login" id="acessoBR_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">RECONEX</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoRX_login" id="acessoRX_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoRX_login" id="acessoRX_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-
-
-
-	   </div>
-
-
-	  <div class="form-group">
-
-	    <label class="col-sm-3 control-label" for="textinput">LEAD MULTI</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoMT_login" id="acessoMT_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoMT_login" id="acessoMT_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">BASE MT</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoMultibase_login" id="acessoMultibase_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoMultibase_login" id="acessoMultibase_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">BASE TV</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoPROPOSTA_login" id="acessoPROPOSTA_login" value="SIM"> SIM
-      </label>
-
-      <label class="radio-inline">
-      <input type="radio" name="acessoPROPOSTA_login" id="acessoPROPOSTA_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-
-
-
-	   </div>
 
       <div class="form-group">
 
-      <label class="col-sm-3 control-label" for="textinput">LEAD SITE</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoOportunidadeSite_login" id="acessoOportunidadeSite_login" value="SIM"> SIM
-      </label>
 
-      <label class="radio-inline">
-      <input type="radio" name="acessoOportunidadeSite_login" id="acessoOportunidadeSite_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">EXCLUSIVO</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoLEADSITE_login" id="acessoLEADSITE_login" value="SIM"> SIM
-      </label>
-
-      <label class="radio-inline">
-      <input type="radio" name="acessoLEADSITE_login" id="acessoLEADSITE_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-
-      <label class="col-sm-1 control-label" for="textinput">PROSPECT</label>
+      <label class="col-sm-3 control-label" for="textinput">PROSPECT</label>
       <div class="col-sm-2">
       <div class="input-group">
       <label class="radio-inline">
@@ -516,130 +398,19 @@ include_once "../css/navbar/meunavbar.php";
       </div>
       </div>
 
-      </div>
-
-      <div class="form-group">
-      <label class="col-sm-3 control-label" for="textinput">LEAD CLARO</label>
+      <label class="col-sm-1 control-label" for="textinput">OPORTUNIDADE</label>
       <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoCLARO_login" id="acessoCLARO_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoCLARO_login" id="acessoCLARO_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">Oport.Claro</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoOportunidadeClaro_login" id="acessoOportunidadeClaro_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoOportunidadeClaro_login" id="acessoOportunidadeClaro_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">TAG</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoCE_login" id="acessoCE_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoCE_login" id="acessoCE_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-
-      </div>
-
-      <div class="form-group">
-
-      <label class="col-sm-3 control-label" for="textinput">LEAD SKY</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoOportunidadeSAC_login" id="acessoOportunidadeSAC_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoOportunidadeSAC_login" id="acessoOportunidadeSAC_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">LEAD VIVO</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="  acessoVIVO_login" id=" acessoVIVO_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="  acessoVIVO_login" id=" acessoVIVO_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">LEAD TIM</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoTIM_login" id="acessoTIM_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoTIM_login" id="acessoTIM_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-
-      </div>
-
-      <div class="form-group">.
-
-
-      <label class="col-sm-3 control-label" for="textinput">LEAD HUGHES</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoHUGHES_login" id="acessoHUGHES_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoHUGHES_login" id="acessoHUGHES_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">LEAD NET</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoNET_login" id="acessoNET_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoNET_login" id="acessoNET_login" value="NAO"> NAO
-      </label>
-      </div>
-      </div>
-
-      <label class="col-sm-1 control-label" for="textinput">LEAD GERAL</label>
-      <div class="col-sm-2">
-      <div class="input-group">
-      <label class="radio-inline">
-      <input type="radio" name="acessoGERAL_login" id="acessoGERAL_login" value="SIM"> SIM
-      </label>
-      <label class="radio-inline">
-      <input type="radio" name="acessoGERAL_login" id="acessoGERAL_login" value="NAO"> NAO
-      </label>
-      </div>
+          <div class="input-group">
+              <label class="radio-inline">
+                  <input type="radio" name="acessoCE_login" id="acessoCE_login" value="SIM"> SIM
+              </label>
+              <label class="radio-inline">
+                  <input type="radio" name="acessoCE_login" id="acessoCE_login" value="NAO"> NAO
+              </label>
+          </div>
       </div>
 
       </div>
-
 
 
 
@@ -726,7 +497,20 @@ include_once "../css/navbar/meunavbar.php";
 <br />
 <br />
       <div class="form-group">
-      <label class="col-sm-3 control-label" for="textinput">PARCEIROS</label>
+
+      <label class="col-sm-3 control-label" for="textinput">LEAD GERAL</label>
+      <div class="col-sm-2">
+          <div class="input-group">
+              <label class="radio-inline">
+                  <input type="radio" name="acessoGERAL_login" id="acessoGERAL_login" value="SIM"> SIM
+              </label>
+              <label class="radio-inline">
+                  <input type="radio" name="acessoGERAL_login" id="acessoGERAL_login" value="NAO"> NAO
+              </label>
+          </div>
+      </div>
+
+      <label class="col-sm-1 control-label" for="textinput">PARCEIROS</label>
       <div class="col-sm-2">
       <div class="input-group">
       <label class="radio-inline">

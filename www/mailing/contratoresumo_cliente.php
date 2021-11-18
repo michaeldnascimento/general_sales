@@ -46,10 +46,12 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
           'fone3_cliente',
           'ddd_fone4_cliente',
           'fone4_cliente',
+          'origemCSV',
           'cep_cliente', 
           'endereco_cliente',
           'enderecoNumero_cliente',
           'enderecoComplemento_cliente',
+          'observacao_cliente',
           'bairro_cliente',
           'cidade_cliente',
           'estado_cliente',
@@ -118,7 +120,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="../css/imagens/16x16.png">
-    <title>General Sales</title>
+    <title>Home Sales</title>
 
 
           <!-- Bootstrap CSS -->
@@ -256,6 +258,14 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
           </div>
           </div>
 
+          <label class="col-sm-4 control-label" for="textinput">Origem</label>
+          <div class="col-sm-2">
+              <div class="input-group">
+                  <input type="email" class="form-control" name="origemCSV" id="origemCSV" value="<?=$cliente['origemCSV']?>" readonly>
+                  <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+              </div>
+          </div>
+
           </div>
 
 
@@ -345,6 +355,17 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
           </div>
 
 
+          <div class="form-group">
+              <label class="col-sm-1 control-label" for="textinput">Observação</label>
+              <div class="col-sm-11">
+                  <div class="input-group">
+                      <input type="text" style="text-transform: uppercase" maxlength="500" placeholder="Observação sobre o endereço" class="form-control" name="observacao_cliente " id="observacao_cliente " value="<?=$cliente['observacao_cliente']?>" readonly>
+                      <span class="input-group-addon label_white"><i class="glyphicon glyphicon-home"></i></span>
+                  </div>
+              </div>
+          </div>
+
+
 
           <!-- Text input-->
           <div class="form-group">
@@ -383,21 +404,21 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 
 
           <div class="form-group">
-
-          <label class="col-sm-1 control-label" for="textinput">TV</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" class="form-control" name="tv_venda_cliente" id="tv_venda_cliente" value="<?=$cliente['tv_venda_cliente']?>" readonly >
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-blackboard"></i></span>
-          </div>
-          </div>
-
+              
           <label class="col-sm-1 control-label" for="textinput">Internet</label>
           <div class="col-sm-5">
           <div class="input-group">
           <input type="text" class="form-control" name="internet_venda_cliente" id="internet_venda_cliente" value="<?=$cliente['internet_venda_cliente']?>" readonly >
           <span class="input-group-addon label_white"><i class="glyphicon glyphicon-globe"></i></span>
           </div>
+          </div>
+
+          <label class="col-sm-1 control-label" for="textinput">Telefonia</label>
+          <div class="col-sm-5">
+              <div class="input-group">
+                  <input type="text" class="form-control" name="netfone_venda_cliente" id="netfone_venda_cliente" value="<?=$cliente['netfone_venda_cliente']?>" readonly >
+                  <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
+              </div>
           </div>
 
 
@@ -407,13 +428,14 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
           <!-- Select Basic -->
           <div class="form-group">
 
-          <label class="col-sm-1 control-label" for="textinput">Net fone</label>
+          <label class="col-sm-1 control-label" for="textinput">Operadora</label>
           <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" class="form-control" name="netfone_venda_cliente" id="netfone_venda_cliente" value="<?=$cliente['netfone_venda_cliente']?>" readonly >
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>     
+              <div class="input-group">
+                  <input type="text" readonly class="form-control" name="portcelular_venda_cliente" id="portcelular_venda_cliente" value="<?=$cliente['portcelular_venda_cliente']?>">
+                  <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone-alt"></i></span>
+              </div>
           </div>
-          </div>
+
 
           <label class="col-sm-1 control-label" for="textinput">Port.Fixo</label>
           <div class="col-sm-5">
@@ -425,72 +447,13 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
           </div>
 
 
-
-
-          <div class="form-group">
-
-          <label class="col-md-1 control-label" for="selectbasic">Celular</label>
-          <div class="col-md-5">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="netcelular_venda_cliente" id="netcelular_venda_cliente" value="<?=$cliente['netcelular_venda_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
-
-          </div>
-          </div>
-
-          <label class="col-sm-1 control-label" for="textinput">Port. Cel</label>
-          <div class="col-sm-5">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="portcelular_venda_cliente" id="portcelular_venda_cliente" value="<?=$cliente['portcelular_venda_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
-
-          </div>
-          </div>
-          </div>
-
-          <div class="form-group">
-
-          <label class="col-md-1 control-label" for="selectbasic">Multi</label>
-          <div class="col-md-5">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="plano_multi_cliente" id="plano_multi_cliente" value="<?=$cliente['plano_multi_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
-
-          </div>
-          </div>
-
-          <label class="col-sm-1 control-label" for="textinput">Chip</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text" readonly class="form-control" name="qtdchip_multi_cliente" id="qtdchip_multi_cliente" value="<?=$cliente['qtdchip_multi_cliente']?>">
-          <span class="input-group-addon label_white"><i class="glyphicon glyphicon-phone"></i></span>
-
-          </div>
-          </div>
-          </div>
-
-
-
-
           <!-- Text input-->
           <div class="form-group">
-
-          <label class="col-md-1 control-label" for="selectbasic">N.Combo</label>
-          <div class="col-md-2">
-          <input type="text"  class="form-control" readonly name="numPacote_venda_cliente" id="NumPacote_venda_cliente" value="<?=$cliente['numPacote_venda_cliente']?>">
-          </div>
 
           <label class="col-md-1 control-label" for="selectbasic">Valor</label>
           <div class="col-sm-2">
           <div class="input-group">
           <input type="text"  class="form-control" readonly name="valor_venda_cliente" id="valor_venda_cliente" value="<?=$cliente['valor_venda_cliente']?>">
-          </div>
-          </div>
-
-          <label class="col-md-1 control-label" for="selectbasic">Servicos</label>
-          <div class="col-sm-2">
-          <div class="input-group">
-          <input type="text"  class="form-control" readonly name="tipo_servico" id="tipo_servico" value="<?=$cliente['tipo_servico']?>">
           </div>
           </div>
           </div>
@@ -524,7 +487,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
           <div class="form-group">
           <label class="col-sm-1 control-label" for="textinput"></label>
           <div class="col-sm-11">
-          <label for="textinput">Agregado + P.O</label>
+          <label for="textinput">Agregado</label>
           <div class="input-group">
           <input type="text" readonly class="form-control" name="agregado_venda_cliente" id="agregado_venda_cliente" value="<?=$cliente['agregado_venda_cliente']?>">
           <span class="input-group-addon label-white"><i class="glyphicon glyphicon-briefcase"></i></span>

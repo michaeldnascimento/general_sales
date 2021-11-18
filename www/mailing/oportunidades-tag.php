@@ -25,7 +25,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 /******************************Buscar os clientes - paginacao**************************/
 
 
-$stringSql = " SELECT id_cliente, motivo_cliente, cidade_cliente, lista_sistema, nome_contato_cliente, cpf_cnpj_cliente, ddd_fone_cliente, fone_cliente, ddd_celular_cliente, celular_cliente, numHP_cliente, endereco_cliente , origemCSV, observacao_sistema, flag FROM clientes WHERE lista_sistema = 'TAG' AND (nomeUsuario = '$nomeUsuario') AND (motivo_cliente IS NULL OR motivo_cliente = 'FOLLOW-UP' OR motivo_cliente = 'OPORTUNIDADE - CLIENTE NAO LOCALIZADO' OR motivo_cliente = 'OPORTUNIDADE - TRATANDO' OR motivo_cliente = '') AND (status_mailing IS NULL OR status_mailing = 'ATIVO') ORDER BY id_cliente desc";
+$stringSql = " SELECT id_cliente, motivo_cliente, bairro_cliente, cidade_cliente, estado_cliente, lista_sistema, nome_contato_cliente, cpf_cnpj_cliente, ddd_fone_cliente, fone_cliente, ddd_celular_cliente, celular_cliente, numHP_cliente, endereco_cliente , origemCSV, observacao_sistema, flag FROM clientes WHERE lista_sistema = 'TAG' AND (nomeUsuario = '$nomeUsuario') AND (motivo_cliente IS NULL OR motivo_cliente = 'FOLLOW-UP' OR motivo_cliente = 'OPORTUNIDADE - CLIENTE NAO LOCALIZADO' OR motivo_cliente = 'OPORTUNIDADE - TRATANDO' OR motivo_cliente = '') AND (status_mailing IS NULL OR status_mailing = 'ATIVO') ORDER BY id_cliente desc";
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
 $qtdClientes = mysqli_num_rows($resultado);
@@ -35,7 +35,9 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
   'id'             => $cliente ['id_cliente'],
   'origem'               => $cliente ['origemCSV'],
   'nome_contato'         => $cliente ['nome_contato_cliente'],
-  'localizacao_assinante'=> $cliente ['cidade_cliente'],
+  'bairro_cliente'       => $cliente ['bairro_cliente'],
+  'cidade_cliente'       => $cliente ['cidade_cliente'],
+  'estado_cliente'       => $cliente ['estado_cliente'],
   'hp'                   => $cliente ['numHP_cliente'],
   'endereco'             => $cliente ['endereco_cliente'],
   'telefone'  => "Fone:". $cliente ['ddd_fone_cliente'] . $cliente ['fone_cliente']. "<br>". "Cel:". $cliente ['ddd_celular_cliente'] . $cliente ['celular_cliente'] ,
@@ -85,7 +87,7 @@ mysqli_close($linkComMysql);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../css/imagens/16x16.png">
-    <title>General Sales</title>
+    <title>Home Sales</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.min.css">
