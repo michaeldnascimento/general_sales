@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include_once "../login/verifica.php";
-include_once "../funcoes/conexaoPortari.php";
+include_once "../funcoes/conexaoPortariPDO.php";
 include "../funcoes/funcoes_geraisPortari.php";
 //seta o timezone para São Paulo
 date_default_timezone_set('America/Sao_Paulo');
@@ -54,10 +54,9 @@ $query = "LOAD DATA LOCAL INFILE '".dirname(__FILE__)."/".$target_file."' INTO T
     (codigoAntigo_cliente, codigo_cliente, nome_contato_cliente, nome_mae_cliente, cpf_cnpj_cliente, rg_ie_cliente, email_cliente, status, cidade_cliente, numHP_cliente, endereco_cliente, cep_cliente, fone_cliente, celular_cliente, fone3_cliente, fone4_cliente, fone5_cliente, observacao_cliente)
   SET ID_CLIENTE = NULL, id_mailing = '$id_mailing', lista_sistema = '$lista', origemCSV = '$desc'";
 
-$result = mysqli_query($linkComMysql, $query);
+//$result = mysqli_query($linkComMysql, $query);
+$result = $linkComMysql->query($query);
 
-//echo $query;
-//exit;
 
 }
 
@@ -70,7 +69,7 @@ $result = mysqli_query($linkComMysql, $query);
   }
 
   //fecha a conexão com o banco de dados
-  mysqli_close($linkComMysql);
+  $linkComMysql=null;
 } else {
   $mensagem = "Ocorreu um erro com a importacao<br/>";
 }

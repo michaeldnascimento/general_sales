@@ -94,7 +94,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sales</title>
 
 		<!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.min.css">

@@ -53,9 +53,6 @@ if(isset($_POST['id_contato']) && intval($_POST['id_contato']) > 0){
 		$resCliente  = mysqli_query($linkComMysql, $queryCliente);
 
 
-//testes
-//echo $queryCliente . "<br><br>";
-//exit;	
 
    //se o motivo cliente for de um determinado grupo ele se direciona a pagina corespondente		
 	if ($motivo_cliente == 'VENDA - NOVO CLIENTE') {

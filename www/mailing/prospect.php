@@ -315,7 +315,7 @@ if ( isset($_GET['id_contato']) && intval($_GET['id_contato']) > 0 ) {
           <div id='FOLLOW-UP'>
 
           <label class="col-md-1 control-label" for="selectbasic">Data/Hora</label>
-          <input type="date"  class="col-md-2" id="data_followup_cliente" name="data_followup_cliente" value="<?=$cliente['data_followup_cliente']?>" class="form-control input-md">
+          <input type="date"  class="col-md-2" id="data_followup_cliente" name="data_followup_cliente" value="<?=$dataDia?>"" class="form-control input-md">
 
           <input type="time"  class="col-md-2"  id="hora_followup_cliente" name="hora_followup_cliente" value="<?=$cliente['hora_followup_cliente']?>" class="form-control input-md">
 

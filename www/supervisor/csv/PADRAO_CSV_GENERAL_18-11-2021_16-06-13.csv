@@ -1,0 +1,2 @@
+codigoAntigo_cliente; codigo_cliente; nome_contato_cliente; nome_mae_cliente; cpf_cnpj_cliente; rg_ie_cliente; email_cliente; status; cidade_cliente; numHP_cliente; endereco_cliente; cep_cliente; fone_cliente; celular_cliente; fone3_cliente; fone4_cliente; fone5_cliente; observacao_cliente
+0;0;TESTE;TESTE MAE;12345678900;0;TESTE@TESTE.COM;ATIVO;SÃO PAULO;0;AV NOVE;08142-440;1125258985;11985853636;0;0;0;MODELO CSV

@@ -147,7 +147,7 @@ include_once "../css/navbar/meunavbar.php";
     </div>
 
 <h4><center><strong style="color: green">Cad. Venda</strong></center></h4>
-<!-- Split button -->
+<!-- Split button
 <div class="col-md-10" style="display: <?php echo $obsCad ?>">
 <div class="btn-group">
   <button type="button" class="btn btn-xs btn-success active">NOVA VENDA</button>
@@ -165,6 +165,7 @@ include_once "../css/navbar/meunavbar.php";
 </div>
 
 </div>
+-->
 
 
       <!--*************************************FORM *********************************** -->

@@ -281,7 +281,7 @@ if ( isset($_GET['id_contato']) && intval($_GET['id_contato']) > 0 ) {
 
 <div class="modal-body">
 <div class="container">
-      <form action="tabulapopup.php?lista=PROSPECT" method="post">
+      <form action="tabulapopup.php?lista=OPORTUNIDADES" method="post">
 
      <label class="col-md-1 control-label" for="selectbasic">Selecione</label>
      <div class="col-md-3">
@@ -384,7 +384,7 @@ if ( isset($_GET['id_contato']) && intval($_GET['id_contato']) > 0 ) {
 
     <input type="text" style="display: none" name="nomeUsuario" class="form-control input-md" id="nomeUsuario" value="<?=$nomeUsuario?>">
 
-    <input type="text" style="display: none" name="lista" class="form-control input-md" id="lista" value="PROSPECT">
+    <input type="text" style="display: none" name="lista" class="form-control input-md" id="lista" value="OPORTUNIDADES">
 
     <div class="form-group">
           <label class="col-md-0 control-label" for="button1id"></label>

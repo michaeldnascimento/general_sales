@@ -12,4 +12,10 @@ $linkComMysql->set_charset("utf8");
 ini_set('mysqli.connect_timeout',300);
 ini_set('default_socket_timeout',300);
 
+//try {
+//    $linkComMysql = new PDO("mysql:host=".getenv('DOCKER_MYSQL_HOST').";dbname=".getenv('DOCKER_MYSQL_DB')."", getenv('DOCKER_MYSQL_USER'), getenv('DOCKER_MYSQL_PASS'));
+//    $linkComMysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//} catch(PDOException $e) {
+//    echo 'ERROR: ' . $e->getMessage();
+//}
 }

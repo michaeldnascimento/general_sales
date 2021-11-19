@@ -68,9 +68,9 @@ if ($_POST['nomeUsuario'] !="" ) {
 				exit;
 				}
 
-				if ($lista == 'TAG') {
+				if ($lista == 'OPORTUNIDADES') {
 				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/oportunidades-tag.php");
+				header("location: ../mailing/oportunidades.php");
 				exit;
 				}
 
