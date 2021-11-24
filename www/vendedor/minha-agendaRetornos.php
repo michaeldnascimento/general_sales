@@ -6,6 +6,10 @@ include_once "../login/online.php";
 include_once "../login/visualizarlista.php";
 
 
+date_default_timezone_set('America/Sao_Paulo');
+$dataDia = date('Y-m-d'); // Resultado: 2009-02-05
+$horaDia = date('H:i:s'); // Resultado: 03:39:57.
+
 if($acessoPARCEIROS == 'SIM'){
 
 
@@ -97,9 +101,134 @@ include_once "../css/navbar/meunavbar.php";
 <!--***********************TOPO - BARRA DE PESQUISA********************************** -->
 
 
-	        <div id="main" class="container-fluid">
+<div id="main" class="container-fluid">
+<br/>
 
- <!-- /#top -->
+    <div class="form-group">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-success active btn-xs pull-right" title="Novo agendamento" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><strong>PESQUISAR</strong></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+
+
+                        <!-- Text input-->
+                        <form action="salvar-agenda.php" method="post">
+
+                            <label class="col-sm-1 control-label" for="textinput">Nome</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="nome_contato_cliente"  id="nome_contato_cliente" required>
+                                    <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+                            <br>
+
+                            <label class="col-sm-1 control-label" for="textinput">Cidade</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="cidade_cliente"  id="cidade_cliente" required>
+                                    <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+                            <br>
+
+                            <label class="col-sm-1 control-label" for="textinput">UF</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" maxlength="2" name="estado_cliente" id="estado_cliente" required>
+                                    <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+                            <br>
+
+                            <label class="col-sm-1 control-label" for="textinput">Data Retorno</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input type="date" class="form-control" name="data_followup_cliente"  id="data_followup_cliente" required>
+                                    <span class="input-group-addon label-white"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+                            <br>
+
+                            <label class="col-sm-1 control-label" for="textinput">Hora Retorno</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input type="time" class="form-control" name="hora_followup_cliente"  id="hora_followup_cliente" required>
+                                    <span class="input-group-addon label-white"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+                            <br>
+
+                            <label class="col-sm-1 control-label" for="textinput">Fone</label>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input type="text" placeholder="Fone Contato" class="form-control" name="fone_cliente" id="fone_cliente">
+                                    <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+                            <br>
+
+                            <input type="text" style="display: none" name="nomeUsuario" class="form-control input-md" id="nomeUsuario" value="<?=$nomeUsuario?>">
+
+                            <input type="text" style="display: none" name="nomeEquipe" class="form-control input-md" id="nomeEquipe" value="<?=$nomeEquipe?>">
+
+                            <input type="text" style="display: none" name="nomeEmpresa" class="form-control input-md" id="nomeEmpresa" value="<?=$nomePrestadora?>">
+
+                            <input type="text" style="display: none" name="motivo_cliente" class="form-control input-md" id="motivo_cliente" value="FOLLOW-UP">
+
+                            <input type="text" style="display: none" name="data_venda" class="form-control input-md" id="data_venda" value="<?=$dataDia?>">
+
+                            <input type="text" style="display: none" name="hora_venda" class="form-control input-md" id="hora_venda" value="<?=$horaDia?>">
+
+                            <div class="form-group">
+                                <label class="col-md-1 control-label" for="button1id"></label>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#myModal">Salvar</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- /#top -->
           <div class="page-header">
           <h2>Agenda Retornos</h2>
         </div>
@@ -124,7 +253,7 @@ include_once "../css/navbar/meunavbar.php";
 		                <tr>
 
 		                 <th>ID</th>
-						         <th>NOME CONTATO</th>
+                         <th>NOME CONTATO</th>
 		                 <th>CIDADE/ESTADO</th>
 		                 <th>FONE</th>
 		                 <th>DATA/HORA</th>

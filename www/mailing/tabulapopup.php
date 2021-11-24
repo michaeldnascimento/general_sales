@@ -106,6 +106,12 @@ if(isset($_POST['id_contato']) && intval($_POST['id_contato']) > 0){
 				exit;
 				}
 
+                if ($lista == 'OPORTUNIDADES') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/oportunidades.php");
+                    exit;
+                }
+
 				if ($lista == 'OPCLARO') {
 				$_SESSION['mensagem'] = $mensagem;
 				header("location: ../mailing/oportunidades-claro.php");
@@ -196,6 +202,12 @@ if(isset($_POST['id_contato']) && intval($_POST['id_contato']) > 0){
 				header("location: ../mailing/prospect.php");
 				exit;
 				}
+
+                if ($lista == 'OPORTUNIDADES') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/oportunidades.php");
+                    exit;
+                }
 
 				if ($lista == 'OPCLARO') {
 				$_SESSION['mensagem'] = $mensagem;
