@@ -55,6 +55,24 @@ if ($acessoTODOS == 'SIM') {
   $loginSky1 = '';
 }
 
+
+//conectar e selecionar o banco de dados mysql/agenda
+include_once '../funcoes/conexaoPortari.php';
+include_once '../funcoes/funcoes_geraisPortari.php';
+
+/******************************Buscar os clientes - paginacao**************************/
+
+$stringSql = "SELECT id_login, nome_usuario_login, usuario_login, statusUsuario_login, nivel_login  FROM usuario WHERE statusUsuario_login = 'ATIVO' AND nivel_login = 1 ORDER BY nome_usuario_login";
+
+//mando execultar a query no banco de dados
+$resultado = mysqli_query($linkComMysql, $stringSql);
+
+//se eu quiser saber - pego a quantidade de contatos/linhas retornadas na busca
+$qtdClientes = mysqli_num_rows($resultado);
+
+$clientes = array();
+
+
 ?>
 
 
@@ -106,11 +124,11 @@ include_once "../css/navbar/meunavbar.php";
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu">
-    <li><a  href="nova-venda-basemulti.php">BASE MULTI</a></li>
-    <li><a  href="nova-venda-basetv.php">BASE TV</a></li>
-    <li><a  href="nova_venda.php">PROSPECT COMPLETA</a></li>
-    <li><a  href="nova-venda-rapida.php">PROSPECT RESUMIDA</a></li>
-    <li><a  href="nova-venda_simplificada.php">PROSPECT SIMPLIFICADA</a></li>
+    <!--<li><a  href="nova-venda-basemulti.php">BASE MULTI</a></li>
+    <li><a  href="nova-venda-basetv.php">BASE TV</a></li>-->
+    <li><a  href="nova_venda.php">COMPLETA</a></li>
+    <!--<li><a  href="nova-venda-rapida.php">PROSPECT RESUMIDA</a></li>-->
+    <li><a  href="nova-venda_simplificada.php">SIMPLIFICADA</a></li>
   </ul>
 </div>
 
@@ -128,9 +146,6 @@ include_once "../css/navbar/meunavbar.php";
 
 <div id="main" class="form-horizontal">
 <form action="nova-venda_simplificada-salvar.php" method="POST" enctype="multipart/form-data" class="form-horizontal">
-
-
-
 
       <div class="form-group">
 
@@ -191,21 +206,24 @@ include_once "../css/navbar/meunavbar.php";
       <!-- Text input-->
         <div class="form-group">
 
-        <label class="col-sm-2 control-label" for="textinput">Serviço</label>
-          <div class="col-sm-4">
-          <div class="input-group">
-          <select id="tipo_servico" required name="tipo_servico" class="form-control">
-          <option value="">Selecione...</option>
-          <option value="NET"> NET</option>
-          <option value="CLARO"> CLARO </option>
-          <option value="SKY"> SKY </option>
-          <option value="TIM"> TIM </option>
-          </select>
-          <span class="input-group-addon label-white"><i class="glyphicon glyphicon-briefcase"></i></span>
-          </div>
-        </div>
+            <label class="col-md-2 control-label" for="selectbasic">Internet</label>
+            <div class="col-md-4">
+                <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
+                    <option value="">Selecione o plano de internet</option>
+                    <option value="100 Mega">100 MEGA</option>
+                    <option value="200 Mega">200 MEGA</option>
+                    <option value="300 Mega">300 MEGA</option>
+                    <option value="600 Mega">600 MEGA</option>
+                    <option value="Link dedicado 10 MB">Link dedicado 10 MB</option>
+                    <option value="Link dedicado 30 MB">Link dedicado 30 MB</option>
+                    <option value="Link dedicado 50 MB">Link dedicado 50 MB</option>
+                    <option value="Link dedicado 100 MB">Link dedicado 100 MB</option>
+                    <option value="Link dedicado 200 MB">Link dedicado 200 MB</option>
+                    <option value="Link dedicado 500 MB">Link dedicado 500 MB</option>
+                </select>
+            </div>
 
-        <label class="col-sm-1 control-label" for="textinput">Codigo</label>
+        <label class="col-sm-1 control-label" for="textinput">ID Pedido</label>
           <div class="col-sm-4">
               <div class="input-group">
               <input type="codigo" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" placeholder="codigo cliente..." name="codigo_cliente" class="form-control input-md" required AUTOCOMPLETE="off">
@@ -236,17 +254,18 @@ include_once "../css/navbar/meunavbar.php";
           </div>
 
 
-          <label class="col-sm-1 control-label" for="textinput">Empresa</label>
+          <label class="col-sm-1 control-label" for="textinput">Vendedor</label>
           <div class="col-sm-4">
           <div class="input-group">
-          <select id="login_net" name="login_net" class="form-control">
-          <option value="">Selecione...</option>
-          <option value=""></option>
-          <option value="T7476818 - Viviane Malta - Favaro" style="display: <?php echo $loginNet1 ?>">NET: T7476818 - Viviane Malta - Favaro</option>
-          <option value="T7222475 - Beatriz Soares - Agil" style="display: <?php echo $loginNet2 ?>">NET: T7222475 - Beatriz Soares - Agil</option>
-          <option value="T7508518 - Maria - H2" style="display: <?php echo $loginNet3 ?>">NET: T7508518 - Maria - H2 </option>
-          <option value=""></option>
-          <option value="ID957439 - Eletro - Eletro" style="display: <?php echo $loginSky1 ?>">SKY: ID957439 - Eletro - Eletro </option>
+          <select id="nomeUsuario" name="nomeUsuario" class="form-control">
+          <option value="">Selecione vendedor...</option>
+          <?php
+          while ($cliente = mysqli_fetch_assoc($resultado)) {
+            ?>
+            <option value="<?= $cliente ['usuario_login']; ?>"><?= $cliente ['usuario_login']; ?></option>
+            <?php
+          }
+          ?>
           </select>
           <span class="input-group-addon label-white"><i class="glyphicon glyphicon-briefcase"></i></span>
           </div>
@@ -296,7 +315,7 @@ include_once "../css/navbar/meunavbar.php";
           <div class="col-sm-3">
           <select name="statusOcorencia_venda_cliente" required id="idTipo" class="form-control">
           <option></option>
-          <option value="Conexao/NetSales">Conexao/NetSales</option>
+          <option value="Conexao/NetSales">Conexão/Sales</option>
           <option value="Produto/Promo">Produto/Promo</option>
           <option value="Outros/Especifique">Outros/Especifique</option>
           </select>
@@ -318,8 +337,6 @@ include_once "../css/navbar/meunavbar.php";
           </div>
           </div>
           </div>
-
-     <input type="text" style="display: none" name="nomeUsuario" class="form-control input-md" id="nomeUsuario" value="<?=$nomeUsuario?>">
 
      <input type="text" style="display: none" name="nomeEquipe" class="form-control input-md" id="nomeEquipe" value="<?=$nomeEquipe?>">
 

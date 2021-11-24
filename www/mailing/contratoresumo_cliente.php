@@ -522,12 +522,12 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 
 
           <div class="form-group">
-          <label class="col-md-1 control-label" for="codigo_cliente">Codigo</label>  
+          <label class="col-md-1 control-label" for="codigo_cliente">ID Pedido</label>
           <div class="col-md-3">
           <input type="codigo" id="codigo" placeholder="Codigo do cliente" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" name="codigo_cliente" value="<?=$cliente['codigo_cliente']?>" class="form-control input-md" onblur="liberar();" autofocus>
           </div>
 
-          <label class="col-md-1 control-label" for="numero_proposta_cliente">N.Proposta</label>  
+          <label class="col-md-1 control-label" for="numero_proposta_cliente">N.Protocolo</label>
           <div class="col-md-3">
           <input type="text" placeholder="Numero de proposta" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" id="numero_proposta_cliente" name="numero_proposta_cliente" value="<?=$cliente['numero_proposta_cliente']?>" class="form-control input-md">
           </div>

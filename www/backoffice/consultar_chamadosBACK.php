@@ -165,7 +165,7 @@ include_once "../css/navbar/meunavbar.php";
 
 
         <div class="form-group">
-           <label class="col-sm-2 control-label" for="textinput">Codigo</label>
+           <label class="col-sm-2 control-label" for="textinput">ID Pedido</label>
             <div class="col-sm-2">
               <div class="input-group">
                 <input type="text" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" placeholder="Codigo NET" maxlength="20" class="form-control" name="codigoNET" id="codigoNET" value="<?=$cliente['codigoNET']?>" AUTOCOMPLETE="off">

@@ -823,7 +823,7 @@ include_once "../css/navbar/meunavbar.php";
           <h4><center>Status Pedido</center> </h4>
 
           <div class="form-group">
-          <label class="col-md-1 control-label" for="numero_proposta_cliente">N.Proposta</label>  
+          <label class="col-md-1 control-label" for="numero_proposta_cliente">N.Protocolo</label>
           <div class="col-md-3">
           <input type="text" readonly class="form-control" name="numero_proposta_cliente" id="numero_proposta_cliente" value="<?=$cliente['numero_proposta_cliente']?>">
 
@@ -831,7 +831,7 @@ include_once "../css/navbar/meunavbar.php";
 
 
 
-          <label class="col-md-1 control-label" for="codigo_cliente">Codigo</label>  
+          <label class="col-md-1 control-label" for="codigo_cliente">ID Pedido</label>
           <div class="col-md-3">
           <input type="text" readonly class="form-control" name="codigo_cliente" id="codigo_cliente" value="<?=$cliente['codigo_cliente']?>">
 

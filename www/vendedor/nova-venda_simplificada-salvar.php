@@ -122,8 +122,6 @@ if (isset($_POST)) {
 
 		$queryCliente = gera_insert($campos, $valores, 'clientes');
 
-		//echo $queryCliente;
-		//exit;
 
 		$resCliente  = mysqli_query($linkComMysql, $queryCliente);
 
