@@ -1192,7 +1192,7 @@ if($nivel == 2 OR $nivel == 3 OR $nivel == 4){
 
                             <select id='select' required name='statusVenda_venda_cliente' value="<?=$cliente['statusVenda_venda_cliente']?>" class="form-control">
                                 <option value="<?=$cliente['statusVenda_venda_cliente']?>"><?=$cliente['statusVenda_venda_cliente']?></option>
-                                <option value="APROVADA EM EXECUÇÃO ">APROVADA EM EXECUÇÃO</option>
+                                <option value="APROVADO EXECUÇÃO">APROVADO EXECUÇÃO</option>
                                 <option value="PENDENTE-BACKOFFICE">PENDENTE BACKOFFICE</option>
                                 <option value="PENDENTE-VENDEDOR">PENDENTE VENDEDOR</option>
                                 <option value="AGENDADO">AGENDADO</option>

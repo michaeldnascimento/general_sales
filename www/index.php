@@ -746,7 +746,7 @@ if($empresa == '001'){
                   <ul class="dropdown-menu">
                  <li class="dropdown-header">Listas Vendas</li>
                     <li><a href="./backoffice/listavenda-backoffice-tratar.php">NOVAS VENDAS</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-credito.php">CREDITOS APROVADOS</a></li>
+                    <li><a href="./backoffice/listavenda-backoffice-aprovado-execucao.php">APROVADO EXECUÇÃO</a></li>
                     <li><a href="./backoffice/listavenda-backoffice-conexao.php">CONEXÃO</a></li>
                     <li><a href="./backoffice/listavenda-backoffice-pendente.php">PENDENTES BACKOFFICE</a></li>
                     <li><a href="./backoffice/listavenda-backoffice-pendente-vendedor.php">PENDENTES VENDEDORES</a></li>
