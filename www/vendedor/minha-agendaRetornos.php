@@ -45,7 +45,7 @@ if ($nivel == 2 OR $nivel == 3 OR $nivel == 4) {
 
 
 $stringSql = "
-	SELECT id_cliente, nome_contato_cliente, cidade_cliente, estado_cliente, date_format(data_followup_cliente,'%d/%m/%Y')as data_followup_cliente, date_format(hora_followup_cliente,'%Hh%i')as hora_followup_cliente, ddd_fone_cliente, fone_cliente, lista_sistema, date_format(datahora_cad_cliente,'%d/%m/%y %T')as datahora_cad_cliente, lista_sistema FROM clientes WHERE  nomeUsuario = '{$nomeUsuario}' AND (motivo_cliente = 'FOLLOW-UP') AND (YEAR(data_venda) = YEAR(NOW()))  ORDER BY id_cliente DESC
+	SELECT id_cliente, nome_contato_cliente, cidade_cliente, estado_cliente, observacao_cliente, date_format(data_followup_cliente,'%d/%m/%Y')as data_followup_cliente, date_format(hora_followup_cliente,'%Hh%i')as hora_followup_cliente, ddd_fone_cliente, fone_cliente, lista_sistema, date_format(datahora_cad_cliente,'%d/%m/%y %T')as datahora_cad_cliente, lista_sistema FROM clientes WHERE  nomeUsuario = '{$nomeUsuario}' AND (motivo_cliente = 'FOLLOW-UP') AND (YEAR(data_venda) = YEAR(NOW()))  ORDER BY id_cliente DESC
 	";
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
@@ -57,12 +57,13 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
 	$clientes[] = array(
 	   'id' 		  		        => $cliente ['id_cliente'],
 	   'nome_cliente'  	      => $cliente ['nome_contato_cliente'],
-	   'localizacao_assinante'=> $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
+     'localizacao_assinante'=> $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
      'fone_assinante'       => "(" .$cliente ['ddd_fone_cliente'] .") ". $cliente ['fone_cliente'],
      'data_assinante'       => $cliente ['data_followup_cliente'],
      'hora_assinante'	      => $cliente ['hora_followup_cliente'],
      'datahora_cadastro'    => $cliente ['datahora_cad_cliente'],
-     'lista_sistema'        => $cliente ['lista_sistema']
+     'lista_sistema'        => $cliente ['lista_sistema'],
+     'observacao_cliente'        => $cliente ['observacao_cliente']
 	);
 }
 
@@ -198,6 +199,23 @@ include_once "../css/navbar/meunavbar.php";
                             <br>
                             <br>
 
+
+                            <label class="col-sm-1 control-label" for="textinput">Descrição</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <textarea type="text" rows="3" class="form-control" name="observacao_cliente" id="observacao_cliente"></textarea>
+                                    <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+                            <br>
+
+                            <br>
+                            <br>
+                            <br>
+
                             <input type="text" style="display: none" name="nomeUsuario" class="form-control input-md" id="nomeUsuario" value="<?=$nomeUsuario?>">
 
                             <input type="text" style="display: none" name="nomeEquipe" class="form-control input-md" id="nomeEquipe" value="<?=$nomeEquipe?>">
@@ -259,6 +277,8 @@ include_once "../css/navbar/meunavbar.php";
 		                 <th>DATA/HORA</th>
 		                 <th>DATA RETORNO</th>
 		                 <th>HORA RETORNO</th>
+                         <th>OBS</th>
+
 		                 <th class="actions"><em class="glyphicon glyphicon-cog"></em></th>
 
 		                </tr>
@@ -302,8 +322,9 @@ include_once "../css/navbar/meunavbar.php";
 		                    <td><?=$cliente['datahora_cadastro'];?></td>
 		                    <td><?=$cliente['data_assinante'];?></td>
 		                    <td><?=$cliente['hora_assinante'];?></td>
+                            <td><?=$cliente['observacao_cliente'];?></td>
 		                    <td class="actions">
-		                      <a class="btn btn-success btn-xs" href="<?=$lista;?>?id=<?=$cliente['id'];?>&lista=RETORNO"><span class="glyphicon glyphicon-pencil"></span></a>
+		                      <a class="btn btn-success btn-xs" href="../mailing/tratando-CSV.php?id=<?=$cliente['id'];?>&lista=RETORNO"><span class="glyphicon glyphicon-pencil"></span></a>
 		                    </td>
 		        	</tr>
 
