@@ -190,7 +190,7 @@ include_once "../css/navbar/meunavbar.php";
                             <label class="col-sm-1 control-label" for="textinput">Fone</label>
                             <div class="col-sm-2">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Fone Contato" class="form-control" name="fone_cliente" id="fone_cliente">
+                                    <input type="text" placeholder="Fone Contato" class="form-control" name="fone_cliente" id="fone_cliente" required>
                                     <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
                                 </div>
                             </div>
@@ -274,7 +274,6 @@ include_once "../css/navbar/meunavbar.php";
                          <th>NOME CONTATO</th>
 		                 <th>CIDADE/ESTADO</th>
 		                 <th>FONE</th>
-		                 <th>DATA/HORA</th>
 		                 <th>DATA RETORNO</th>
 		                 <th>HORA RETORNO</th>
                          <th>OBS</th>
@@ -319,12 +318,11 @@ include_once "../css/navbar/meunavbar.php";
 		                    <td><?=$cliente['nome_cliente'];?></td>
 		                    <td><?=$cliente['localizacao_assinante'];?></td>
 		                    <td><?=$cliente['fone_assinante'];?></td>
-		                    <td><?=$cliente['datahora_cadastro'];?></td>
 		                    <td><?=$cliente['data_assinante'];?></td>
 		                    <td><?=$cliente['hora_assinante'];?></td>
                             <td><?=$cliente['observacao_cliente'];?></td>
 		                    <td class="actions">
-		                      <a class="btn btn-success btn-xs" href="../mailing/tratando-CSV.php?id=<?=$cliente['id'];?>&lista=RETORNO"><span class="glyphicon glyphicon-pencil"></span></a>
+		                      <a class="btn btn-success btn-xs" href="../mailing/tratando-oportsiteCSV.php?id_contato=<?=$cliente['id'];?>&lista=RETORNO"><span class="glyphicon glyphicon-pencil"></span></a>
 		                    </td>
 		        	</tr>
 

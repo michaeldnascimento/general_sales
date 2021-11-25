@@ -10,8 +10,8 @@ if($acessoCANC == 'SIM' OR $acessoPROSPECTS == 'SIM' OR $acessoMultibase == 'SIM
 
 
 
-if ( isset($_GET['id']) && intval($_GET['id']) > 0 ) {
-	$id = intval($_GET['id']);
+if ( isset($_GET['id_contato']) && intval($_GET['id_contato']) > 0 ) {
+	$id = intval($_GET['id_contato']);
      $lista = strval($_GET['lista']);
 
 
@@ -95,7 +95,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sales</title>
 
 		<!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.min.css">
@@ -140,7 +140,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
         </div>
 
 <div id="main" class="form-horizontal">
-<form action="tratadoLista_cliente.php?id=<?=$id;?>&lista=<?=$lista;?>&tratar=CSV" method="POST">
+<form action="../mailing/tabulatag.php?id_contato=<?=$id;?>&lista=<?=$lista;?>&tratar=CSV" method="POST">
 
 	<div class="col-sm-12">
   <br>
@@ -369,17 +369,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
             <div class="form-group">
 
 
-           <label class="col-sm-2 control-label" for="textinput">N. Contrato Ant.</label>
-            <div class="col-sm-2">
-              <div class="input-group">
-                <input type="text" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" placeholder="N. do contrato Anterior" maxlength="20" class="form-control" name="codigoAntigo_cliente" id="codigoAntigo_cliente" value="<?=$cliente['codigoAntigo_cliente']?>">
-                <span class="input-group-addon label-white"><i class="glyphicon glyphicon-briefcase"></i></span>
-
-              </div>
-            </div>
-
-
-          <label class="col-sm-1 control-label" for="textinput">Data Venda</label>
+          <label class="col-sm-2 control-label" for="textinput">Data Venda</label>
             <div class="col-sm-2">
               <div class="input-group">
                 <input type="date" placeholder="data da venda" maxlength="20" class="form-control"value="<?=$cliente['data_vendaCSV']?>">
@@ -390,10 +380,10 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 
 
 
-            <label class="col-sm-2 control-label" for="textinput">Proposta</label>
+            <label class="col-sm-2 control-label" for="textinput">N. Protocolo</label>
             <div class="col-sm-2">
               <div class="input-group">
-                <input type="text" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" placeholder="N. Proposta" maxlength="20" class="form-control" name="numero_proposta_cliente" id="numero_proposta_cliente" value="<?=$cliente['numero_proposta_cliente']?>">
+                <input type="text" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" placeholder="N. Protocolo" maxlength="20" class="form-control" name="numero_proposta_cliente" id="numero_proposta_cliente" value="<?=$cliente['numero_proposta_cliente']?>">
                 <span class="input-group-addon label-white"><i class="glyphicon glyphicon-briefcase"></i></span>
 
               </div>
@@ -416,6 +406,8 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
         </div>
         </div>
       </div>
+
+    <input type="text" style="display: none" name="id_contato" class="form-control input-md" id="id_contato" value="<?=$id?>">
 
     <input type="text" style="display: none" name="nomeUsuario" class="form-control input-md" id="nomeUsuario" value="<?=$nomeUsuario?>">
 
