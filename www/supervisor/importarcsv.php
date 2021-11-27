@@ -48,7 +48,6 @@ if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
   //query mysql que faz a importação para o banco a partir do arquivo csv no servidor
   //echo dirname(__FILE__)."/".$target_file;
 
-if ($lista == 'TVBASE' OR $lista == 'MULTIBASE' OR $lista == 'EXCLUSIVO' OR $lista == 'PROSPECT' OR $lista == 'SKY' OR $lista == 'NET' OR $lista == 'TIM' OR $lista == 'VIVO' OR $lista == 'CLARO' OR $lista == 'HUGHES' OR $lista == 'OPORTUNIDADES' OR $lista == 'CORPORATIVO' OR $lista == 'GERAL') {
 
 $query = "LOAD DATA LOCAL INFILE '".dirname(__FILE__)."/".$target_file."' INTO TABLE clientes FIELDS TERMINATED BY ';' IGNORE 1 LINES
     (codigoAntigo_cliente, codigo_cliente, nome_contato_cliente, nome_mae_cliente, cpf_cnpj_cliente, rg_ie_cliente, email_cliente, status, cidade_cliente, numHP_cliente, endereco_cliente, cep_cliente, fone_cliente, celular_cliente, fone3_cliente, fone4_cliente, fone5_cliente, observacao_cliente)
@@ -56,9 +55,6 @@ $query = "LOAD DATA LOCAL INFILE '".dirname(__FILE__)."/".$target_file."' INTO T
 
 //$result = mysqli_query($linkComMysql, $query);
 $result = $linkComMysql->query($query);
-
-
-}
 
 
   //retorna sucesso ou algum eventual erro com a query

@@ -112,6 +112,18 @@ if(isset($_POST['id_contato']) && intval($_POST['id_contato']) > 0){
                     exit;
                 }
 
+                if ($lista == 'PROSPECT2') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/prospect2.php");
+                    exit;
+                }
+
+                if ($lista == 'OPORTUNIDADES2') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/oportunidades2.php");
+                    exit;
+                }
+
                 if ($lista == 'RETORNO') {
                     $_SESSION['mensagem'] = $mensagem;
                     header("location: ../vendedor/minha-agendaRetornos.php");
@@ -215,7 +227,20 @@ if(isset($_POST['id_contato']) && intval($_POST['id_contato']) > 0){
                     exit;
                 }
 
-                if ($lista == 'RETORNO') {
+                if ($lista == 'PROSPECT2') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/prospect2.php");
+                    exit;
+                }
+
+                if ($lista == 'OPORTUNIDADES2') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/oportunidades2.php");
+                    exit;
+                }
+
+
+    if ($lista == 'RETORNO') {
                     $_SESSION['mensagem'] = $mensagem;
                     header("location: ../vendedor/minha-agendaRetornos.php");
                     exit;

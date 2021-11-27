@@ -76,8 +76,10 @@ include_once "../css/navbar/meunavbar.php";
 
 
       <option value=""></option>
+      <option value="OPORTUNIDADES">OPORTUNIDADES</option>
+      <option value="OPORTUNIDADES2">OPORTUNIDADES 2</option>
       <option value="PROSPECT">PROSPECT</option>
-      <option style="display: <?php echo $droplista ?>" value="OPORTUNIDADES">OPORTUNIDADES</option>
+      <option value="PROSPECT2">PROSPECT 2</option>
       </select>
       </div>
 

@@ -719,7 +719,10 @@ if($empresa == '001'){
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 1<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="dropdown-header">Mailing</li>
+                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/oportunidades.php">OPORTUNIDADES</a></li>
+                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/oportunidades2.php">OPORTUNIDADES 2</a></li>
                       <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/prospect.php">PROSPECTS</a></li>
+                      <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/prospect2.php">PROSPECTS 2</a></li>
 
                   </ul>
                 </li>
@@ -727,7 +730,7 @@ if($empresa == '001'){
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 2<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="dropdown-header">Mailing</li>
-                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/oportunidades.php">OPORTUNIDADES</a></li>
+                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/leadNET-BR.php">LEAD</a></li>
                   </ul>
                 </li>
                 <li class="dropdown">

@@ -57,67 +57,20 @@ if ($_POST['nomeUsuario'] !="" ) {
 				exit;
 				}
 
-				if ($lista == 'CLARO') {
-				header("location: ../mailing/leadNET-Claro.php");
-				exit;
-				}
+                if ($lista == 'PROSPECT2') {
+                    header("location: ../mailing/prospect2.php");
+                    exit;
+                }
 
-				if ($lista == 'SKY') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/oportunidades-sac.php");
-				exit;
-				}
+                if ($lista == 'OPORTUNIDADES') {
+                    header("location: ../mailing/oportunidades.php");
+                    exit;
+                }
 
-				if ($lista == 'OPORTUNIDADES') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/oportunidades.php");
-				exit;
-				}
-
-				if ($lista == 'TIM') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-TIM.php");
-				exit;
-				}
-
-				if ($lista == 'VIVO') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-VIVO.php");
-				exit;
-				}
-
-				if ($lista == 'HUNGHES') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-HUGHES.php");
-				exit;
-				}
-
-				if ($lista == 'NET') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-NET.php");
-				exit;
-				}
-
-				if ($lista == 'NET') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-NET.php");
-				exit;
-				}
-
-			    if ($lista == 'GERAL') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-GERAL.php");
-				exit;
-				}
-
-				if ($lista == 'CORPORATIVO') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-corporativo.php");
-				exit;
-				}
-
-
-
+                if ($lista == 'OPORTUNIDADES2') {
+                    header("location: ../mailing/oportunidades2.php");
+                    exit;
+                }
 
 
 }
@@ -148,63 +101,22 @@ if ($_POST['nomeUsuario'] !="" ) {
 				exit;
 				}
 
-				if ($lista == 'CLARO') {
-				header("location: ../mailing/leadNET-Claro.php");
-				exit;
-				}
+                if ($lista == 'PROSPECT2') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/prospect2.php");
+                    exit;
+                }
 
+                if ($lista == 'OPORTUNIDADES') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/oportunidades.php");
+                    exit;
+                }
 
-				if ($lista == 'SKY') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/oportunidades-sac.php");
-				exit;
-				}
+                if ($lista == 'OPORTUNIDADES2') {
+                    $_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/oportunidades2.php");
+                    exit;
+                }
 
-				if ($lista == 'TAG') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/oportunidades-tag.php");
-				exit;
-				}
-
-				if ($lista == 'TIM') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-TIM.php");
-				exit;
-				}
-
-				if ($lista == 'VIVO') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-VIVO.php");
-				exit;
-				}
-
-				if ($lista == 'HUNGHES') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-HUGHES.php");
-				exit;
-				}
-
-				if ($lista == 'NET') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-NET.php");
-				exit;
-				}
-
-				if ($lista == 'NET') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-NET.php");
-				exit;
-				}
-
-			    if ($lista == 'GERAL') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-GERAL.php");
-				exit;
-				}
-
-				if ($lista == 'CORPORATIVO') {
-				$_SESSION['mensagem'] = $mensagem;
-				header("location: ../mailing/lead-corporativo.php");
-				exit;
-				}
 
