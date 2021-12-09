@@ -1,4 +1,6 @@
 <?php
+//phpinfo();
+//exit;
 session_start();
 include_once "../login/verifica.php";
 

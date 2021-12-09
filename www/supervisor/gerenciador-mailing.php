@@ -21,8 +21,8 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 /******************************Buscar os clientes - paginacao**************************/
 
 
-//$stringSql = "SELECT id_mailing, status_mailing, lista_sistema, COUNT(*) qtde FROM clientes WHERE id_mailing <> '' GROUP BY id_mailing";
-$stringSql = "SELECT COUNT(*) qtde FROM clientes WHERE id_mailing <> '' GROUP BY id_mailing";
+$stringSql = "SELECT id_mailing, status_mailing, lista_sistema, COUNT(*) as qtde FROM clientes WHERE id_mailing <> '' GROUP BY id_mailing";
+//$stringSql = "SELECT COUNT(*) qtde FROM clientes WHERE id_mailing <> '' GROUP BY id_mailing";
 //echo $stringSql . "<br><br>";
 //exit;
 

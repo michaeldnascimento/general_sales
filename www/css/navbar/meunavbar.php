@@ -82,12 +82,38 @@ if($empresa == '001'){
                       </ul>
                   </li>
 
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropadm ?>" data-toggle="dropdown">Administrador<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                      <li class="dropdown-header"></li>
+                <!--**INCLUSÃO DE NOVOS CAMPOS NO MENU (ALMOX, COP, TECNICO, GESTOR) - ROGER** -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">COP<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
                     </ul>
-                  </li>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Almoxarifado<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Técnico<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Gestor<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropadm ?>" data-toggle="dropdown">Administrador<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+                </li>
 
 
                 <li>

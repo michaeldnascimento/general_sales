@@ -734,58 +734,83 @@ if($empresa == '001'){
                   </ul>
                 </li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropvend ?>" data-toggle="dropdown">Vendedor <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                  <li class="dropdown-header"></li>
-                  <li><a href="./vendedor/nova_venda.php">Nova Venda</a></li>
-                  <li><a href="./vendedor/minhas-vendasLista.php">Status Propostas</a></li>
-                  <li><a href="./vendedor/minha-agendaRetornos.php">Agenda Retornos</a></li>
-                  <li><a href="./vendedor/lista_chamadosVED.php">Chamados Backoffice</a></li>
-                  <li><a href="./vendedor/usuario.php">Usuario</a></li>
-                  </ul>
-                </li>
-               <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" style="display: <?php echo $dropback ?>" data-toggle="dropdown">Backoffice<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                 <li class="dropdown-header">Listas Vendas</li>
-                    <li><a href="./backoffice/listavenda-backoffice-tratar.php">NOVAS VENDAS</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-aprovado-execucao.php">APROVADO EXECUÇÃO</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-conexao.php">CONEXÃO</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-pendente.php">PENDENTES BACKOFFICE</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-pendente-vendedor.php">PENDENTES VENDEDORES</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-agendado.php">AGENDADOS</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-quebra.php">QUEBRAS</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-instalado.php">INSTALADOS</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice-cancelado.php">CANCELADOS</a></li>
-                    <li><a href="./backoffice/listavenda-backoffice.php">GERAIS</a></li>
-                    <li><a href="./backoffice/lista_chamadosBACK.php">CHAMADOS</a></li>
-                  </ul>
-              </li>
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropsup ?>" data-toggle="dropdown">Supervisor<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                      <li class="dropdown-header"></li>
-                      <li><a href="./supervisor/con-usuario-lista.php">Usuarios</a></li>
-                      <li><a href="./supervisor/useronline.php">Onlines General</a></li>
-                      <li><a href="./supervisor/importcvs.php">Importar CSV</a></li>
-                      <li><a href="./supervisor/tabulacao-geral.php">Tabulacao Geral</a></li>
-                      <li><a href="./supervisor/gerenciador-mailing.php">Gerenciador Mailing</a></li>
-                      </ul>
-                  </li>
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Gerente<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                      <li class="dropdown-header"></li>
-                      <li><a href="./gerente/basemailing.php">Base Mailing</a></li>
-                      <li><a href="./gerente/importcsvbase.php">Importar Base (CSV)</a></li>
-                      </ul>
-                  </li>
-                  <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" style="display: <?php echo $dropadm ?>" data-toggle="dropdown">Administrador<b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                      <li class="dropdown-header"></li>
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropvend ?>" data-toggle="dropdown">Vendedor <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-header"></li>
+                        <li><a href="./vendedor/nova_venda.php">Nova Venda</a></li>
+                        <li><a href="./vendedor/minhas-vendasLista.php">Status Propostas</a></li>
+                        <li><a href="./vendedor/minha-agendaRetornos.php">Agenda Retornos</a></li>
+                        <li><a href="./vendedor/lista_chamadosVED.php">Chamados Backoffice</a></li>
+                        <li><a href="./vendedor/usuario.php">Usuario</a></li>
                     </ul>
-                  </li>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropback ?>" data-toggle="dropdown">Backoffice<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Listas Vendas</li>
+                        <li><a href="./backoffice/listavenda-backoffice-tratar.php">NOVAS VENDAS</a></li>
+                        <li><a href="./backoffice/listavenda-backoffice-aprovado-execucao.php">APROVADO EXECUÇÃO</a></li>
+                        <li><a href="./backoffice/listavenda-backoffice-pendente.php">PENDENTES BACKOFFICE</a></li>
+                        <li><a href="./backoffice/listavenda-backoffice-pendente-vendedor.php">PENDENTES VENDEDORES</a></li>
+                        <li><a href="./backoffice/listavenda-backoffice-agendado.php">AGENDADOS</a></li>
+                        <li><a href="./backoffice/listavenda-backoffice-quebra.php">QUEBRAS</a></li>
+                        <li><a href="./backoffice/listavenda-backoffice-instalado.php">INSTALADOS</a></li>
+                        <li><a href="./backoffice/listavenda-backoffice-cancelado.php">CANCELADOS</a></li>
+                        <li><a href="./backoffice/listavenda-backoffice.php">GERAIS</a></li>
+                        <li><a href="./backoffice/lista_chamadosBACK.php">CHAMADOS</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropsup ?>" data-toggle="dropdown">Supervisor<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                        <li><a href="./supervisor/con-usuario-lista.php">Usuarios</a></li>
+                        <li><a href="./supervisor/useronline.php">Onlines General</a></li>
+                        <li><a href="./supervisor/importcvs.php">Importar CSV</a></li>
+                        <li><a href="./supervisor/tabulacao-geral.php">Tabulacao Geral</a></li>
+                        <li><a href="./supervisor/gerenciador-mailing.php">Gerenciador Mailing</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Gerente<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                        <li><a href="./gerente/basemailing.php">Base Mailing</a></li>
+                        <li><a href="./gerente/importcsvbase.php">Importar Base (CSV)</a></li>
+                    </ul>
+                </li>
+                <!--**INCLUSÃO DE NOVOS CAMPOS NO MENU (ALMOX, COP, TECNICO, GESTOR) - ROGER** -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">COP<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Almoxarifado<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Técnico<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropger ?>" data-toggle="dropdown">Gestor<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="display: <?php echo $dropadm ?>" data-toggle="dropdown">Administrador<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header"></li>
+                    </ul>
+                </li>
 
                 <li>
                 <li class="active ">

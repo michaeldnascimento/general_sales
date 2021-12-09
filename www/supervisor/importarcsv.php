@@ -74,6 +74,4 @@ $result = $linkComMysql->query($query);
   header("location: importcvs.php");
 
 
-?>
-
 
