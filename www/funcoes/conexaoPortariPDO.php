@@ -8,7 +8,7 @@ Environment::load(__DIR__. '/../');
 if ($_SESSION['empresa'] == '001'){
 
 try {
-    $linkComMysql = new PDO("mysql:host=".getenv('DOCKER_MYSQL_HOST').";dbname=".getenv('DOCKER_MYSQL_DB')."", getenv('DOCKER_MYSQL_USER'), getenv('DOCKER_MYSQL_PASS'),
+    $linkComMysql = new PDO("mysql:host=".getenv('MYSQL_HOST').";dbname=".getenv('MYSQL_DB')."", getenv('MYSQL_USER'), getenv('MYSQL_PASS'),
     array(
         PDO::MYSQL_ATTR_LOCAL_INFILE => true,
     ));
@@ -16,5 +16,19 @@ try {
 } catch(PDOException $e) {
     echo 'ERROR: ' . $e->getMessage();
 }
+
+}
+
+if ($_SESSION['empresa'] == '002'){
+
+    try {
+        $linkComMysql = new PDO("mysql:host=".getenv('MYSQL_HOST').";dbname=".getenv('MYSQL_DB_02')."", getenv('MYSQL_USER'), getenv('MYSQL_PASS'),
+            array(
+                PDO::MYSQL_ATTR_LOCAL_INFILE => true,
+            ));
+        $linkComMysql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $e) {
+        echo 'ERROR: ' . $e->getMessage();
+    }
 
 }

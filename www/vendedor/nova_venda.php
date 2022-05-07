@@ -9,27 +9,13 @@ date_default_timezone_set('America/Sao_Paulo');
 $dataDia = date('Y-m-d'); // Resultado: 2009-02-05
 $horaDia = date('H:i:s'); // Resultado: 03:39:57.
 
-if ($empresa != 1) {
-    $obsCad = 'none';
+if ($nivel == 2 OR $nivel == 3 OR $nivel == 4) {
+$drop = '';
+
+}else{
+
+    $drop = 'none';
 }
-
-
-if($acessoPARCEIROS == 'SIM'){
-
-    ?>
-    <script> alert('Usuario sem permissão! '); window.history.go(-1); </SCRIPT>;
-
-    <?php
-} else{
-
-    if ($nivel == 2 OR $nivel == 3 OR $nivel == 4) {
-
-        $drop = '';
-
-    }else{
-
-        $drop = 'none';
-    }
 
     $mensagem = "";
     if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
@@ -619,12 +605,10 @@ if($acessoPARCEIROS == 'SIM'){
         </div>
     </div>
     </body>
-    <script src="../js/jquery-2.2.3.min.js"></script>
-    <script src="../js/scripts-geral.js"></script>
-    <script src="../css/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/jquery.maskedinput.min.js"></script>
-    <script src="../js/funcao-maskemoney.js"></script>
-    <script src="../css/bootstrap/js/meunavbar2.js"></script>
-    </html>
-
-<?php } ?>
+<script src="../js/jquery-2.2.3.min.js"></script>
+<script src="../js/scripts-geral.js"></script>
+<script src="../css/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/jquery.maskedinput.min.js"></script>
+<script src="../js/funcao-maskemoney.js"></script>
+<script src="../css/bootstrap/js/meunavbar2.js"></script>
+</html>

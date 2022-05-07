@@ -9,9 +9,6 @@ if ($_SESSION['empresa'] == '001'){
 
 $linkComMysql = mysqli_connect(getenv('MYSQL_HOST') , getenv('MYSQL_USER'), getenv('MYSQL_PASS'), getenv('MYSQL_DB')) or die("Problemas na conexão.");
 //$linkComMysql = mysqli_connect(getenv('DOCKER_MYSQL_HOST') , getenv('DOCKER_MYSQL_USER'), getenv('DOCKER_MYSQL_PASS'), getenv('DOCKER_MYSQL_DB')) or die("Problemas na conexão.");
-$linkComMysql->set_charset("utf8");
-ini_set('mysqli.connect_timeout',300);
-ini_set('default_socket_timeout',300);
 
 //try {
 //    $linkComMysql = new PDO("mysql:host=".getenv('DOCKER_MYSQL_HOST').";dbname=".getenv('DOCKER_MYSQL_DB')."", getenv('DOCKER_MYSQL_USER'), getenv('DOCKER_MYSQL_PASS'));
@@ -20,3 +17,12 @@ ini_set('default_socket_timeout',300);
 //    echo 'ERROR: ' . $e->getMessage();
 //}
 }
+
+if ($_SESSION['empresa'] == '002'){
+$linkComMysql = mysqli_connect(getenv('MYSQL_HOST') , getenv('MYSQL_USER'), getenv('MYSQL_PASS'), getenv('MYSQL_DB_02')) or die("Problemas na conexão.");
+//$linkComMysql = mysqli_connect(getenv('DOCKER_MYSQL_HOST') , getenv('DOCKER_MYSQL_USER'), getenv('DOCKER_MYSQL_PASS'), getenv('DOCKER_MYSQL_DB')) or die("Problemas na conexão.");
+}
+
+$linkComMysql->set_charset("utf8");
+ini_set('mysqli.connect_timeout',300);
+ini_set('default_socket_timeout',300);

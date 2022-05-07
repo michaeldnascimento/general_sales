@@ -9,7 +9,7 @@ date_default_timezone_set('America/Sao_Paulo');
 $dataDia = date('Y-m-d');
 $horaDia = date('H:i:s');
 
-if($empresa == '001' OR $empresa == '005' OR $empresa == '10' && ($acessoLEADSITE == 'SIM' OR $acessoTODOS == 'SIM')){
+if($empresa == '001' OR $empresa == '002' OR $empresa == '10' && ($acessoLEADSITE == 'SIM' OR $acessoTODOS == 'SIM')){
 
 
 $mensagem = "";
@@ -501,5 +501,5 @@ if ( isset($_GET['id_contato']) && intval($_GET['id_contato']) > 0 ) {
 
 
     <?php }else{?>
-    <script> alert('Usuario sem permissao! '); window.history.go(-1); </SCRIPT>;
+    <script> alert('Usuario sem permissao! '); window.history.go(-1) </script>;
     <?php }?>
