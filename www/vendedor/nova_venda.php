@@ -1,9 +1,9 @@
 <?php
 session_start();
-
-
 include_once "../login/verifica.php";
+include_once "../funcoes/conexaoPortari.php";
 include_once "../login/visualizarlista.php";
+
 
 date_default_timezone_set('America/Sao_Paulo');
 $dataDia = date('Y-m-d'); // Resultado: 2009-02-05
@@ -14,115 +14,160 @@ $drop = '';
 
 }else{
 
-    $drop = 'none';
+$drop = 'none';
 }
 
-    $mensagem = "";
-    if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
-        $alerta = '';
-        $mensagem = $_SESSION['mensagem'];
-        unset($_SESSION['mensagem']);
-    }else{
-        $alerta = 'none';
-    }
+if ($empresa == 1) {
+    $emp1 = '';
+    $emp2 = 'none';
+}
 
-    ?>
+if ($empresa == 2) {
+    $emp1 = 'none';
+    $emp2 = '';
+}
+
+$mensagem = "";
+if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
+    $alerta = '';
+    $mensagem = $_SESSION['mensagem'];
+    unset($_SESSION['mensagem']);
+}else{
+    $alerta = 'none';
+}
+
+//SELECT INTERNET
+$selectInternet = "SELECT id, nome FROM internet WHERE status = 1 ORDER BY nome";
+$resultInternet = mysqli_query($linkComMysql, $selectInternet);
+$internet = array();
+
+while ($int = mysqli_fetch_assoc($resultInternet)) {
+    $internet[] = array(
+    'id' 		=> $int['id'],
+	'nome'  	=> $int['nome'],
+	);
+}
+
+//SELECT FONE
+$selectFone = "SELECT id, nome FROM telefonia WHERE status = 1 ORDER BY nome";
+$resultFone = mysqli_query($linkComMysql, $selectFone);
+$fone = array();
+
+while ($phone = mysqli_fetch_assoc($resultFone)) {
+    $fone[] = array(
+        'id' 		=> $phone['id'],
+        'nome'  	=> $phone['nome'],
+    );
+}
+
+//SELECT AGREGADO
+$selectAgregado = "SELECT id, nome FROM agregado WHERE status = 1 ORDER BY nome";
+$resultAgregado = mysqli_query($linkComMysql, $selectAgregado);
+$agregado = array();
+
+while ($agre = mysqli_fetch_assoc($resultAgregado)) {
+    $agregado[] = array(
+        'id' 		=> $agre['id'],
+        'nome'  	=> $agre['nome'],
+    );
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../css/imagens/16x16.png">
+    <title>Home Sales</title>
 
 
-
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="../css/imagens/16x16.png">
-        <title>Home Sales</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap/css/css-geral.css">
+    <link rel="stylesheet" type="text/css" href="../css/navbar/meunavbar.css">
 
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/bootstrap/css/css-geral.css">
-        <link rel="stylesheet" type="text/css" href="../css/navbar/meunavbar.css">
+    <script type="text/javascript">
 
+        function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('endereco_cliente').value=("");
+            document.getElementById('bairro_cliente').value=("");
+            document.getElementById('cidade_cliente').value=("");
+            document.getElementById('estado_cliente').value=("");
+        }
 
-        <script type="text/javascript">
-
-            function limpa_formulário_cep() {
-                //Limpa valores do formulário de cep.
-                document.getElementById('endereco_cliente').value=("");
-                document.getElementById('bairro_cliente').value=("");
-                document.getElementById('cidade_cliente').value=("");
-                document.getElementById('estado_cliente').value=("");
+        function meu_callback(conteudo) {
+            if (!("erro" in conteudo)) {
+                //Atualiza os campos com os valores.
+                document.getElementById('endereco_cliente').value=(conteudo.logradouro);
+                document.getElementById('bairro_cliente').value=(conteudo.bairro);
+                document.getElementById('cidade_cliente').value=(conteudo.localidade);
+                document.getElementById('estado_cliente').value=(conteudo.uf);
+            } //end if.
+            else {
+                //CEP não Encontrado.
+                limpa_formulário_cep();
+                alert("CEP não encontrado.");
             }
+        }
 
-            function meu_callback(conteudo) {
-                if (!("erro" in conteudo)) {
-                    //Atualiza os campos com os valores.
-                    document.getElementById('endereco_cliente').value=(conteudo.logradouro);
-                    document.getElementById('bairro_cliente').value=(conteudo.bairro);
-                    document.getElementById('cidade_cliente').value=(conteudo.localidade);
-                    document.getElementById('estado_cliente').value=(conteudo.uf);
+        function pesquisacep(valor) {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = valor.replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if(validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    document.getElementById('endereco_cliente').value="...";
+                    document.getElementById('bairro_cliente').value="...";
+                    document.getElementById('cidade_cliente').value="...";
+                    document.getElementById('estado_cliente').value="...";
+
+                    //Cria um elemento javascript.
+                    var script = document.createElement('script');
+
+                    //Sincroniza com o callback.
+                    script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                    //Insere script no documento e carrega o conteúdo.
+                    document.body.appendChild(script);
+
                 } //end if.
                 else {
-                    //CEP não Encontrado.
+                    //cep é inválido.
                     limpa_formulário_cep();
-                    alert("CEP não encontrado.");
+                    alert("Formato de CEP inválido.");
                 }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
             }
-
-            function pesquisacep(valor) {
-
-                //Nova variável "cep" somente com dígitos.
-                var cep = valor.replace(/\D/g, '');
-
-                //Verifica se campo cep possui valor informado.
-                if (cep != "") {
-
-                    //Expressão regular para validar o CEP.
-                    var validacep = /^[0-9]{8}$/;
-
-                    //Valida o formato do CEP.
-                    if(validacep.test(cep)) {
-
-                        //Preenche os campos com "..." enquanto consulta webservice.
-                        document.getElementById('endereco_cliente').value="...";
-                        document.getElementById('bairro_cliente').value="...";
-                        document.getElementById('cidade_cliente').value="...";
-                        document.getElementById('estado_cliente').value="...";
-
-                        //Cria um elemento javascript.
-                        var script = document.createElement('script');
-
-                        //Sincroniza com o callback.
-                        script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-                        //Insere script no documento e carrega o conteúdo.
-                        document.body.appendChild(script);
-
-                    } //end if.
-                    else {
-                        //cep é inválido.
-                        limpa_formulário_cep();
-                        alert("Formato de CEP inválido.");
-                    }
-                } //end if.
-                else {
-                    //cep sem valor, limpa formulário.
-                    limpa_formulário_cep();
-                }
-            };
+        };
 
 
-        </script>
+    </script>
 
-    </head>
-    <body>
+</head>
+<body>
 
 
 
-    <?php
-    include_once "../css/navbar/meunavbar.php";
-    ?>
+<!--**********************NAVBAR - BARRA DE NAVEGAÇÃO DO SITE******************************** -->
+<?php
+include_once "../css/navbar/meunavbar.php";
+?>
     <div class="container">
         <!--********MESSAGEM DO SISTEMA - BASEADO EM SESSOES************************ -->
         <div class="alert alert-info" role="alert" style="display: <?php echo $alerta ?>">
@@ -436,38 +481,79 @@ $drop = '';
 
                     <!-- Wizard STEP 2 -->
                     <div class="row setup-content" id="step-2">
-                        <div class="col-sm-12">
+                    <div class="col-sm-12">
 
+                        <!-- empresa 1 -->
+                        <div style="display: <?php echo $emp1 ?>">
                             <div class="form-group">
-                                <label style="display: <?php echo $emp ?>" class="col-md-1 control-label" for="selectbasic">Internet</label>
-
-                                <div class="col-md-5">
-                                    <select style="display: <?php echo $emp ?>" id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
-                                        <option value="">Selecione o plano de internet</option>
-                                        <option value="100 Mega">100 MEGA</option>
-                                        <option value="200 Mega">200 MEGA</option>
-                                        <option value="300 Mega">300 MEGA</option>
-                                        <option value="600 Mega">600 MEGA</option>
-                                        <option value="Link dedicado 10 MB">Link dedicado 10 MB</option>
-                                        <option value="Link dedicado 30 MB">Link dedicado 30 MB</option>
-                                        <option value="Link dedicado 50 MB">Link dedicado 50 MB</option>
-                                        <option value="Link dedicado 100 MB">Link dedicado 100 MB</option>
-                                        <option value="Link dedicado 200 MB">Link dedicado 200 MB</option>
-                                        <option value="Link dedicado 500 MB">Link dedicado 500 MB</option>
+                                <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
+                                <div class="col-sm-11">
+                                    <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
+                                        <option>Selecione o plano de internet</option>
+                                        <?php
+                                        foreach ($internet as $key => $int){
+                                            ?>
+                                            <option value="<?= $int['nome'] ?>"><?= $int['nome'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
                                     </select>
                                 </div>
-
-                                <label style="display: <?php echo $emp ?>" class="col-md-1 control-label" for="selectbasic">Telefonia</label>
-                                <div class="col-md-5">
-                                    <select style="display: <?php echo $emp ?>" id="netfone_venda_cliente" name="netfone_venda_cliente" class="form-control">
-                                        <option value="">Selecione o plano de telefone</option>
-                                        <option value="Fale a Vontade Brasil Fixo e Celular">Fale a Vontade Brasil Fixo e Celular</option>
-                                        <option value="Outro - Especificar na Obs.">Outro - Especificar na Obs.</option>
-                                    </select>
-                                </div>
-
                             </div>
 
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label" for="selectbasic">Telefonia</label>
+                                <div class="col-sm-11">
+                                    <select id="netfone_venda_cliente" name="netfone_venda_cliente" class="form-control">
+                                        <option value="">Selecione o plano de telefone</option>
+                                        <?php
+                                        foreach ($fone as $key => $phone){
+                                            ?>
+                                            <option value="<?= $phone['nome'] ?>"><?= $phone['nome'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label" for="textinput">Agregado</label>
+                                <div class="col-sm-11">
+                                    <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
+                                        <option value="">Selecione</option>
+                                        <?php
+                                        foreach ($agregado as $key => $agre){
+                                            ?>
+                                            <option value="<?= $agre['nome'] ?>"><?= $agre['nome'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- empresa 1 -->
+
+                        <!-- empresa 2 -->
+                        <div style="display: <?php echo $emp2 ?>">
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
+                                <div class="col-sm-11">
+                                    <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
+                                        <option>Selecione o plano de internet</option>
+                                        <?php
+                                        foreach ($internet as $key => $int){
+                                            ?>
+                                            <option value="<?= $int['nome'] ?>"><?= $int['nome'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- empresa 2 -->
 
                             <!-- Select Basic -->
                             <div class="form-group">
@@ -541,23 +627,6 @@ $drop = '';
 
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-1 control-label" for="textinput">Agregado</label>
-                                <div class="col-sm-11">
-                                    <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
-                                        <option value=""></option>
-                                        <option value="0800">0800</option>
-                                        <option value="Número único">Número único</option>
-                                        <option value="DDG Nacional">DDG Nacional</option>
-                                        <option value="Voz Total Solução em Nuvem">Voz Total Solução em Nuvem</option>
-                                        <option value="Gerenciamento de Rede">Gerenciamento de Rede</option>
-                                        <option value="Gerenciamento de Segurança Firewall">Gerenciamento de Segurança Firewall</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
 
                             <!-- Text input-->
                             <div class="form-group">

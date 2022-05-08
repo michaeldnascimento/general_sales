@@ -14,8 +14,8 @@ if ($empresa == '001') {
 }
 
 if ($empresa == '002') {
-  $img1 = 'css/imagens/BANNER_COMUNICADO_ALGA.jpg';
-  $img2 = 'css/imagens/BANNER_COMUNICADO_ALGA.jpg';
+  $img1 = 'css/imagens/BANNER-SITE-NOVO-1170X650-2.jpg';
+  $img2 = 'css/imagens/BANNER-SITE-NOVO-1170X650-2.jpg';
 }
 
  if($empresa == '005'){
@@ -1101,11 +1101,11 @@ if($empresa == '003'){
       <div class="carousel-inner" role="listbox">
         
         <div class="item active">
-        <img class="first" src="<?php echo $img1 ?>" alt="first slide">
+        <img class="first" style="width: 100%; height: 100%;" src="<?php echo $img1 ?>" alt="first slide">
         </div>
         
         <div class="item">
-          <img class="second" src="<?php echo $img2 ?>" alt="Second slide">
+          <img class="second" style="width: 100%; height: 100%;" src="<?php echo $img2 ?>" alt="Second slide">
         </div>
         
       </div>

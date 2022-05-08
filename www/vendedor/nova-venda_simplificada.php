@@ -13,6 +13,16 @@ if ($empresa != 1) {
 $obsCad = 'none';
 }
 
+if ($empresa == 1) {
+    $emp1 = '';
+    $emp2 = 'none';
+}
+
+if ($empresa == 2) {
+    $emp1 = 'none';
+    $emp2 = '';
+}
+
 $mensagem = "";
 if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
   $alerta = '';
@@ -73,6 +83,19 @@ $qtdClientes = mysqli_num_rows($resultado);
 $clientes = array();
 
 
+
+//SELECT INTERNET
+$selectInternet = "SELECT id, nome FROM internet WHERE status = 1 ORDER BY nome";
+$resultInternet = mysqli_query($linkComMysql, $selectInternet);
+$internet = array();
+
+while ($int = mysqli_fetch_assoc($resultInternet)) {
+    $internet[] = array(
+        'id' 		=> $int['id'],
+        'nome'  	=> $int['nome'],
+    );
+}
+
 ?>
 
 
@@ -85,7 +108,7 @@ $clientes = array();
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../css/imagens/16x16.png">
-		<title>General Sales</title>
+		<title>Home Sales</title>
 
 		<!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../css/bootstrap/css/bootstrap.min.css">
@@ -209,19 +232,17 @@ include_once "../css/navbar/meunavbar.php";
             <label class="col-md-2 control-label" for="selectbasic">Internet</label>
             <div class="col-md-4">
                 <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
-                    <option value="">Selecione o plano de internet</option>
-                    <option value="100 Mega">100 MEGA</option>
-                    <option value="200 Mega">200 MEGA</option>
-                    <option value="300 Mega">300 MEGA</option>
-                    <option value="600 Mega">600 MEGA</option>
-                    <option value="Link dedicado 10 MB">Link dedicado 10 MB</option>
-                    <option value="Link dedicado 30 MB">Link dedicado 30 MB</option>
-                    <option value="Link dedicado 50 MB">Link dedicado 50 MB</option>
-                    <option value="Link dedicado 100 MB">Link dedicado 100 MB</option>
-                    <option value="Link dedicado 200 MB">Link dedicado 200 MB</option>
-                    <option value="Link dedicado 500 MB">Link dedicado 500 MB</option>
+                    <option>Selecione o plano de internet</option>
+                    <?php
+                    foreach ($internet as $key => $int){
+                        ?>
+                        <option value="<?= $int['nome'] ?>"><?= $int['nome'] ?></option>
+                        <?php
+                    }
+                    ?>
                 </select>
             </div>
+
 
         <label class="col-sm-1 control-label" for="textinput">ID Pedido</label>
           <div class="col-sm-4">

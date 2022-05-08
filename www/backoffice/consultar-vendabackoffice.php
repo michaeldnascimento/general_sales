@@ -142,7 +142,52 @@ if($nivel == 2 OR $nivel == 3 OR $nivel == 4){
     $audio   = $cliente['audio_multisales'];
 
 
-    ?>
+if ($empresa == 1) {
+    $emp1 = '';
+    $emp2 = 'none';
+}
+
+if ($empresa == 2) {
+    $emp1 = 'none';
+    $emp2 = '';
+}
+
+//SELECT INTERNET
+$selectInternet = "SELECT id, nome FROM internet WHERE status = 1 ORDER BY nome";
+$resultInternet = mysqli_query($linkComMysql, $selectInternet);
+$internet = array();
+
+while ($int = mysqli_fetch_assoc($resultInternet)) {
+    $internet[] = array(
+        'id' 		=> $int['id'],
+        'nome'  	=> $int['nome'],
+    );
+}
+
+//SELECT FONE
+$selectFone = "SELECT id, nome FROM telefonia WHERE status = 1 ORDER BY nome";
+$resultFone = mysqli_query($linkComMysql, $selectFone);
+$fone = array();
+
+while ($phone = mysqli_fetch_assoc($resultFone)) {
+    $fone[] = array(
+        'id' 		=> $phone['id'],
+        'nome'  	=> $phone['nome'],
+    );
+}
+
+//SELECT AGREGADO
+$selectAgregado = "SELECT id, nome FROM agregado WHERE status = 1 ORDER BY nome";
+$resultAgregado = mysqli_query($linkComMysql, $selectAgregado);
+$agregado = array();
+
+while ($agre = mysqli_fetch_assoc($resultAgregado)) {
+    $agregado[] = array(
+        'id' 		=> $agre['id'],
+        'nome'  	=> $agre['nome'],
+    );
+}
+?>
 
 
 
@@ -795,39 +840,77 @@ if($nivel == 2 OR $nivel == 3 OR $nivel == 4){
 
                     </div>
 
-
-                    <div class="form-group">
-
-                        <label class="col-md-1 control-label" for="selectbasic">Internet</label>
-                        <div class="col-md-5">
-                            <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
-                                <option value="<?=$cliente['internet_venda_cliente']?>"><?=$cliente['internet_venda_cliente']?></option>
-                                <option value=""></option>
-                                <option value="100 Mega">100 Mega</option>
-                                <option value="200 Mega">200 Mega</option>
-                                <option value="300 Mega">300 Mega</option>
-                                <option value="600 Mega">600 Mega</option>
-                                <option value="Link dedicado 10 MB">Link dedicado 10 MB</option>
-                                <option value="Link dedicado 30 MB">Link dedicado 30 MB</option>
-                                <option value="Link dedicado 50 MB">Link dedicado 50 MB</option>
-                                <option value="Link dedicado 100 MB">Link dedicado 100 MB</option>
-                                <option value="Link dedicado 200 MB">Link dedicado 200 MB</option>
-                                <option value="Link dedicado 500 MB">Link dedicado 500 MB</option>
-                            </select>
+                    <!-- empresa 1 -->
+                    <div style="display: <?php echo $emp1 ?>">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
+                            <div class="col-sm-11">
+                                <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
+                                    <option>Selecione o plano de internet</option>
+                                    <?php
+                                    foreach ($internet as $key => $int){
+                                        ?>
+                                        <option value="<?= $int['nome'] ?>" <?php if ($int['nome'] == $cliente['internet_venda_cliente']) echo 'selected' ?> ><?= $int['nome'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
 
-                        <label class="col-md-1 control-label" for="selectbasic">Telefonia</label>
-                        <div class="col-md-5">
-                            <select id="netfone_venda_cliente" name="netfone_venda_cliente" class="form-control">
-                                <option value="<?=$cliente['netfone_venda_cliente']?>"><?=$cliente['netfone_venda_cliente']?></option>
-                                <option value=""></option>
-                                <option value="Fale a Vontade Brasil Fixo e Celular">Fale a Vontade Brasil Fixo e Celular</option>
-                            </select>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="selectbasic">Telefonia</label>
+                            <div class="col-sm-11">
+                                <select id="netfone_venda_cliente" name="netfone_venda_cliente" class="form-control">
+                                    <option value="">Selecione o plano de telefone</option>
+                                    <?php
+                                    foreach ($fone as $key => $phone){
+                                        ?>
+                                        <option value="<?= $phone['nome'] ?>" <?php if ($phone['nome'] == $cliente['netfone_venda_cliente']) echo 'selected' ?> ><?= $phone['nome'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="textinput">Agregado</label>
+                            <div class="col-sm-11">
+                                <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <?php
+                                    foreach ($agregado as $key => $agre){
+                                        ?>
+                                        <option value="<?= $agre['nome'] ?>" <?php if ($agre['nome'] == $cliente['agregado_venda_cliente']) echo 'selected' ?> ><?= $agre['nome'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
                     </div>
+                    <!-- empresa 1 -->
 
-
+                    <!-- empresa 2 -->
+                    <div style="display: <?php echo $emp2 ?>">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
+                            <div class="col-sm-11">
+                                <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
+                                    <option>Selecione o plano de internet</option>
+                                    <?php
+                                    foreach ($internet as $key => $int){
+                                        ?>
+                                        <option value="<?= $int['nome'] ?>" <?php if ($int['nome'] == $cliente['internet_venda_cliente']) echo 'selected' ?> ><?= $int['nome'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- empresa 2 -->
 
                     <!-- Select Basic -->
                     <div class="form-group">
@@ -846,23 +929,6 @@ if($nivel == 2 OR $nivel == 3 OR $nivel == 4){
                                 <input style="display: <?php echo $emp ?>" type="tel" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" placeholder="N. Portabilidade Fixo" maxlength="15" class="form-control" name="portfone_venda_cliente" id="portfone_venda_cliente" value="<?=$cliente['portfone_venda_cliente']?>">
                                 <span style="display: <?php echo $emp ?>" class="input-group-addon label-white"><i class="glyphicon glyphicon-earphone"></i></span>
                             </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="col-sm-1 control-label" for="textinput">Agregado</label>
-                        <div class="col-sm-11">
-                            <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
-                                <option value="<?=$cliente['agregado_venda_cliente']?>"><?=$cliente['agregado_venda_cliente']?></option>
-                                <option value=""></option>
-                                <option value="0800">0800</option>
-                                <option value="Número único">Número único</option>
-                                <option value="DDG Nacional">DDG Nacional</option>
-                                <option value="Voz Total Solução em Nuvem">Voz Total Solução em Nuvem</option>
-                                <option value="Gerenciamento de Rede">Gerenciamento de Rede</option>
-                                <option value="Gerenciamento de Segurança Firewall">Gerenciamento de Segurança Firewall</option>
-                            </select>
                         </div>
                     </div>
 
