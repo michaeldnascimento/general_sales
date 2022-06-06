@@ -72,6 +72,18 @@ while ($agre = mysqli_fetch_assoc($resultAgregado)) {
     );
 }
 
+//SELECT TV
+$selectTV = "SELECT id, nome FROM tv WHERE status = 1 ORDER BY nome";
+$resultTV = mysqli_query($linkComMysql, $selectTV);
+$teve = array();
+
+while ($tv = mysqli_fetch_assoc($resultTV)) {
+    $teve[] = array(
+        'id' 		=> $tv['id'],
+        'nome'  	=> $tv['nome'],
+    );
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -304,7 +316,7 @@ include_once "../css/navbar/meunavbar.php";
                                             <option value=""></option>
                                             <option value="F">F</option>
                                             <option value="M">M</option>
-                                            <option value="OUTRO">M</option>
+                                            <option value="OUTRO">OUTROS</option>
                                         </select>
                                         <span class="input-group-addon label-white"><i class="glyphicon glyphicon-user"></i></span>
                                     </div>
@@ -532,6 +544,26 @@ include_once "../css/navbar/meunavbar.php";
                                     </select>
                                 </div>
                             </div>
+
+                            <!-- Select Basic -->
+                            <div class="form-group">
+
+                                <label class="col-sm-1 control-label" for="textinput">Operadora</label>
+                                <div class="col-sm-5">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Se portabilidade, Informe a operadora do telefone fixo" maxlength="14" class="form-control" name="portcelular_venda_cliente" id="portcelular_venda_cliente">
+                                        <span class="input-group-addon label-white"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    </div>
+                                </div>
+
+                                <label class="col-sm-1 control-label" for="textinput">Port. Fixo</label>
+                                <div class="col-sm-5">
+                                    <div class="input-group">
+                                        <input style="display: <?php echo $emp ?>" type="tel" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" placeholder="Digite o Número a ser portado" maxlength="15" class="form-control" name="portfone_venda_cliente" id="portfone_venda_cliente">
+                                        <span style="display: <?php echo $emp ?>" class="input-group-addon label-white"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- empresa 1 -->
 
@@ -552,31 +584,42 @@ include_once "../css/navbar/meunavbar.php";
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label" for="selectbasic">TV</label>
+                                <div class="col-sm-11">
+                                    <select id="tv_venda_cliente" name="tv_venda_cliente" class="form-control">
+                                        <option>Selecione o plano de TV</option>
+                                        <?php
+                                        foreach ($teve as $key => $tv){
+                                            ?>
+                                            <option value="<?= $tv['nome'] ?>"><?= $tv['nome'] ?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="textinput">Agregado</label>
+                            <div class="col-sm-11">
+                                <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <?php
+                                    foreach ($agregado as $key => $agre){
+                                        ?>
+                                        <option value="<?= $agre['nome'] ?>"><?= $agre['nome'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                             <!-- empresa 2 -->
 
-                            <!-- Select Basic -->
-                            <div class="form-group">
-
-                                <label style="display: <?php echo $emp ?>" class="col-sm-1 control-label" for="textinput">Operadora</label>
-                                <div class="col-sm-5">
-                                    <div class="input-group">
-                                        <input type="text" placeholder="Se portabilidade, Informe a operadora do telefone fixo" maxlength="14" class="form-control" name="portcelular_venda_cliente" id="portcelular_venda_cliente">
-                                        <span class="input-group-addon label-white"><i class="glyphicon glyphicon-earphone"></i></span>
-                                    </div>
-                                </div>
-
-                                <label style="display: <?php echo $emp ?>" class="col-sm-1 control-label" for="textinput">Port. Fixo</label>
-                                <div class="col-sm-5">
-                                    <div class="input-group">
-                                        <input style="display: <?php echo $emp ?>" type="tel" pattern="[0-9]+$" title="Nao sao aceitos (ABC.,/@$+-\*) somente numeros!" placeholder="Digite o Número a ser portado" maxlength="15" class="form-control" name="portfone_venda_cliente" id="portfone_venda_cliente">
-                                        <span style="display: <?php echo $emp ?>" class="input-group-addon label-white"><i class="glyphicon glyphicon-earphone"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
+                        <div class="form-group">
                                 <label class="col-sm-1 control-label" for="textinput">Valor Mensal</label>
                                 <div class="col-sm-2">
                                     <div class="input-group">

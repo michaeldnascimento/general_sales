@@ -187,6 +187,19 @@ while ($agre = mysqli_fetch_assoc($resultAgregado)) {
         'nome'  	=> $agre['nome'],
     );
 }
+
+//SELECT TV
+$selectTV = "SELECT id, nome FROM tv WHERE status = 1 ORDER BY nome";
+$resultTV = mysqli_query($linkComMysql, $selectTV);
+$teve = array();
+
+while ($tv = mysqli_fetch_assoc($resultTV)) {
+    $teve[] = array(
+        'id' 		=> $tv['id'],
+        'nome'  	=> $tv['nome'],
+    );
+}
+
 ?>
 
 
@@ -903,6 +916,36 @@ while ($agre = mysqli_fetch_assoc($resultAgregado)) {
                                     foreach ($internet as $key => $int){
                                         ?>
                                         <option value="<?= $int['nome'] ?>" <?php if ($int['nome'] == $cliente['internet_venda_cliente']) echo 'selected' ?> ><?= $int['nome'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="selectbasic">TV</label>
+                            <div class="col-sm-11">
+                                <select id="tv_venda_cliente" name="tv_venda_cliente" class="form-control">
+                                    <option>Selecione o plano de TV</option>
+                                    <?php
+                                    foreach ($teve as $key => $tv){
+                                        ?>
+                                        <option value="<?= $tv['nome'] ?>" <?php if ($tv['nome'] == $cliente['tv_venda_cliente']) echo 'selected' ?> ><?= $tv['nome'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="textinput">Agregado</label>
+                            <div class="col-sm-11">
+                                <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <?php
+                                    foreach ($agregado as $key => $agre){
+                                        ?>
+                                        <option value="<?= $agre['nome'] ?>" <?php if ($agre['nome'] == $cliente['agregado_venda_cliente']) echo 'selected' ?> ><?= $agre['nome'] ?></option>
                                         <?php
                                     }
                                     ?>
