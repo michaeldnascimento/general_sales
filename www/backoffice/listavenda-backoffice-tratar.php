@@ -35,7 +35,7 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
 
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusVenda_venda_cliente, lista_sistema, statusChecklist, flag FROM clientes WHERE (statusVenda_venda_cliente = 'ANALISE BACKOFFICE' OR statusVenda_venda_cliente = 'NOVA-VENDA' OR statusVenda_venda_cliente IS NULL) AND (motivo_cliente = 'VENDA - NOVO CLIENTE' OR motivo_cliente = 'VENDA - UPGRADE' OR motivo_cliente = 'VENDA - UPGRADE + MULTI' OR motivo_cliente = 'VENDA - BASE TV') {$sqlequipe} {$sqlempresa} AND ((MONTH(data_venda)) = MONTH(NOW()) AND (YEAR(data_venda)) = YEAR(NOW())) ORDER BY data_venda desc
+	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, operadora, nomeUsuario, nomeEquipe, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusVenda_venda_cliente, lista_sistema, statusChecklist, flag FROM clientes WHERE (statusVenda_venda_cliente = 'ANALISE BACKOFFICE' OR statusVenda_venda_cliente = 'NOVA-VENDA' OR statusVenda_venda_cliente IS NULL) AND (motivo_cliente = 'VENDA - NOVO CLIENTE' OR motivo_cliente = 'VENDA - UPGRADE' OR motivo_cliente = 'VENDA - UPGRADE + MULTI' OR motivo_cliente = 'VENDA - BASE TV') {$sqlequipe} {$sqlempresa} AND ((MONTH(data_venda)) = MONTH(NOW()) AND (YEAR(data_venda)) = YEAR(NOW())) ORDER BY data_venda desc
 	";
 
 
@@ -52,6 +52,7 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
 	'localizacao_assinante' => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
 	'nomeUsuario_assinante'	=> $cliente ['nomeUsuario'],
 	'dataVenda'	            => $cliente ['data_venda'],
+    'operadora'	            => $cliente ['operadora'],
     'statusPedido_assinante'=> $cliente ['statusPedido_venda_cliente'],
     'statusVenda_assinante'	=> $cliente ['statusVenda_venda_cliente'],
     'checklist'             => $cliente ['statusChecklist'],
@@ -140,12 +141,13 @@ include_once "../css/navbar/meunavbar.php";
 		                <tr>
 		                 
 		                 <th>ID</th>
-						         <th>NOME</th>
-						         <th>CODIGO</th>
+                         <th>NOME</th>
+                         <th>CODIGO</th>
 		                 <th>CIDADE/ESTADO</th>
 		                 <th>VENDEDOR</th>
 		                 <th>DATA VENDA</th>
-                     <th>CHECKLIST</th>
+                         <th>OPERADORA</th>
+                         <th>CHECKLIST</th>
 		                 <th>STATUS VENDA</th>
 		                 <th class="actions"><em class="glyphicon glyphicon-cog"></em></th>
 		                </tr>
@@ -185,6 +187,7 @@ include_once "../css/navbar/meunavbar.php";
             <td style="<?=$style?>"><?=$cliente['localizacao_assinante'];?></td>
             <td style="<?=$style?>"><?=$cliente['nomeUsuario_assinante'];?></td>
             <td style="<?=$style?>"><?=$cliente['dataVenda'];?></td>
+            <td style="<?=$style?>"><?=$cliente['operadora'];?></td>
             <td style="<?=$style?>"><?=$cliente['checklist'];?></td>
             <td style="<?=$style?>"><?=$cliente['statusVenda_assinante'];?></td>
             <td class="actions">

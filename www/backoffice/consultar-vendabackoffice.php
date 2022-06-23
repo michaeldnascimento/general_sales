@@ -5,111 +5,109 @@ session_start();
 include_once "../login/verifica.php";
 include_once "../login/visualizarlista.php";
 
-
 if($nivel == 2 OR $nivel == 3 OR $nivel == 4){
 
-
-
-    if ( isset($_GET['id']) && intval($_GET['id']) > 0 ) {
-        $id = intval($_GET['id']);
-        $lista = strval($_GET['lista']);
+if ( isset($_GET['id']) && intval($_GET['id']) > 0 ) {
+    $id = intval($_GET['id']);
+    $lista = strval($_GET['lista']);
 
 //conectar e selecionar o banco de dados mysql/agenda
-        include_once '../funcoes/conexaoPortari.php';
-        include_once '../funcoes/funcoes_geraisPortari.php';
+include_once '../funcoes/conexaoPortari.php';
+include_once '../funcoes/funcoes_geraisPortari.php';
 
-        $campos = array(
-            'id_cliente', //0
-            'nome_cliente', //1
-            'nome_contato_cliente',//2
-            'rg_ie_cliente', //3
-            'parentesco_cliente',
-            'cpf_cnpj_cliente',
-            'data_nasc_cliente',
-            'tipo_pessoa_cliente',
-            'sexo_cliente',
-            'nome_mae_cliente',
-            'codigoAntigo_cliente',
-            'email_cliente',
-            'ddd_fone_cliente',
-            'fone_cliente',
-            'ddd_celular_cliente',
-            'celular_cliente',
-            'ddd_fone3_cliente',
-            'fone3_cliente',
-            'ddd_fone4_cliente',
-            'fone4_cliente',
-            'origemCSV',
-            'cep_cliente',
-            'endereco_cliente',
-            'enderecoNumero_cliente',
-            'enderecoComplemento_cliente',
-            'observacao_cliente',
-            'bairro_cliente',
-            'cidade_cliente',
-            'estado_cliente',
-            'tv_venda_cliente',
-            'internet_venda_cliente',
-            'netfone_venda_cliente',
-            'portfone_venda_cliente',
-            'netcelular_venda_cliente',
-            'portcelular_venda_cliente',
-            'plano_multi_cliente',
-            'qtdchip_multi_cliente',
-            'agregado_venda_cliente',
-            'numPacote_venda_cliente',
-            'valor_venda_cliente',
-            'formaPagemento_cliente',
-            'vencimentoPagamento_cliente',
-            'pagamentoBanco_cliente',
-            'pagamentoAgencia_cliente',
-            'pagamentoConta_cliente',
-            'foneContato_venda_cliente',
-            'observacao_venda_cliente',
-            'numero_proposta_cliente',
-            'data_pre_agendamento_cliente',
-            'codigo_cliente',
-            'statusPedido_venda_cliente',
-            'motivoPendencia_venda_cliente',
-            'motivo_cliente',
-            'observacao_pedido_cliente',
-            'statusVenda_venda_cliente',
-            'data_inst_venda_cliente',
-            'data_ativacao',
-            'data_agendamento_venda_cliente',
-            'periodo_agendamento_back',
-            'data_canc_venda_cliente',
-            'motivoCanc_venda_cliente',
-            'motivoQuebra_venda_cliente',
-            'auditadoBack_venda_cliente',
-            'observacaoBack_venda_cliente',
-            'nomeUsuario',
-            'nomeEquipe',
-            'nomeEmpresa',
-            'data_venda',
-            'hora_venda',
-            'nomeUsuarioBack',
-            'nomeEquipeBack',
-            'nomeEmpresaBack',
-            'hora_back',
-            'data_back',
-            'auditoria_back',
-            'tipo_servico',
-            'tabulacao_auditoria',
-            'chipAtivo_cliente',
-            'tabulacao_chip',
-            'statusChecklist',
-            'multisales',
-            'fone_gravacao',
-            'fone_checklist',
-            'img_multisales',
-            'img_multisales2',
-            'img_multisales3',
-            'audio_multisales',
-            'lista_sistema',
-            'conexao'
+$campos = array(
+    'id_cliente', //0
+    'nome_cliente', //1
+    'nome_contato_cliente',//2
+    'rg_ie_cliente', //3
+    'parentesco_cliente',
+    'cpf_cnpj_cliente',
+    'data_nasc_cliente',
+    'tipo_pessoa_cliente',
+    'sexo_cliente',
+    'nome_mae_cliente',
+    'codigoAntigo_cliente',
+    'email_cliente',
+    'ddd_fone_cliente',
+    'fone_cliente',
+    'ddd_celular_cliente',
+    'celular_cliente',
+    'ddd_fone3_cliente',
+    'fone3_cliente',
+    'ddd_fone4_cliente',
+    'fone4_cliente',
+    'origemCSV',
+    'cep_cliente',
+    'endereco_cliente',
+    'enderecoNumero_cliente',
+    'enderecoComplemento_cliente',
+    'observacao_cliente',
+    'bairro_cliente',
+    'cidade_cliente',
+    'estado_cliente',
+    'tv_venda_cliente',
+    'internet_venda_cliente',
+    'netfone_venda_cliente',
+    'portfone_venda_cliente',
+    'netcelular_venda_cliente',
+    'portcelular_venda_cliente',
+    'plano_multi_cliente',
+    'qtdchip_multi_cliente',
+    'agregado_venda_cliente',
+    'numPacote_venda_cliente',
+    'valor_venda_cliente',
+    'formaPagemento_cliente',
+    'vencimentoPagamento_cliente',
+    'pagamentoBanco_cliente',
+    'pagamentoAgencia_cliente',
+    'pagamentoConta_cliente',
+    'foneContato_venda_cliente',
+    'observacao_venda_cliente',
+    'numero_proposta_cliente',
+    'data_pre_agendamento_cliente',
+    'codigo_cliente',
+    'statusPedido_venda_cliente',
+    'motivoPendencia_venda_cliente',
+    'motivo_cliente',
+    'observacao_pedido_cliente',
+    'statusVenda_venda_cliente',
+    'data_inst_venda_cliente',
+    'data_ativacao',
+    'data_agendamento_venda_cliente',
+    'periodo_agendamento_back',
+    'data_canc_venda_cliente',
+    'motivoCanc_venda_cliente',
+    'motivoQuebra_venda_cliente',
+    'auditadoBack_venda_cliente',
+    'observacaoBack_venda_cliente',
+    'nomeUsuario',
+    'nomeEquipe',
+    'nomeEmpresa',
+    'data_venda',
+    'hora_venda',
+    'nomeUsuarioBack',
+    'nomeEquipeBack',
+    'nomeEmpresaBack',
+    'hora_back',
+    'data_back',
+    'auditoria_back',
+    'tipo_servico',
+    'tabulacao_auditoria',
+    'chipAtivo_cliente',
+    'tabulacao_chip',
+    'statusChecklist',
+    'multisales',
+    'fone_gravacao',
+    'fone_checklist',
+    'img_multisales',
+    'img_multisales2',
+    'img_multisales3',
+    'audio_multisales',
+    'lista_sistema',
+    'conexao',
+    'operadora'
 
-        );
+);
 
 
         $tabelas = array(
@@ -150,6 +148,18 @@ if ($empresa == 1) {
 if ($empresa == 2) {
     $emp1 = 'none';
     $emp2 = '';
+}
+
+//SELECT OPERADORA
+$selectOperadora = "SELECT id, name FROM operadora WHERE status = 1  ORDER BY name";
+$resultOperadora = mysqli_query($linkComMysql, $selectOperadora);
+$operadora = array();
+
+while ($op = mysqli_fetch_assoc($resultOperadora)) {
+    $operadora[] = array(
+        'id' 		=> $op['id'],
+        'nome'  	=> $op['name'],
+    );
 }
 
 //SELECT INTERNET
@@ -699,7 +709,21 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                             </div>
                         </div>
 
-                        <label class="col-sm-4 control-label" for="textinput">Origem</label>
+                        <label class="col-sm-1 control-label" for="textinput">Operadora</label>
+                        <div class="col-sm-2">
+                            <select id="operadora" name="operadora" class="form-control">
+                                <option>Selecione Operadora</option>
+                                <?php
+                                foreach ($operadora as $key => $op){
+                                    ?>
+                                    <option value="<?= $op['nome'] ?>" <?php if ($op['nome'] == $cliente['operadora']) echo 'selected' ?> ><?= $op['nome'] ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+                        <label class="col-sm-1 control-label" for="textinput">Origem</label>
                         <div class="col-sm-2">
                             <div class="input-group">
                                 <input type="email" class="form-control" name="origemCSV" id="origemCSV" value="<?=$cliente['origemCSV']?>" readonly>
@@ -854,7 +878,7 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                     </div>
 
                     <!-- empresa 1 -->
-                    <div style="display: <?php echo $emp1 ?>">
+                    <div>
                         <div class="form-group">
                             <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
                             <div class="col-sm-11">
@@ -864,6 +888,22 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                                     foreach ($internet as $key => $int){
                                         ?>
                                         <option value="<?= $int['nome'] ?>" <?php if ($int['nome'] == $cliente['internet_venda_cliente']) echo 'selected' ?> ><?= $int['nome'] ?></option>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label" for="selectbasic">TV</label>
+                            <div class="col-sm-11">
+                                <select id="tv_venda_cliente" name="tv_venda_cliente" class="form-control">
+                                    <option>Selecione o plano de TV</option>
+                                    <?php
+                                    foreach ($teve as $key => $tv){
+                                        ?>
+                                        <option value="<?= $tv['nome'] ?>" <?php if ($tv['nome'] == $cliente['tv_venda_cliente']) echo 'selected' ?> ><?= $tv['nome'] ?></option>
                                         <?php
                                     }
                                     ?>
@@ -904,56 +944,6 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                         </div>
                     </div>
                     <!-- empresa 1 -->
-
-                    <!-- empresa 2 -->
-                    <div style="display: <?php echo $emp2 ?>">
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
-                            <div class="col-sm-11">
-                                <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
-                                    <option>Selecione o plano de internet</option>
-                                    <?php
-                                    foreach ($internet as $key => $int){
-                                        ?>
-                                        <option value="<?= $int['nome'] ?>" <?php if ($int['nome'] == $cliente['internet_venda_cliente']) echo 'selected' ?> ><?= $int['nome'] ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label" for="selectbasic">TV</label>
-                            <div class="col-sm-11">
-                                <select id="tv_venda_cliente" name="tv_venda_cliente" class="form-control">
-                                    <option>Selecione o plano de TV</option>
-                                    <?php
-                                    foreach ($teve as $key => $tv){
-                                        ?>
-                                        <option value="<?= $tv['nome'] ?>" <?php if ($tv['nome'] == $cliente['tv_venda_cliente']) echo 'selected' ?> ><?= $tv['nome'] ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label" for="textinput">Agregado</label>
-                            <div class="col-sm-11">
-                                <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
-                                    <option value="">Selecione</option>
-                                    <?php
-                                    foreach ($agregado as $key => $agre){
-                                        ?>
-                                        <option value="<?= $agre['nome'] ?>" <?php if ($agre['nome'] == $cliente['agregado_venda_cliente']) echo 'selected' ?> ><?= $agre['nome'] ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- empresa 2 -->
 
                     <!-- Select Basic -->
                     <div class="form-group">

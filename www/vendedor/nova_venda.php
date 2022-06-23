@@ -36,8 +36,23 @@ if ( isset($_SESSION['mensagem']) && $_SESSION['mensagem'] != "") {
     $alerta = 'none';
 }
 
+//GET ID OPERADORA
+$name_operadora = $_GET['operadora'];
+
+//SELECT OPERADORA
+$selectOperadora = "SELECT id, name FROM operadora WHERE status = 1  ORDER BY name";
+$resultOperadora = mysqli_query($linkComMysql, $selectOperadora);
+$operadora = array();
+
+while ($op = mysqli_fetch_assoc($resultOperadora)) {
+    $operadora[] = array(
+        'id' 		=> $op['id'],
+        'nome'  	=> $op['name'],
+    );
+}
+
 //SELECT INTERNET
-$selectInternet = "SELECT id, nome FROM internet WHERE status = 1 ORDER BY nome";
+$selectInternet = "SELECT id, nome FROM internet WHERE status = 1 AND operadora = '$name_operadora' ORDER BY nome";
 $resultInternet = mysqli_query($linkComMysql, $selectInternet);
 $internet = array();
 
@@ -49,7 +64,7 @@ while ($int = mysqli_fetch_assoc($resultInternet)) {
 }
 
 //SELECT FONE
-$selectFone = "SELECT id, nome FROM telefonia WHERE status = 1 ORDER BY nome";
+$selectFone = "SELECT id, nome FROM telefonia WHERE status = 1 AND operadora = '$name_operadora' ORDER BY nome";
 $resultFone = mysqli_query($linkComMysql, $selectFone);
 $fone = array();
 
@@ -61,7 +76,7 @@ while ($phone = mysqli_fetch_assoc($resultFone)) {
 }
 
 //SELECT AGREGADO
-$selectAgregado = "SELECT id, nome FROM agregado WHERE status = 1 ORDER BY nome";
+$selectAgregado = "SELECT id, nome FROM agregado WHERE status = 1 AND operadora = '$name_operadora' ORDER BY nome";
 $resultAgregado = mysqli_query($linkComMysql, $selectAgregado);
 $agregado = array();
 
@@ -73,7 +88,7 @@ while ($agre = mysqli_fetch_assoc($resultAgregado)) {
 }
 
 //SELECT TV
-$selectTV = "SELECT id, nome FROM tv WHERE status = 1 ORDER BY nome";
+$selectTV = "SELECT id, nome FROM tv WHERE status = 1 AND operadora = '$name_operadora' ORDER BY nome";
 $resultTV = mysqli_query($linkComMysql, $selectTV);
 $teve = array();
 
@@ -83,7 +98,6 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
         'nome'  	=> $tv['nome'],
     );
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -167,7 +181,6 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                 limpa_formulário_cep();
             }
         };
-
 
     </script>
 
@@ -337,15 +350,15 @@ include_once "../css/navbar/meunavbar.php";
                             <!-- Text input-->
                             <div class="form-group">
                                 <label class="col-sm-1 control-label" for="textinput">Email</label>
-                                <div class="col-sm-5">
+                                <div class="col-sm-6">
                                     <div class="input-group">
                                         <input type="email" placeholder="email@exemplo.com" maxlength="50" class="form-control" name="email_cliente" id="email_cliente">
                                         <span class="input-group-addon label-white"><i class="glyphicon glyphicon-envelope"></i></span>
                                     </div>
                                 </div>
 
-                                <label class="col-sm-4 control-label" for="textinput">Origem Venda</label>
-                                <div class="col-sm-2">
+                                <label class="col-sm-2 control-label" for="textinput">Origem Venda</label>
+                                <div class="col-sm-3">
                                     <div class="input-group">
                                         <select id="origemCSV" name="origemCSV" class="form-control">
                                             <option value="">Selecione Origem</option>
@@ -496,7 +509,6 @@ include_once "../css/navbar/meunavbar.php";
                     <div class="col-sm-12">
 
                         <!-- empresa 1 -->
-                        <div style="display: <?php echo $emp1 ?>">
                             <div class="form-group">
                                 <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
                                 <div class="col-sm-11">
@@ -505,7 +517,7 @@ include_once "../css/navbar/meunavbar.php";
                                         <?php
                                         foreach ($internet as $key => $int){
                                             ?>
-                                            <option value="<?= $int['nome'] ?>"><?= $int['nome'] ?></option>
+                                            <option value="<?=$int['nome'];?>"><?=$int['nome'];?></option>
                                             <?php
                                         }
                                         ?>
@@ -517,11 +529,27 @@ include_once "../css/navbar/meunavbar.php";
                                 <label class="col-sm-1 control-label" for="selectbasic">Telefonia</label>
                                 <div class="col-sm-11">
                                     <select id="netfone_venda_cliente" name="netfone_venda_cliente" class="form-control">
-                                        <option value="">Selecione o plano de telefone</option>
+                                        <option>Selecione o plano de telefone</option>
                                         <?php
                                         foreach ($fone as $key => $phone){
                                             ?>
-                                            <option value="<?= $phone['nome'] ?>"><?= $phone['nome'] ?></option>
+                                            <option value="<?=$phone['nome'];?>"><?=$phone['nome'];?></option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-1 control-label" for="selectbasic">TV</label>
+                                <div class="col-sm-11">
+                                    <select id="tv_venda_cliente" name="tv_venda_cliente" class="form-control">
+                                        <option>Selecione o plano de TV</option>
+                                        <?php
+                                        foreach ($teve as $key => $tv){
+                                            ?>
+                                            <option value="<?=$tv['nome'];?>"><?=$tv['nome'];?></option>
                                             <?php
                                         }
                                         ?>
@@ -533,11 +561,11 @@ include_once "../css/navbar/meunavbar.php";
                                 <label class="col-sm-1 control-label" for="textinput">Agregado</label>
                                 <div class="col-sm-11">
                                     <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
-                                        <option value="">Selecione</option>
+                                        <option>Selecione Agregado</option>
                                         <?php
                                         foreach ($agregado as $key => $agre){
                                             ?>
-                                            <option value="<?= $agre['nome'] ?>"><?= $agre['nome'] ?></option>
+                                            <option value="<?=$agre['nome'];?>"><?=$agre['nome'];?></option>
                                             <?php
                                         }
                                         ?>
@@ -564,60 +592,8 @@ include_once "../css/navbar/meunavbar.php";
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <!-- empresa 1 -->
 
-                        <!-- empresa 2 -->
-                        <div style="display: <?php echo $emp2 ?>">
-                            <div class="form-group">
-                                <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
-                                <div class="col-sm-11">
-                                    <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
-                                        <option>Selecione o plano de internet</option>
-                                        <?php
-                                        foreach ($internet as $key => $int){
-                                            ?>
-                                            <option value="<?= $int['nome'] ?>"><?= $int['nome'] ?></option>
-                                            <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-1 control-label" for="selectbasic">TV</label>
-                                <div class="col-sm-11">
-                                    <select id="tv_venda_cliente" name="tv_venda_cliente" class="form-control">
-                                        <option>Selecione o plano de TV</option>
-                                        <?php
-                                        foreach ($teve as $key => $tv){
-                                            ?>
-                                            <option value="<?= $tv['nome'] ?>"><?= $tv['nome'] ?></option>
-                                            <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label" for="textinput">Agregado</label>
-                            <div class="col-sm-11">
-                                <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
-                                    <option value="">Selecione</option>
-                                    <?php
-                                    foreach ($agregado as $key => $agre){
-                                        ?>
-                                        <option value="<?= $agre['nome'] ?>"><?= $agre['nome'] ?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                            <!-- empresa 2 -->
 
                         <div class="form-group">
                                 <label class="col-sm-1 control-label" for="textinput">Valor Mensal</label>
@@ -691,6 +667,8 @@ include_once "../css/navbar/meunavbar.php";
 
                             <input type="text" style="display: none" name="nomeEmpresa" class="form-control input-md" id="nomeEmpresa" value="<?=$nomePrestadora?>">
 
+                            <input type="text" style="display: none" name="operadora" class="form-control input-md" id="operadora" value="<?=$name_operadora?>">
+
                             <input type="text" style="display: none" name="motivo_cliente" class="form-control input-md" id="motivo_cliente" value="VENDA - NOVO CLIENTE">
 
                             <input type="text" style="display: none" name="statusVenda_venda_cliente" class="form-control input-md" id="statusVenda_venda_cliente" value="ANALISE BACKOFFICE">
@@ -716,11 +694,55 @@ include_once "../css/navbar/meunavbar.php";
             </div>
         </div>
     </div>
-    </body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModalOperadora" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Qual Operadora?</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                    <div class="col-12">
+                            <select id="name_operadora" name="operadora" onchange="selectOP()" class="form-control">
+                                <option>Selecione Operadora</option>
+                                <?php
+                                foreach ($operadora as $key => $op){
+                                    ?>
+                                    <option value="<?= $op['nome'] ?>"><?= $op['nome'] ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+</body>
 <script src="../js/jquery-2.2.3.min.js"></script>
 <script src="../js/scripts-geral.js"></script>
 <script src="../css/bootstrap/js/bootstrap.min.js"></script>
 <script src="../js/jquery.maskedinput.min.js"></script>
 <script src="../js/funcao-maskemoney.js"></script>
 <script src="../css/bootstrap/js/meunavbar2.js"></script>
+
+<?php
+if (empty($_GET['operadora'])){
+?>
+    <script>
+        $(document).ready(function(){
+            $('#myModalOperadora').modal({
+                backdrop: 'static',
+                keyboard: true,
+                show: true
+            });
+        });
+    </script>
+<?php
+}
+?>
 </html>

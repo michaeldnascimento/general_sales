@@ -65,7 +65,7 @@ if ($_POST['data1'] !="" OR $_POST['data2'] !="") {
 
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema FROM clientes WHERE statusVenda_venda_cliente = 'INSTALADO' {$vendedor} {$sqlempresa} {$equipe} {$empresa} {$sqlequipe} AND data_inst_venda_cliente BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}' ORDER BY SUBSTR( data_inst_venda_cliente, 7, 4), SUBSTR( data_inst_venda_cliente, 4, 2), SUBSTR( data_inst_venda_cliente, 1, 2) desc
+	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, operadora, nomeUsuario, nomeEquipe, nomeEmpresa, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema FROM clientes WHERE statusVenda_venda_cliente = 'INSTALADO' {$vendedor} {$sqlempresa} {$equipe} {$empresa} {$sqlequipe} AND data_inst_venda_cliente BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}' ORDER BY SUBSTR( data_inst_venda_cliente, 7, 4), SUBSTR( data_inst_venda_cliente, 4, 2), SUBSTR( data_inst_venda_cliente, 1, 2) desc
 	";
 //echo $stringSql;
 
@@ -81,6 +81,7 @@ $clientes = array();
 	'codigo_assinante'	      => $cliente ['codigo_cliente'],
 	'localizacao_assinante'   => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
 	'nomeUsuario_assinante'   => $cliente ['nomeUsuario'],
+    'operadora'	              => $cliente ['operadora'],
 	'dataVenda'	              => $cliente ['data_venda'],
 	'nomeBack'				  => $cliente ['nomeUsuarioBack'],
 	'statusVenda_assinante'	  => $cliente ['statusVenda_venda_cliente'],
@@ -92,7 +93,7 @@ $clientes = array();
 }else{
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema FROM clientes WHERE statusVenda_venda_cliente = 'INSTALADO' {$sqlequipe} {$sqlempresa} AND (MONTH(data_inst_venda_cliente)) = MONTH(NOW()) AND (MONTH(data_venda)) = MONTH(NOW()) AND (YEAR(data_venda)) = YEAR(NOW()) ORDER BY data_inst_venda_cliente desc
+	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, operadora, nomeUsuario, nomeEquipe, nomeEmpresa, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema FROM clientes WHERE statusVenda_venda_cliente = 'INSTALADO' {$sqlequipe} {$sqlempresa} AND (MONTH(data_inst_venda_cliente)) = MONTH(NOW()) AND (MONTH(data_venda)) = MONTH(NOW()) AND (YEAR(data_venda)) = YEAR(NOW()) ORDER BY data_inst_venda_cliente desc
 	";
 
 
@@ -108,6 +109,7 @@ $clientes = array();
 	'codigo_assinante'	    => $cliente ['codigo_cliente'],
 	'localizacao_assinante' => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
 	'nomeUsuario_assinante'	=> $cliente ['nomeUsuario'],
+    'operadora'	            => $cliente ['operadora'],
 	'dataVenda'	            => $cliente ['data_venda'],
 	'nomeBack'				=> $cliente ['nomeUsuarioBack'],
 	'statusVenda_assinante'	=> $cliente ['statusVenda_venda_cliente'],
@@ -242,14 +244,9 @@ include_once "../css/navbar/meunavbar.php";
 			<div style="display: <?php echo $verempresas ?>" class="col-sm-2">
 			<select id="empresa" name="empresa" class="form-control">
 			<option value="">TODOS</option>
-	        <option value="EMPRESA 1">EMPRESA 1-RSTELECOM</option>
-	        <option value="EMPRESA 2">EMPRESA 2-MACHADO</option>
-	        <option value="EMPRESA 3">EMPRESA 3-LEONARDO</option>
-	        <option value="EMPRESA 4">EMPRESA 4-FLEXCELL</option>
-	        <option value="EMPRESA 5">EMPRESA 5-CRISTIANO</option>
-	        <option value="EMPRESA 6">EMPRESA 6-SAHIMON</option>
-	        <option value="EMPRESA 7">EMPRESA 7-AGNALDO</option>
-	        <option value="EMPRESA 8">EMPRESA 8</option>
+	        <option value="EMPRESA 1">EMPRESA 1</option>
+	        <option value="EMPRESA 2">EMPRESA 2</option>
+	        <option value="EMPRESA 3">EMPRESA 3</option>
 	        <option value="GERAL"     >GERAL</option>
 			</select>
 			</div>
@@ -315,6 +312,7 @@ include_once "../css/navbar/meunavbar.php";
 		                 <th>EMPRESA</th>
 		                 <th>DATA VENDA</th>
 		                 <th>BACKOFFICE</th>
+                         <th>OPERADORA</th>
 		                 <th>STATUS VENDA</th>
 		                 <th>INSTALADO</th>
 		                 <th class="actions"><em class="glyphicon glyphicon-cog"></em></th>
@@ -345,6 +343,7 @@ $cliente['nome_cliente'] = substr_replace($cliente['nome_cliente'], (strlen($cli
 			<td style="<?=$style?>"><?=$cliente['empresa'];?></td>
 			<td style="<?=$style?>"><?=$cliente['dataVenda'];?></td>
 			<td style="<?=$style?>"><?=$cliente['nomeBack'];?></td>
+            <td style="<?=$style?>"><?=$cliente['operadora'];?></td>
 			<td style="<?=$style?>"><?=$cliente['statusVenda_assinante'];?></td>
 			<td style="<?=$style?>"><?=$cliente['datainstalacao'];?></td>
 			<td class="actions">

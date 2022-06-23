@@ -31,7 +31,7 @@ if ($_POST['data1'] !="" OR $_POST['data2'] !="") {
 
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusVenda_venda_cliente, motivoCanc_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema FROM clientes WHERE statusVenda_venda_cliente = 'CANCELADO' {$vendedor} AND data_canc_venda_cliente BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}' ORDER BY data_canc_venda_cliente desc
+	SELECT id_cliente, nome_cliente, codigo_cliente, operadora, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusVenda_venda_cliente, motivoCanc_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema FROM clientes WHERE statusVenda_venda_cliente = 'CANCELADO' {$vendedor} AND data_canc_venda_cliente BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}' ORDER BY data_canc_venda_cliente desc
 	";
 
 
@@ -42,25 +42,24 @@ $clientes = array();
 
 while ($cliente = mysqli_fetch_assoc($resultado)) {
 	$clientes[] = array(
-	'id' 		  		            => $cliente ['id_cliente'],
-	'nome_cliente'  	        => $cliente ['nome_cliente'],
-	'codigo_assinante'	      => $cliente ['codigo_cliente'],
-	'localizacao_assinante'   => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
-	'nomeUsuario_assinante'  	=> $cliente ['nomeUsuario'],
-	'dataVenda'	              => $cliente ['data_venda'],
-    'nomeBack'				      => $cliente ['nomeUsuarioBack'],
+    'id' 		  		    => $cliente ['id_cliente'],
+    'nome_cliente'  	    => $cliente ['nome_cliente'],
+    'codigo_assinante'	    => $cliente ['codigo_cliente'],
+    'localizacao_assinante' => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
+    'nomeUsuario_assinante'	=> $cliente ['nomeUsuario'],
+    'dataVenda'	            => $cliente ['data_venda'],
+    'operadora'	            => $cliente ['operadora'],
+    'nomeBack'			    => $cliente ['nomeUsuarioBack'],
     'statusVenda_assinante'	=> $cliente ['statusVenda_venda_cliente'],
     'datacancelamento'	    => $cliente ['data_canc_venda_cliente'],
-    'motivo'	    => $cliente ['motivoCanc_venda_cliente'],
-
-
+    'motivo'	            => $cliente ['motivoCanc_venda_cliente'],
 	);
     }
 
 }else{
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusVenda_venda_cliente, motivoCanc_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema FROM clientes WHERE statusVenda_venda_cliente = 'CANCELADO' AND (MONTH(data_canc_venda_cliente)) = MONTH(NOW()) AND (MONTH(data_venda)) = MONTH(NOW()) AND (YEAR(data_venda)) = YEAR(NOW()) ORDER BY data_canc_venda_cliente desc
+	SELECT id_cliente, nome_cliente, codigo_cliente, operadora, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusVenda_venda_cliente, motivoCanc_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema FROM clientes WHERE statusVenda_venda_cliente = 'CANCELADO' AND (MONTH(data_canc_venda_cliente)) = MONTH(NOW()) AND (MONTH(data_venda)) = MONTH(NOW()) AND (YEAR(data_venda)) = YEAR(NOW()) ORDER BY data_canc_venda_cliente desc
 	";
 
 
@@ -71,16 +70,17 @@ $clientes = array();
 
 while ($cliente = mysqli_fetch_assoc($resultado)) {
 	$clientes[] = array(
-	'id' 		  		          => $cliente ['id_cliente'],
-	'nome_cliente'  	      => $cliente ['nome_cliente'],
-	'codigo_assinante'	    => $cliente ['codigo_cliente'],
-	'localizacao_assinante' => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
-	'nomeUsuario_assinante'	=> $cliente ['nomeUsuario'],
-	'dataVenda'	            => $cliente ['data_venda'],
-  'nomeBack'			       	=> $cliente ['nomeUsuarioBack'],
-  'statusVenda_assinante'	=> $cliente ['statusVenda_venda_cliente'],
-  'datacancelamento'	    => $cliente ['data_canc_venda_cliente'],
-  'motivo'	    => $cliente ['motivoCanc_venda_cliente'],
+    'id' 		  		    => $cliente ['id_cliente'],
+    'nome_cliente'  	    => $cliente ['nome_cliente'],
+    'codigo_assinante'	    => $cliente ['codigo_cliente'],
+    'localizacao_assinante' => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
+    'nomeUsuario_assinante'	=> $cliente ['nomeUsuario'],
+    'dataVenda'	            => $cliente ['data_venda'],
+    'operadora'	            => $cliente ['operadora'],
+    'nomeBack'			    => $cliente ['nomeUsuarioBack'],
+    'statusVenda_assinante'	=> $cliente ['statusVenda_venda_cliente'],
+    'datacancelamento'	    => $cliente ['data_canc_venda_cliente'],
+    'motivo'	            => $cliente ['motivoCanc_venda_cliente'],
 	);
 
 	}
@@ -255,6 +255,7 @@ include_once "../css/navbar/meunavbar.php";
 		                 <th>DATA VENDA</th>
 		                 <th>BACKOFFICE</th>
 		                 <th>STATUS VENDA</th>
+                         <th>OPERADORA</th>
 		                 <th>MOTIVO</th>
 		                 <th>CANCELADO</th>
 		                 <th class="actions"><em class="glyphicon glyphicon-cog"></em></th>
@@ -286,6 +287,7 @@ include_once "../css/navbar/meunavbar.php";
 		                    <td style="<?=$style?>"><?=$cliente['dataVenda'];?></td>
 		                    <td style="<?=$style?>"><?=$cliente['nomeBack'];?></td>
 		                    <td style="<?=$style?>"><?=$cliente['statusVenda_assinante'];?></td>
+                            <td style="<?=$style?>"><?=$cliente['operadora'];?></td>
 		                    <td style="<?=$style?>"><?=$cliente['motivo'];?></td>
 		                    <td style="<?=$style?>"><?=$cliente['datacancelamento'];?></td>
 		                    <td class="actions">

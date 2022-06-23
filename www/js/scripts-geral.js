@@ -130,10 +130,15 @@ $(document).ready(function(){
 
 });
 
+//GET SELECT OPERADORA MODAL
+function selectOP(){
+        let select = document.getElementById('name_operadora');
+        let name_operadora = select.options[select.selectedIndex].value;
 
-
-
-
+        if (name_operadora !== '') {
+            document.location.href = "nova_venda.php?operadora=" + name_operadora;
+        }
+}
 
 
 /*

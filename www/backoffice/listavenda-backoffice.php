@@ -102,7 +102,7 @@ if ($_POST['data1'] !="" OR $_POST['data2'] !="") {
 
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, cpf_cnpj_cliente, rg_ie_cliente, data_nasc_cliente, email_cliente, sexo_cliente, tipo_pessoa_cliente, nome_mae_cliente, codigo_cliente, fone_cliente, celular_cliente,  fone3_cliente, fone4_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, login_net, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusChecklist, conexao, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, date_format(data_ativacao,'%d/%m/%Y')as data_ativacao, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, date_format(data_agendamento_venda_cliente,'%d/%m/%Y')as data_agendamento_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, plano_multi_cliente, qtdchip_multi_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema, tipo_servico, observacaoBack_venda_cliente, flag FROM clientes WHERE ({$status}) {$sqlequipe} {$sqlempresa} {$equipe} {$empresa} {$conexao} AND ({$vendedor}  {$data} BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY data_venda desc";
+	SELECT id_cliente, nome_cliente, operadora, cpf_cnpj_cliente, rg_ie_cliente, data_nasc_cliente, email_cliente, sexo_cliente, tipo_pessoa_cliente, nome_mae_cliente, codigo_cliente, fone_cliente, celular_cliente,  fone3_cliente, fone4_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, login_net, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusChecklist, conexao, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, date_format(data_ativacao,'%d/%m/%Y')as data_ativacao, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, date_format(data_agendamento_venda_cliente,'%d/%m/%Y')as data_agendamento_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, plano_multi_cliente, qtdchip_multi_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema, tipo_servico, observacaoBack_venda_cliente, flag FROM clientes WHERE ({$status}) {$sqlequipe} {$sqlempresa} {$equipe} {$empresa} {$conexao} AND ({$vendedor}  {$data} BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY data_venda desc";
 //echo $stringSql;
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
@@ -112,19 +112,20 @@ $clientes = array();
 
 while ($cliente = mysqli_fetch_assoc($resultado)) {
 	$clientes[] = array(
-	'id' 		  		          => $cliente ['id_cliente'],
-	'nome_cliente'  	      => $cliente ['nome_cliente'],
+	'id' 		  		    => $cliente ['id_cliente'],
+	'nome_cliente'  	    => $cliente ['nome_cliente'],
 	'codigo_assinante'	    => $cliente ['codigo_cliente'],
-  'localizacao_assinante' => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
+    'localizacao_assinante' => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
 	'nomeUsuario_assinante'	=> $cliente ['nomeUsuario'],
 	'dataVenda'	            => $cliente ['data_venda'],
-	'tiposervico'	          => $cliente ['tipo_servico'],
-	'nomeBack'				      => $cliente ['nomeUsuarioBack'],
+	'tiposervico'	        => $cliente ['tipo_servico'],
+    'nomeBack'				=> $cliente ['nomeUsuarioBack'],
 	'conexao'               => $cliente ['conexao'],
 	'statusVenda_assinante'	=> $cliente ['statusVenda_venda_cliente'],
 	'flag'                  => $cliente ['flag'],
-  'empresa'               => $cliente ['nomeEquipe']." - ". $cliente ['nomeEmpresa'],
-  'observacaoBack'        => $cliente ['observacaoBack_venda_cliente'],
+    'operadora'             => $cliente ['operadora'],
+    'empresa'               => $cliente ['nomeEquipe']." - ". $cliente ['nomeEmpresa'],
+    'observacaoBack'        => $cliente ['observacaoBack_venda_cliente'],
 	);
     }
 
@@ -132,7 +133,7 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
 
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, cpf_cnpj_cliente, rg_ie_cliente, data_nasc_cliente, email_cliente, sexo_cliente, tipo_pessoa_cliente, nome_mae_cliente, codigo_cliente, fone_cliente, celular_cliente,  fone3_cliente, fone4_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, login_net, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusChecklist, conexao, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, date_format(data_ativacao,'%d/%m/%Y')as data_ativacao, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, date_format(data_agendamento_venda_cliente,'%d/%m/%Y')as data_agendamento_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, plano_multi_cliente, qtdchip_multi_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema, tipo_servico, observacaoBack_venda_cliente, flag FROM clientes WHERE (motivo_cliente = 'VENDA - NOVO CLIENTE' OR motivo_cliente = 'VENDA - UPGRADE' OR motivo_cliente = 'VENDA - UPGRADE + MULTI' OR motivo_cliente = 'VENDA - BASE TV') {$sqlequipe} {$sqlempresa} AND ((MONTH(data_inst_venda_cliente)) = MONTH(NOW()) AND (YEAR(data_inst_venda_cliente)) = YEAR(NOW()) OR (MONTH(data_venda)) = MONTH(NOW()) AND (YEAR(data_venda)) = YEAR(NOW()) OR (MONTH(data_agendamento_venda_cliente)) = MONTH(NOW()) AND (YEAR(data_agendamento_venda_cliente)) = YEAR(NOW())OR (MONTH(data_canc_venda_cliente)) = MONTH(NOW()) AND (YEAR(data_canc_venda_cliente)) = YEAR(NOW())) ORDER BY data_venda desc
+	SELECT id_cliente, nome_cliente, operadora, cpf_cnpj_cliente, rg_ie_cliente, data_nasc_cliente, email_cliente, sexo_cliente, tipo_pessoa_cliente, nome_mae_cliente, codigo_cliente, fone_cliente, celular_cliente,  fone3_cliente, fone4_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, login_net, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusChecklist, conexao, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, date_format(data_ativacao,'%d/%m/%Y')as data_ativacao, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, date_format(data_agendamento_venda_cliente,'%d/%m/%Y')as data_agendamento_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, plano_multi_cliente, qtdchip_multi_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema, tipo_servico, observacaoBack_venda_cliente, flag FROM clientes WHERE (motivo_cliente = 'VENDA - NOVO CLIENTE' OR motivo_cliente = 'VENDA - UPGRADE' OR motivo_cliente = 'VENDA - UPGRADE + MULTI' OR motivo_cliente = 'VENDA - BASE TV') {$sqlequipe} {$sqlempresa} AND ((MONTH(data_inst_venda_cliente)) = MONTH(NOW()) AND (YEAR(data_inst_venda_cliente)) = YEAR(NOW()) OR (MONTH(data_venda)) = MONTH(NOW()) AND (YEAR(data_venda)) = YEAR(NOW()) OR (MONTH(data_agendamento_venda_cliente)) = MONTH(NOW()) AND (YEAR(data_agendamento_venda_cliente)) = YEAR(NOW())OR (MONTH(data_canc_venda_cliente)) = MONTH(NOW()) AND (YEAR(data_canc_venda_cliente)) = YEAR(NOW())) ORDER BY data_venda desc
 	";
 //echo $stringSql;
 $resultado = mysqli_query($linkComMysql, $stringSql);
@@ -148,13 +149,14 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
 	'localizacao_assinante' => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
 	'nomeUsuario_assinante'	=> $cliente ['nomeUsuario'],
 	'dataVenda'	            => $cliente ['data_venda'],
-	'tiposervico'	          => $cliente ['tipo_servico'],
-	'nomeBack'				      => $cliente ['nomeUsuarioBack'],
+	'tiposervico'	        => $cliente ['tipo_servico'],
+	'nomeBack'				=> $cliente ['nomeUsuarioBack'],
 	'conexao'               => $cliente ['conexao'],
 	'statusVenda_assinante'	=> $cliente ['statusVenda_venda_cliente'],
 	'flag'                  => $cliente ['flag'],
-  'empresa'               => $cliente ['nomeEquipe']." - ". $cliente ['nomeEmpresa'],
-  'observacaoBack'        => $cliente ['observacaoBack_venda_cliente'],
+    'operadora'             => $cliente ['operadora'],
+    'empresa'               => $cliente ['nomeEquipe']." - ". $cliente ['nomeEmpresa'],
+     'observacaoBack'       => $cliente ['observacaoBack_venda_cliente'],
 	);
 }
 }
@@ -302,15 +304,9 @@ include_once "../css/navbar/meunavbar.php";
       <div style="display: <?php echo $verempresas ?>" class="col-sm-2">
       <select id="empresa" name="empresa" class="form-control">
       <option value="">TODOS</option>
-          <option value="EMPRESA 1">EMPRESA 1-RSTELECOM</option>
-          <option value="EMPRESA 2">EMPRESA 2-MACHADO</option>
-          <option value="EMPRESA 3">EMPRESA 3-LEONARDO</option>
-          <option value="EMPRESA 4">EMPRESA 4-FLEXCELL</option>
-          <option value="EMPRESA 5">EMPRESA 5-CRISTIANO</option>
-          <option value="EMPRESA 6">EMPRESA 6-SAHIMON</option>
-          <option value="EMPRESA 7">EMPRESA 7-AGNALDO</option>
-          <option value="EMPRESA 8">EMPRESA 8</option>
-          <option value="EMPRESA 9">EMPRESA 9-FELIPE</option>
+          <option value="EMPRESA 1">EMPRESA 1</option>
+          <option value="EMPRESA 2">EMPRESA 2</option>
+          <option value="EMPRESA 3">EMPRESA 3</option>
           <option value="GERAL"     >GERAL</option>
       </select>
       </div>
@@ -440,8 +436,7 @@ include_once "../css/navbar/meunavbar.php";
                 <th>VENDEDOR</th>
                 <th>EMPRESA</th>
                 <th>DATA VENDA</th>
-                <th>SERVICO</th>
-                <th>CONEXAO</th>
+                <th>OPERADORA</th>
                 <th>BACKOFFICE</th>
                 <th>STATUS VENDA</th>
                 <th class="actions"><em class="glyphicon glyphicon-cog"></em></th>
@@ -479,8 +474,7 @@ include_once "../css/navbar/meunavbar.php";
           <td style="<?=$style?>"><?=$cliente['nomeUsuario_assinante'];?></td>
           <td style="<?=$style?>"><?=$cliente['empresa'];?></td>
           <td style="<?=$style?>"><?=$cliente['dataVenda'];?></td>
-          <td style="<?=$style?>"><?=$cliente['tiposervico'];?></td>
-          <td style="<?=$style?>"><?=$cliente['conexao'];?></td>
+          <td style="<?=$style?>"><?=$cliente['operadora'];?></td>
           <td style="<?=$style?>"><?=$cliente['nomeBack'];?></td>
           <td style="<?=$style?>"><?=$cliente['statusVenda_assinante'];?></td>
           <td class="actions">

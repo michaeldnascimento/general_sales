@@ -71,6 +71,7 @@ $nomeEmpresa         	     = $_POST['nomeEmpresa'];
 $login_net                   = $_POST['login_net'];
 $data_venda         	     = $_POST['data_venda'];
 $hora_venda         	     = $_POST['hora_venda'];
+$operadora         	         = $_POST['operadora'];
 
 /*****************************************EDITAR clientes ***************************************/
 
@@ -130,7 +131,8 @@ $hora_venda         	     = $_POST['hora_venda'];
 	   			'nomeEmpresa',
 	   			'login_net',
 	   			'data_venda',
-	   			'hora_venda'
+	   			'hora_venda',
+                'operadora'
 
 				);//campos da tabela cliente
 
@@ -189,17 +191,12 @@ $hora_venda         	     = $_POST['hora_venda'];
 	   			$nomeEmpresa,
 	   			$login_net,
 	   			$data_venda,
-	   			$hora_venda
+	   			$hora_venda,
+                $operadora
 
 				);//valores cliente
 
-
-
-
 				$queryCliente = gera_insert($campos, $valores, 'clientes');
-
-                //echo $queryCliente;
-                //exit;
 
 				$resCliente  = mysqli_query($linkComMysql, $queryCliente);
 

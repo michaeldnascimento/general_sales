@@ -51,7 +51,7 @@ if ($_POST['data1'] !="" OR $_POST['data2'] !="") {
 
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, statusPedido_venda_cliente, statusVenda_venda_cliente, date_format(data_venda,'%d/%m/%Y')as data_venda, data_inst_venda_cliente, lista_sistema FROM clientes WHERE nomeUsuario = '{$nomeUsuario}' AND ({$status}) AND ({$data} BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY data_venda";
+	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, operadora, statusPedido_venda_cliente, statusVenda_venda_cliente, date_format(data_venda,'%d/%m/%Y')as data_venda, data_inst_venda_cliente, lista_sistema FROM clientes WHERE nomeUsuario = '{$nomeUsuario}' AND ({$status}) AND ({$data} BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY data_venda";
 //echo $stringSql;
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
@@ -65,17 +65,18 @@ $clientes = array();
 	'nome_cliente'  	  	  => $cliente ['nome_cliente'],
 	'codigo_assinante'	      => $cliente ['codigo_cliente'],
 	'localizacao_assinante'   => $cliente ['cidade_cliente'] ." - ". $cliente ['estado_cliente'],
-  'lista_sistema'		      => $cliente ['lista_sistema'],
-  'dataVenda'  			  => $cliente ['data_venda'],
-  'statusPedido_assinante'  => $cliente ['statusPedido_venda_cliente'],
-  'statusVenda_assinante'   => $cliente ['statusVenda_venda_cliente'],
+    'lista_sistema'		      => $cliente ['lista_sistema'],
+    'dataVenda'  			  => $cliente ['data_venda'],
+    'statusPedido_assinante'  => $cliente ['statusPedido_venda_cliente'],
+    'statusVenda_assinante'   => $cliente ['statusVenda_venda_cliente'],
+    'operadora'   => $cliente ['operadora'],
 	);
     }
 
 }else{
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, statusPedido_venda_cliente, statusVenda_venda_cliente, date_format(data_venda,'%d/%m/%Y')as data_venda, data_inst_venda_cliente, lista_sistema FROM clientes WHERE nomeUsuario = '{$nomeUsuario}' AND (motivo_cliente = 'VENDA - NOVO CLIENTE' OR motivo_cliente = 'VENDA - UPGRADE' OR motivo_cliente = 'VENDA - UPGRADE + MULTI' OR motivo_cliente = 'VENDA - BASE TV') AND ((MONTH(data_venda)) = MONTH(NOW()) OR (MONTH(data_inst_venda_cliente)) = MONTH(NOW())) ORDER BY data_venda desc";
+	SELECT id_cliente, nome_cliente, codigo_cliente, cidade_cliente, estado_cliente, operadora, statusPedido_venda_cliente, statusVenda_venda_cliente, date_format(data_venda,'%d/%m/%Y')as data_venda, data_inst_venda_cliente, lista_sistema FROM clientes WHERE nomeUsuario = '{$nomeUsuario}' AND (motivo_cliente = 'VENDA - NOVO CLIENTE' OR motivo_cliente = 'VENDA - UPGRADE' OR motivo_cliente = 'VENDA - UPGRADE + MULTI' OR motivo_cliente = 'VENDA - BASE TV') AND ((MONTH(data_venda)) = MONTH(NOW()) OR (MONTH(data_inst_venda_cliente)) = MONTH(NOW())) ORDER BY data_venda desc";
 
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
@@ -93,6 +94,7 @@ while ($cliente = mysqli_fetch_assoc($resultado)) {
     'dataVenda'  			  => $cliente ['data_venda'],
     'statusPedido_assinante'  => $cliente ['statusPedido_venda_cliente'],
     'statusVenda_assinante'   => $cliente ['statusVenda_venda_cliente'],
+    'operadora'   => $cliente ['operadora'],
 	);
 }
 }
@@ -254,6 +256,7 @@ include_once "../css/navbar/meunavbar.php";
 						 <th>NOME</th>
 						 <th>CODIGO</th>
 		                 <th>CIDADE/ESTADO</th>
+                         <th>OPERADORA</th>
 		                 <th>LEAD</th>
 		                 <th>DATA VENDA</th>
 		                 <th>STATUS PEDIDO</th>
@@ -289,6 +292,7 @@ include_once "../css/navbar/meunavbar.php";
 		                    <td><?=$cliente['nome_cliente'];?></td>
 		                    <td><?=$cliente['codigo_assinante'];?></td>
 		                    <td><?=$cliente['localizacao_assinante'];?></td>
+                            <td><?=$cliente['operadora'];?></td>
 		                    <td><?=$cliente['lista_sistema'];?></td>
 		                    <td><?=$cliente['dataVenda'];?></td>
 		                    <td><?=$cliente['statusPedido_assinante'];?></td>
