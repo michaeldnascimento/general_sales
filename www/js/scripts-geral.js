@@ -140,6 +140,15 @@ function selectOP(){
         }
 }
 
+//GET SELECT OPERADORA MODAL
+function selectOPSupervisor(){
+    let select = document.getElementById('name_operadora_super');
+    let name_operadora = select.options[select.selectedIndex].value;
+
+    if (name_operadora !== '') {
+        document.location.href = "criacao-produto.php?operadora=" + name_operadora;
+    }
+}
 
 /*
 //JQuery de atualizacao de formulario, sem atualizar a pagina

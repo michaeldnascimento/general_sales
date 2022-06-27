@@ -71,6 +71,7 @@ if($empresa == '001'){
                       <li><a href="../supervisor/importcvs.php">Importar CSV</a></li>
                       <li><a href="../supervisor/tabulacao-geral.php">Tabulacao Geral</a></li>
                       <li><a href="../supervisor/gerenciador-mailing.php">Gerenciador Mailing</a></li>
+                      <li><a href="../supervisor/criacao-produto.php">Criação Produto</a></li>
                       </ul>
                   </li>
                   <li class="dropdown">
