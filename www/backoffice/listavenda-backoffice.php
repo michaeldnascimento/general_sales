@@ -10,6 +10,18 @@ include_once "../login/visualizarlista.php";
 
 if($nivel == 2 OR $nivel == 3 OR $nivel == 4 OR $nivel == 5){
 
+//SELECT OPERADORA
+$selectOperadora = "SELECT id, name FROM operadora WHERE status = 1  ORDER BY name";
+$resultOperadora = mysqli_query($linkComMysql, $selectOperadora);
+$operadora = array();
+
+while ($op = mysqli_fetch_assoc($resultOperadora)) {
+    $operadora[] = array(
+        'id' 		=> $op['id'],
+        'nome'  	=> $op['name'],
+    );
+}
+
 
 
 if ($nomeEquipe == 'GERAL') {
@@ -80,29 +92,29 @@ if ($_POST['data1'] !="" OR $_POST['data2'] !="") {
 
 	}
 
-    if ($_POST['empresa'] !="") {
-    $empresa = "AND nomeEmpresa = '{$_POST['empresa']}'";
-    }else{
-      $empresa = "";
-    }
+if ($_POST['empresa'] !="") {
+$empresa = "AND nomeEmpresa = '{$_POST['empresa']}'";
+}else{
+  $empresa = "";
+}
 
 
-    if ($_POST['equipe'] !="") {
-    $equipe = "AND nomeEquipe = '{$_POST['equipe']}'";
-  }else{
-      $equipe = "";
-    }
+if ($_POST['equipe'] !="") {
+$equipe = "AND nomeEquipe = '{$_POST['equipe']}'";
+}else{
+  $equipe = "";
+}
 
-    if ($_POST['conexao'] !="") {
-    $conexao = "AND conexao = '{$_POST['conexao']}'";
-  }else{
-      $conexao = "";
-    }
+if ($_POST['operadora'] !="") {
+    $operadoraConsult = "AND operadora = '{$_POST['operadora']}'";
+}else{
+    $operadoraConsult = "";
+}
 
 
 
 $stringSql = "
-	SELECT id_cliente, nome_cliente, operadora, cpf_cnpj_cliente, rg_ie_cliente, data_nasc_cliente, email_cliente, sexo_cliente, tipo_pessoa_cliente, nome_mae_cliente, codigo_cliente, fone_cliente, celular_cliente,  fone3_cliente, fone4_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, login_net, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusChecklist, conexao, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, date_format(data_ativacao,'%d/%m/%Y')as data_ativacao, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, date_format(data_agendamento_venda_cliente,'%d/%m/%Y')as data_agendamento_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, plano_multi_cliente, qtdchip_multi_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema, tipo_servico, observacaoBack_venda_cliente, flag FROM clientes WHERE ({$status}) {$sqlequipe} {$sqlempresa} {$equipe} {$empresa} {$conexao} AND ({$vendedor}  {$data} BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY data_venda desc";
+	SELECT id_cliente, nome_cliente, operadora, cpf_cnpj_cliente, rg_ie_cliente, data_nasc_cliente, email_cliente, sexo_cliente, tipo_pessoa_cliente, nome_mae_cliente, codigo_cliente, fone_cliente, celular_cliente,  fone3_cliente, fone4_cliente, cidade_cliente, estado_cliente, nomeUsuario, nomeEquipe, nomeEmpresa, login_net, date_format(data_venda,'%d/%m/%Y')as data_venda, nomeUsuarioBack, statusPedido_venda_cliente, statusChecklist, conexao, statusVenda_venda_cliente, date_format(data_inst_venda_cliente,'%d/%m/%Y')as data_inst_venda_cliente, date_format(data_ativacao,'%d/%m/%Y')as data_ativacao, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, date_format(data_agendamento_venda_cliente,'%d/%m/%Y')as data_agendamento_venda_cliente, date_format(data_canc_venda_cliente,'%d/%m/%Y')as data_canc_venda_cliente, motivo_cliente, numPacote_venda_cliente, tv_venda_cliente, internet_venda_cliente, netfone_venda_cliente, netcelular_venda_cliente, plano_multi_cliente, qtdchip_multi_cliente, agregado_venda_cliente, formaPagemento_cliente, auditadoBack_venda_cliente, lista_sistema, tipo_servico, observacaoBack_venda_cliente, flag FROM clientes WHERE ({$status}) {$sqlequipe} {$sqlempresa} {$equipe} {$empresa} {$operadoraConsult} AND ({$vendedor}  {$data} BETWEEN '{$_POST['data1']}' AND '{$_POST['data2']}') ORDER BY data_venda desc";
 //echo $stringSql;
 
 $resultado = mysqli_query($linkComMysql, $stringSql);
@@ -316,13 +328,18 @@ include_once "../css/navbar/meunavbar.php";
 <br>
 <br>
 
-      <label class="col-sm-1 control-label" for="textinput">Conexão</label>
+      <label class="col-sm-1 control-label" for="textinput">Operadora</label>
       <div class="col-sm-2">
-      <select id="conexao" name="conexao" class="form-control">
-      <option value="">TODOS</option>
-          <option value="SIM">SIM</option>
-          <option value="NAO">NAO</option>
-      </select>
+          <select id="name_operadora" name="operadora" class="form-control">
+              <option>Selecione Operadora</option>
+              <?php
+              foreach ($operadora as $key => $op){
+                  ?>
+                  <option value="<?= $op['nome'] ?>"><?= $op['nome'] ?></option>
+                  <?php
+              }
+              ?>
+          </select>
       </div>
 
 
