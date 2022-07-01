@@ -73,6 +73,7 @@ if (isset($_POST) && isset($_GET['id']) && intval($_GET['id']) > 0) {
 				$statusChecklist               = $_POST['statusChecklist'];
 				$multisales                    = $_POST['multisales'];
 				$conexao                       = $_POST['conexao'];
+                $operadora                     = $_POST['operadora'];
 
 
 				$extensao4 = strtolower(substr($_FILES['audio_multisales']['name'], - 4));
@@ -139,7 +140,8 @@ if (isset($_POST) && isset($_GET['id']) && intval($_GET['id']) > 0) {
 	   			'statusChecklist',
 	   			'multisales',
 	   			'conexao',
-	   			'audio_multisales'
+	   			'audio_multisales',
+                'operadora'
 
 				);
 
@@ -197,7 +199,8 @@ if (isset($_POST) && isset($_GET['id']) && intval($_GET['id']) > 0) {
 	   			$statusChecklist,
 	   			$multisales,
 	   			$conexao,
-	   			$audio_multisales
+	   			$audio_multisales,
+                $operadora
 				);//valores cliente
 
 

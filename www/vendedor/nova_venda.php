@@ -513,7 +513,7 @@ include_once "../css/navbar/meunavbar.php";
                                 <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
                                 <div class="col-sm-11">
                                     <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
-                                        <option>Selecione o plano de internet</option>
+                                        <option value="">Selecione o plano de internet</option>
                                         <?php
                                         foreach ($internet as $key => $int){
                                             ?>
@@ -529,7 +529,7 @@ include_once "../css/navbar/meunavbar.php";
                                 <label class="col-sm-1 control-label" for="selectbasic">Telefonia</label>
                                 <div class="col-sm-11">
                                     <select id="netfone_venda_cliente" name="netfone_venda_cliente" class="form-control">
-                                        <option>Selecione o plano de telefone</option>
+                                        <option value="">Selecione o plano de telefone</option>
                                         <?php
                                         foreach ($fone as $key => $phone){
                                             ?>
@@ -545,7 +545,7 @@ include_once "../css/navbar/meunavbar.php";
                                 <label class="col-sm-1 control-label" for="selectbasic">TV</label>
                                 <div class="col-sm-11">
                                     <select id="tv_venda_cliente" name="tv_venda_cliente" class="form-control">
-                                        <option>Selecione o plano de TV</option>
+                                        <option value="">Selecione o plano de TV</option>
                                         <?php
                                         foreach ($teve as $key => $tv){
                                             ?>
@@ -561,7 +561,7 @@ include_once "../css/navbar/meunavbar.php";
                                 <label class="col-sm-1 control-label" for="textinput">Agregado</label>
                                 <div class="col-sm-11">
                                     <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
-                                        <option>Selecione Agregado</option>
+                                        <option value="">Selecione Agregado</option>
                                         <?php
                                         foreach ($agregado as $key => $agre){
                                             ?>
@@ -706,7 +706,7 @@ include_once "../css/navbar/meunavbar.php";
                     <div class="form-group">
                     <div class="col-12">
                             <select id="name_operadora" name="operadora" onchange="selectOP()" class="form-control">
-                                <option>Selecione Operadora</option>
+                                <option value="">Selecione Operadora</option>
                                 <?php
                                 foreach ($operadora as $key => $op){
                                     ?>

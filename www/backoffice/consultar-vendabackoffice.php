@@ -712,7 +712,7 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                         <label class="col-sm-1 control-label" for="textinput">Operadora</label>
                         <div class="col-sm-2">
                             <select id="operadora" name="operadora" class="form-control">
-                                <option>Selecione Operadora</option>
+                                <option value="">Selecione Operadora</option>
                                 <?php
                                 foreach ($operadora as $key => $op){
                                     ?>
@@ -883,7 +883,7 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                             <label class="col-sm-1 control-label" for="selectbasic">Internet</label>
                             <div class="col-sm-11">
                                 <select id="internet_venda_cliente" name="internet_venda_cliente" class="form-control">
-                                    <option>Selecione o plano de internet</option>
+                                    <option value="<?php echo $cliente['internet_venda_cliente'] ?>"><?php echo $cliente['internet_venda_cliente'] ?></option>
                                     <?php
                                     foreach ($internet as $key => $int){
                                         ?>
@@ -899,7 +899,7 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                             <label class="col-sm-1 control-label" for="selectbasic">TV</label>
                             <div class="col-sm-11">
                                 <select id="tv_venda_cliente" name="tv_venda_cliente" class="form-control">
-                                    <option>Selecione o plano de TV</option>
+                                    <option value="<?php echo $cliente['tv_venda_cliente'] ?>"><?php echo $cliente['tv_venda_cliente'] ?></option>
                                     <?php
                                     foreach ($teve as $key => $tv){
                                         ?>
@@ -915,7 +915,7 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                             <label class="col-sm-1 control-label" for="selectbasic">Telefonia</label>
                             <div class="col-sm-11">
                                 <select id="netfone_venda_cliente" name="netfone_venda_cliente" class="form-control">
-                                    <option value="">Selecione o plano de telefone</option>
+                                    <option value="<?php echo $cliente['netfone_venda_cliente'] ?>"><?php echo $cliente['netfone_venda_cliente'] ?></option>
                                     <?php
                                     foreach ($fone as $key => $phone){
                                         ?>
@@ -931,7 +931,7 @@ while ($tv = mysqli_fetch_assoc($resultTV)) {
                             <label class="col-sm-1 control-label" for="textinput">Agregado</label>
                             <div class="col-sm-11">
                                 <select id="agregado_venda_cliente" name="agregado_venda_cliente" class="form-control">
-                                    <option value="">Selecione</option>
+                                    <option value="<?php echo $cliente['agregado_venda_cliente'] ?>"><?php echo $cliente['agregado_venda_cliente'] ?></option>
                                     <?php
                                     foreach ($agregado as $key => $agre){
                                         ?>

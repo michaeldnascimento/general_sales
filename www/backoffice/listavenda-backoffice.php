@@ -331,7 +331,7 @@ include_once "../css/navbar/meunavbar.php";
       <label class="col-sm-1 control-label" for="textinput">Operadora</label>
       <div class="col-sm-2">
           <select id="name_operadora" name="operadora" class="form-control">
-              <option>Selecione Operadora</option>
+              <option value="">Selecione Operadora</option>
               <?php
               foreach ($operadora as $key => $op){
                   ?>
