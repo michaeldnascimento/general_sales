@@ -72,6 +72,20 @@ if ($_POST['nomeUsuario'] !="" ) {
                     exit;
                 }
 
+				if ($lista == 'LISTA1') {
+                    header("location: ../mailing/lista1.php");
+                    exit;
+                }
+
+				if ($lista == 'LISTA2') {
+                    header("location: ../mailing/lista2.php");
+                    exit;
+                }
+
+				if ($lista == 'LISTA3') {
+                    header("location: ../mailing/lista3.php");
+                    exit;
+                }
 
 }
 
@@ -118,5 +132,20 @@ if ($_POST['nomeUsuario'] !="" ) {
                     header("location: ../mailing/oportunidades2.php");
                     exit;
                 }
+
+				if ($lista == 'LISTA1') {
+                    header("location: ../mailing/lista1.php");
+                    exit;
+                }
+
+				if ($lista == 'LISTA2') {
+                    header("location: ../mailing/lista2.php");
+                    exit;
+                }
+
+				if ($lista == 'LISTA3') {
+                    header("location: ../mailing/lista3.php");
+                    exit;
+				}
 
 

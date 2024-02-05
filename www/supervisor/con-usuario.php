@@ -471,7 +471,7 @@ include_once "../css/navbar/meunavbar.php";
       <div class="form-group">
 
 
-      <label class="col-sm-3 control-label" for="textinput">PROSPECT</label>
+      <label class="col-sm-3 control-label" for="textinput">LISTA 1</label>
       <div class="col-sm-2">
       <div class="input-group">
       
@@ -494,24 +494,24 @@ include_once "../css/navbar/meunavbar.php";
       </div>
 
 
-      <label class="col-sm-1 control-label" for="textinput">OPORTUNIDADE</label>
+      <label class="col-sm-1 control-label" for="textinput">LISTA 2</label>
       <div class="col-sm-2">
           <div class="input-group">
 
               <label class="radio-inline">
                   <input type="radio"
-                         name="acessoCE_login"
-                         id="acessoCE_login"
+                         name="acessoPROPOSTA_login"
+                         id="acessoPROPOSTA_login"
                          value="SIM"
-                      <?php echo ($cliente['acessoCE_login'] == "SIM") ? "checked" : null; ?>/> SIM
+                      <?php echo ($cliente['acessoPROPOSTA_login'] == "SIM") ? "checked" : null; ?>/> SIM
               </label>
 
               <label class="radio-inline">
                   <input type="radio"
-                         name="acessoCE_login"
-                         id="acessoCE_login"
+                         name="acessoPROPOSTA_login"
+                         id="acessoPROPOSTA_login"
                          value="NAO"
-                      <?php echo ($cliente['acessoCE_login'] == "NAO") ? "checked" : null; ?>/> NAO
+                      <?php echo ($cliente['acessoPROPOSTA_login'] == "NAO") ? "checked" : null; ?>/> NAO
               </label>
           </div>
       </div>
@@ -668,24 +668,24 @@ include_once "../css/navbar/meunavbar.php";
 <br/>
       <div class="form-group">
 
-      <label class="col-sm-3 control-label" for="textinput">LEAD GERAL</label>
+      <label class="col-sm-3 control-label" for="textinput">LISTA 3</label>
       <div class="col-sm-2">
           <div class="input-group">
 
               <label class="radio-inline">
                   <input type="radio"
-                         name="acessoGERAL_login"
-                         id="acessoGERAL_login"
+                         name="acessoSL_login"
+                         id="acessoSL_login"
                          value="SIM"
-                      <?php echo ($cliente['acessoGERAL_login'] == "SIM") ? "checked" : null; ?>/> SIM
+                      <?php echo ($cliente['acessoSL_login'] == "SIM") ? "checked" : null; ?>/> SIM
               </label>
 
               <label class="radio-inline">
                   <input type="radio"
-                         name="acessoGERAL_login"
-                         id="acessoGERAL_login"
+                         name="acessoSL_login"
+                         id="acessoSL_login"
                          value="NAO"
-                      <?php echo ($cliente['acessoGERAL_login'] == "NAO") ? "checked" : null; ?>/> NAO
+                      <?php echo ($cliente['acessoSL_login'] == "NAO") ? "checked" : null; ?>/> NAO
               </label>
           </div>
       </div>

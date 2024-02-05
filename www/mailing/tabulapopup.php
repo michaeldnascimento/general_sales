@@ -180,6 +180,24 @@ if(isset($_POST['id_contato']) && intval($_POST['id_contato']) > 0){
 				exit;
 				}
 
+				if ($lista == 'LISTA1') {
+					$_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/lista1.php");
+                    exit;
+                }
+
+				if ($lista == 'LISTA2') {
+					$_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/lista2.php");
+                    exit;
+                }
+
+				if ($lista == 'LISTA3') {
+					$_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/lista3.php");
+                    exit;
+                }
+
 		        if ($lista == 'GERAL') {
 				$_SESSION['mensagem'] = $mensagem;
 				header("location: ../mailing/lead-GERAL.php");
@@ -294,6 +312,25 @@ if(isset($_POST['id_contato']) && intval($_POST['id_contato']) > 0){
 				header("location: ../mailing/lead-corporativo.php");
 				exit;
 				}
+
+				if ($lista == 'LISTA1') {
+					$_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/lista1.php");
+                    exit;
+                }
+
+				if ($lista == 'LISTA2') {
+					$_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/lista2.php");
+                    exit;
+                }
+
+				if ($lista == 'LISTA3') {
+					$_SESSION['mensagem'] = $mensagem;
+                    header("location: ../mailing/lista3.php");
+                    exit;
+                }
+
 
 				if ($lista == 'GERAL') {
 				$_SESSION['mensagem'] = $mensagem;

@@ -78,10 +78,9 @@ include_once "../css/navbar/meunavbar.php";
 
 
       <option value=""></option>
-      <option value="OPORTUNIDADES">OPORTUNIDADES</option>
-      <option value="OPORTUNIDADES2">OPORTUNIDADES 2</option>
-      <option value="PROSPECT">PROSPECT</option>
-      <option value="PROSPECT2">PROSPECT 2</option>
+      <option value="LISTA1">LISTA 1</option>
+      <option value="LISTA2">LISTA 2</option>
+      <option value="LISTA3">LISTA 3</option>
       </select>
       </div>
 
@@ -95,7 +94,7 @@ include_once "../css/navbar/meunavbar.php";
           </div>
 </div>
 <label  class="col-sm-1" for="textinput">Padrão CSV Home Sales:</label>
-<a href="http://homesales.com.br/download/PADRAO_CSV_GENERAL.csv" download="PADRAO_HOMESALES.csv">Click Aqui</a>
+<a href="/download/PADRAO_CSV_GENERAL.csv" download="PADRAO_HOMESALES.csv">Click Aqui</a>
 
 <br/>
 <br/>

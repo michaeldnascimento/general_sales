@@ -713,10 +713,9 @@ if($empresa == '001'){
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mailing 1<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
                     <li class="dropdown-header">Mailing</li>
-                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/oportunidades.php">OPORTUNIDADES</a></li>
-                      <li><a style="display: <?php echo $dropce ?>" href="./mailing/oportunidades2.php">OPORTUNIDADES 2</a></li>
-                      <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/prospect.php">PROSPECTS</a></li>
-                      <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/prospect2.php">PROSPECTS 2</a></li>
+                      <li><a style="display: <?php echo $dropprospects ?>" href="./mailing/lista1.php">LISTA 1</a></li>
+                      <li><a style="display: <?php echo $dropproposta ?>" href="./mailing/lista2.php">LISTA 2</a></li>
+                      <li><a style="display: <?php echo $acessoSL_login ?>" href="./mailing/lista3.php">LISTA 3</a></li>
 
                   </ul>
                 </li>
